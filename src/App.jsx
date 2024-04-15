@@ -77,21 +77,6 @@ function App() {
     	{bibleshow && <li><button class="menu" onClick={() => {setfurl("Bibles/NIV.html"); togglemenu()}}><h3>New International Version</h3></button></li>}
     	</ul>
 </header>
-      <form
-        className="row"
-        onSubmit={(inputter) => {
-          inputter.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(inputter) => setfurl(inputter.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{furl}</p>
       {frameshow && <iframe id="viewarea" src={furl} width="100%" height="1000"/>}
     </div>
   );
