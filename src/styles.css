@@ -13,6 +13,18 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+header {
+  top:0px;
+  width:100%;
+  text-align:center;
+  Overflow-x:scroll;
+  position:sticky;
+  z-index:1;
+}
+iframe {
+   border-color:transparent;
+   width:100vw;
+}
 ul {
   list-style-type:none;
   text-align:center;

@@ -30,6 +30,7 @@ fn main() {
         //.invoke_handler(tauri::generate_handler![cmdmake])
         .invoke_handler(tauri::generate_handler![log])
         .invoke_handler(tauri::generate_handler![gener])
+        .invoke_handler(tauri::generate_handler![srchange])
         .run(tauri::generate_context!())
         //.invoke_handler(tauri::generate_handler![log])
         //.run(tauri::generate_context!())

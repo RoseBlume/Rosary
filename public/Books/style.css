@@ -1,0 +1,162 @@
+body {
+    margin-left: 10%;
+    margin-right: 10%
+}
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    clear: both
+}
+p {
+    margin-top: 0.51em;
+    text-align: justify;
+    margin-bottom: 0.49em
+}
+.p2 {
+    margin-top: 2em
+}
+.p4 {
+    margin-top: 4em
+}
+.p6 {
+    margin-top: 6em
+}
+hr {
+    width: 33%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    clear: both
+}
+hr.tb {
+    width: 45%
+}
+hr.chap {
+    width: 65%
+}
+hr.full {
+    width: 95%
+}
+hr.r5 {
+    width: 5%;
+    margin-top: 1em;
+    margin-bottom: 1em
+}
+hr.r65 {
+    width: 65%;
+    margin-top: 3em;
+    margin-bottom: 3em
+}
+table {
+    margin-left: auto;
+    margin-right: auto
+}
+.tdl {
+    text-align: left
+}
+.tdr {
+    text-align: right
+}
+.tdc {
+    text-align: center
+}
+.pagenum {
+    visibility: hidden;
+    position: absolute;
+    left: 92%;
+    font-size: smaller;
+    text-align: right;
+    color: #A9A9A9
+}
+.illnum {
+    position: absolute;
+    left: 92%;
+    font-size: smaller;
+    text-align: right
+}
+.blockquot {
+    margin-left: 5%;
+    margin-right: 10%
+}
+a:link {
+    color: #009
+}
+v:link {
+    color: #009
+}
+.center {
+    text-align: center
+}
+.right {
+    text-align: right
+}
+.smcap {
+    font-variant: small-caps
+}
+.caption {
+    text-align: left;
+    font-size: 0.8em;
+    font-family: arial
+}
+.figcenter {
+    margin: auto;
+    text-align: center
+}
+.figleft {
+    float: left;
+    clear: left;
+    margin-left: 0;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    margin-right: 1em;
+    padding: 0;
+    text-align: center
+}
+.figright {
+    float: right;
+    clear: right;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    margin-right: 0;
+    padding: 0;
+    text-align: center
+}
+.footnotes {
+    border: dashed 1px
+}
+.footnote {
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 0.9em
+}
+.footnote .label {
+    position: absolute;
+    right: 84%;
+    text-align: right
+}
+.fnanchor {
+    vertical-align: super;
+    font-size: 0.8em;
+    text-decoration: none
+}
+.transnote {
+    background-color: #E6E6FA;
+    color: black;
+    font-size: smaller;
+    padding: 0.5em;
+    margin-bottom: 5em;
+    font-family: sans-serif, serif
+}
+hr.pg {
+    width: 100%;
+    margin-top: 3em;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    height: 4px;
+    border-width: 4px 0 0 0;
+    border-style: solid;
+    border-color: #000;
+    clear: both
+}
