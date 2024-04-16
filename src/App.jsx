@@ -75,6 +75,7 @@ function App() {
     	{bookshow && <li><button class="menu" onClick={() => {setfurl("Books/City_Of_God_Volume_1.html"); togglemenu()}}><h3>City Of God Volume 1</h3></button></li>}
     	{bookshow && <li><button class="menu" onClick={() => {setfurl("Books/City_Of_God_Volume_2.html"); togglemenu()}}><h3>City Of God Volume 2</h3></button></li>}
     	{bibleshow && <li><button class="menu" onClick={() => {setfurl("Bibles/NIV.html"); togglemenu()}}><h3>New International Version</h3></button></li>}
+    	{bibleshow && <li><button class="menu" onClick={() => {setfurl("Bibles/King_James.html"); togglemenu()}}><h3>The King James Bible</h3></button></li>}
     	</ul>
 </header>
       {frameshow && <iframe id="viewarea" src={furl} width="100%" height="1000"/>}
