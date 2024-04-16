@@ -12,10 +12,6 @@ fn srchange(name: &str) -> String {
  //   println!(name)
 }
 #[tauri::command]
-fn cmdmake(writing: String){
-    println!("mainrs")
-}
-#[tauri::command]
 fn log(logs: &str){
     println!("{}",logs)
 }
@@ -26,14 +22,10 @@ fn gener(name: &str) -> String{
 fn main() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![greet])
-        //.invoke_handler(tauri::generate_handler![srchange])
-        //.invoke_handler(tauri::generate_handler![cmdmake])
         .invoke_handler(tauri::generate_handler![log])
         .invoke_handler(tauri::generate_handler![gener])
         .invoke_handler(tauri::generate_handler![srchange])
         .run(tauri::generate_context!())
-        //.invoke_handler(tauri::generate_handler![log])
-        //.run(tauri::generate_context!())
         .expect("error while running tauri application");
         println!("Hi")
 }

@@ -7,7 +7,7 @@
   },
   "package": {
     "productName": "rosary-tauri",
-    "version": "0.0.1"
+    "version": "0.0.2"
   },
   "tauri": {
     "allowlist": {
@@ -19,7 +19,7 @@
     },
     "windows": [
       {
-        "title": "rosary-tauri",
+        "title": "Rosary",
         "width": 800,
         "height": 600
       }
@@ -29,7 +29,7 @@
     },
     "bundle": {
       "active": true,
-      "targets": "all",
+      "targets": ["deb", "updater", "nsis", "msi"],
       "identifier": "org.bible.rosary",
       "icon": [
         "icons/32x32.png",
