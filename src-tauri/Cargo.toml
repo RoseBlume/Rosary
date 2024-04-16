@@ -1,9 +1,9 @@
 [package]
 name = "Rosary"
-version = "0.0.0"
+version = "0.0.2"
 description = "A Bible App"
-authors = ["you"]
-edition = "2021"
+authors = ["James Rose"]
+edition = "2024"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
