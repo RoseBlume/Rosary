@@ -1,6 +1,6 @@
 [package]
 name = "Rosary"
-version = "0.0.2"
+version = "1.0.3"
 description = "A Bible App"
 authors = ["James Rose"]
 edition = "2021"
