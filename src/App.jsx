@@ -70,12 +70,15 @@ function App() {
     	{bookshow && <h2 class="mentop">Books</h2>}
     	{bibleshow && <h2 class="mentop">Bibles</h2>}
     	<ul>
+    	{bookshow && <li><button class="menu" onClick={() => {setfurl("Books/Catechism/_INDEX.HTM"); togglemenu()}}><h3>The Catechism Of The Catholic Church</h3></button></li>}
+    	{bookshow && <li><button class="menu" onClick={() => {setfurl("Books/Compendium.html"); togglemenu()}}><h3>Compendium Of The Social Doctrine Of The Church</h3></button></li>}
     	{bookshow && <li><button class="menu" onClick={() => {setfurl("Books/The_Temptation_Of_Saint_Anthony.html"); togglemenu()}}><h3>The Temptation Of Saint Anthony</h3></button></li>}
     	{bookshow && <li><button class="menu" onClick={() => {setfurl("Books/The_Confession_Of_Saint_Augustine.html"); togglemenu()}}><h3>The Confession Of Saint Augustine</h3></button></li>}
     	{bookshow && <li><button class="menu" onClick={() => {setfurl("Books/City_Of_God_Volume_1.html"); togglemenu()}}><h3>City Of God Volume 1</h3></button></li>}
     	{bookshow && <li><button class="menu" onClick={() => {setfurl("Books/City_Of_God_Volume_2.html"); togglemenu()}}><h3>City Of God Volume 2</h3></button></li>}
     	{bibleshow && <li><button class="menu" onClick={() => {setfurl("Bibles/NIV.html"); togglemenu()}}><h3>New International Version</h3></button></li>}
     	{bibleshow && <li><button class="menu" onClick={() => {setfurl("Bibles/King_James.html"); togglemenu()}}><h3>The King James Bible</h3></button></li>}
+    	{bibleshow && <li><button class="menu" onClick={() => {setfurl("/Bibles/American/_INDEX.HTM"); togglemenu()}}><h3>The New American Bible</h3></button></li>}
     	</ul>
 </header>
       {frameshow && <iframe id="viewarea" src={furl} width="100%" height="1000"/>}
