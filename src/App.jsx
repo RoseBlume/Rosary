@@ -11,12 +11,32 @@ function App() {
   const [menshow, setMenshow] = useState(false);
   const [bookshow, setBookshow] = useState(false);
   const [bibleshow, setBibleshow] = useState(false);
+  //document.addEventListener('DOMContentLoaded', () => {
+  // This will wait for the window to load, but you could
+  // run this function on whatever trigger you want
+ // 	invoke('close_splashscreen')
+//})
+  invoke('close_splacescreen');
   async function greet() {
   	//inputter.currentTarget.value
   	//() => setfurl("menu.html")
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
     
     setfurl(await invoke("greet", { name }));
+  }
+  async function closesplash() {
+    invoke('close_splashscreen')
+  }
+  async function opensplash() {
+    invoke('open_splashscreen')
+  }
+  async function frameshower() {
+    if (setMenshow == true){
+    	setFrameshow((frameshow))
+    }
+    else {
+        setFrameshow(true)
+    }
   }
   async function togglemenu() {
     setMenshow((menshow) => !menshow)
@@ -27,8 +47,8 @@ function App() {
     if (bibleshow == true) {
       setBibleshow((bibleshow) => !bibleshow)
     }
-    //setBookshow((bookshow) => false)
     }
+    //setBookshow((bookshow) => false)
   async function togglebooks() {
     if (bibleshow == true) {
       setBibleshow((bibleshow) => !bibleshow)
@@ -40,6 +60,13 @@ function App() {
       setBookshow((bookshow) => !bookshow)
     }
     setBibleshow((bibleshow) => !bibleshow)
+  }
+  async function toggleframe() {
+    //if (menshow == true) {
+    	//setFrameshow((frameshow => false))
+    //}
+    //else 
+    setFrameshow((frameshow) => !frameshow)
   }
   async function compress(url) {
     setBookshow((bookshow) => false)
@@ -81,9 +108,9 @@ function App() {
     	{bibleshow && <li><button class="menu" onClick={() => {setfurl("/Bibles/American/_INDEX.HTM"); togglemenu()}}><h3>The New American Bible</h3></button></li>}
     	</ul>
 </header>
-      {frameshow && <iframe id="viewarea" src={furl} width="100%" height="1000"/>}
-    </div>
+      {frameshow && <iframe id="viewarea" src={furl} />}
+      </div>
   );
 }
-
+//onLoad={frameshow}
 export default App;

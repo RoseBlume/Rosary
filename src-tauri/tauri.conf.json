@@ -19,9 +19,12 @@
     },
     "windows": [
       {
-        "title": "Rosary",
-        "width": 800,
-        "height": 600
+      	"title": "Rosary",
+      	"label": "main",
+    	"resizable": true,
+    	"fullscreen": false,
+    	"maximized": true,
+   	"visible": true
       }
     ],
     "security": {
