@@ -108,7 +108,7 @@ function App() {
     	{bibleshow && <li><button class="menu" onClick={() => {setfurl("/Bibles/American/_INDEX.HTM"); togglemenu()}}><h3>The New American Bible</h3></button></li>}
     	</ul>
 </header>
-      {frameshow && <iframe id="viewarea" src={furl} />}
+      {frameshow && <iframe id="viewarea" src={furl} loading="lazy" />}
       </div>
   );
 }
