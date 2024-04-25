@@ -31,7 +31,7 @@ sudo dpkg -i rosary.deb
 To install Rosary on Arch Linux, download the tar.zst file from the latest release and run the following command in the terminal:
 
 \`\`\`sh
-sudo pacman -U rosary.tar.zst
+yay -S rosary-tauri
 \`\`\`
 
 ### MacOS
