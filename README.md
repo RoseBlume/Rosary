@@ -22,7 +22,7 @@ To install Rosary on Windows using the setup.exe file, download the setup.exe fi
 
 To install Rosary on Debian-based Linux distributions, download the Debian file from the latest release and run the following command in the terminal:
 
-\`\`\`sh
+\`\`\`
 sudo dpkg -i rosary.deb
 \`\`\`
 
