@@ -85,7 +85,7 @@ To set up Rosary on MacOS, follow these steps:
 #### A) Cargo
 
 To build Rosary using Cargo, run the following command:
-\`\`\`sh
+\`\`\`
 cargo build
 \`\`\`
 
