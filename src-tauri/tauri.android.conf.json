@@ -1,7 +1,7 @@
 {
   "productName": "Rosary",
   "version": "0.0.0",
-  "identifier": "org.bible.rosary",
+  "identifier": "org.bible.Rosary",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
