@@ -53,7 +53,9 @@ jobs:
 
       - name: install frontend dependencies
         # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
-        run: npm install # change this to npm or pnpm depending on which one you use.
+        run: npm install # change this to npm or pnpm depending on which one you use.i
+      - name: add icons
+        run: npm run tauri icon Bible.png
 
       - uses: tauri-apps/tauri-action@v0
         env:
