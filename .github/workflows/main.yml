@@ -66,6 +66,21 @@ jobs:
           tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version.
           releaseName: 'App v__VERSION__'
           releaseBody: 'See the assets to download this version and install.'
-          releaseDraft: true
+          releaseDraft: true - 
           prerelease: false
           args: ${{ matrix.settings.args }}
+      - name: DEB
+        uses: actions/upload-artifact@v3
+        with:
+            path: ${{ github.workspace }}/target/x86_64-unknown-linux-gnu/release/bundle/deb/rosary_0.0.0_amd64.deb
+            if-no-files-found: ignore
+      - name: RPM
+        uses: actions/upload-artifact@v3
+        with:
+            path: ${{ github.workspace }}/target/x86_64-unknown-linux-gnu/release/bundle/rpm/rosary_0.0.0-1.x86_64.rpm
+            if-no-files-found: ignore
+      - name: AppImage
+        uses: actions/upload-artifact@v3
+        with:
+            path: ${{ github.workspace }}/target/x86_64-unknown-linux-gnu/release/bundle/appimage/rosary_0.0.0_amd64.AppImage
+            if-no-files-found: ignore
