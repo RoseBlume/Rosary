@@ -11,8 +11,7 @@
   "app": {"windows": [
       {
         "title": "Rosary",
-        "width": 800,
-        "height": 600
+        "maximized": true
       }
     ],
     "security": {
