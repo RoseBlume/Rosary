@@ -18,7 +18,7 @@ jobs:
           - platform: 'ubuntu-22.04' # for Tauri v1 you could replace this with ubuntu-20.04.
             args: ''
           - platform: 'windows-latest'
-            args: ''
+            args: '--target x86_64-pc-windows-msvc --runner cargo-xwin'
 
     runs-on: ${{ matrix.settings.platform }}
     steps:
