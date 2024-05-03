@@ -17,34 +17,27 @@ header {
   top:0px;
   width:100%;
   text-align:center;
-  position:sticky;
+  position:fixed;
   z-index:1;
 }
-@media only screen and (orientation: portrait) {
-  iframe {
-    border-color:transparent;
-    width:100vw;
-    height:90vh;
-    top:10vh;
-    position:absolute;
-    background-color: #FFFFFF;
-  }
-}
-@media only screen and (orientation: landscape) {
-  iframe {
-    border-color:transparent;
-    width:100vw;
-    height:80vh;
-    top:20vh;
-    position:absolute;
-    background-color: #FFFFFF;
-  }
+
+iframe {
+  border-color:transparent;
+  width:100vw;
+  height:calc(100vh - 4.5em);
+  margin-top:20px;
+  position:static;
+  background-color: #FFFFFF;
+  overflow-x:hidden;
 }
 ul {
   list-style-type:none;
   text-align:center;
   padding-left:0px;
   margin-left:0px;
+}
+#topper {
+  margin-top:4.5em;
 }
 td {
   width:100%;
@@ -61,7 +54,6 @@ table {
 @media only screen and (orientation: portrait) {
   .menu {
     width:100vw;
-    height:10vh;
     margin-top:1px;
     text-align:center;
   }
@@ -69,7 +61,6 @@ table {
 @media only screen and (orientation: landscape) {
   .menu {
     width:100vw;
-    height:20vh;
     margin-top:1px;
     text-align:center;
   }
@@ -103,6 +94,8 @@ border-bottom:1px solid black;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  overflow-y:hidden;
+  overflow-x:hidden;
 }
 
 .logo {

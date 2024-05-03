@@ -37,8 +37,9 @@ function App() {
     	<button class="menu" onClick={() => {setBibleshow(false); setBookshow(false); togglemenu()}}>
     		<h2 id="met">Menu</h2>
     	</button>
+
     	</header>
-    	{menshow && <ul><li><button class="menu" onClick={() => {setBibleshow(false); togglebooks()}}><h3>Books</h3></button></li><li><button class="menu" onClick={() => {setBookshow(false); togglebibles()}}><h3>Bibles</h3></button></li></ul>}
+    	{menshow && <ul id="topper"><li><button class="menu" onClick={() => {setBibleshow(false); togglebooks()}}><h3>Books</h3></button></li><li><button class="menu" onClick={() => {setBookshow(false); togglebibles()}}><h3>Bibles</h3></button></li></ul>}
     	{bookshow && <h2 class="mentop">Books</h2>}
     	{bibleshow && <h2 class="mentop">Bibles</h2>}
     	<ul>

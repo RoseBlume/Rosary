@@ -1,6 +1,6 @@
 {
   "productName": "Rosary",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "identifier": "org.bible.Rosary",
   "build": {
     "beforeDevCommand": "npm run dev",

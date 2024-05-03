@@ -17,16 +17,14 @@ header {
   top:0px;
   width:100%;
   text-align:center;
-  position:sticky;
-  z-index:1;
 }
 @media only screen and (orientation: portrait) {
   iframe {
     border-color:transparent;
     width:100vw;
-    height:90vh;
+    height:100vh;
     top:10vh;
-    position:absolute;
+    position:relative;
     background-color: #FFFFFF;
   }
 }
@@ -34,9 +32,9 @@ header {
   iframe {
     border-color:transparent;
     width:100vw;
-    height:80vh;
+    height:100vh;
     top:20vh;
-    position:absolute;
+    position:relative;
     background-color: #FFFFFF;
   }
 }
@@ -89,8 +87,6 @@ border-bottom:1px solid black;
   border-top:1px solid lightgray;
   border-bottom:1px solid lightgray;
   border-right:1px solid lightgray;
-  padding-top: 20px;
-  padding-bottom:20px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   border-bottom-left-radius: 3px;
