@@ -2,27 +2,17 @@ body {
     margin-left: 10%;
     margin-right: 10%
 }
-@media only screen and (orientation: portrait) {
-    #scroller {
-        position:fixed;
-        width:45px;
-        height:45px;
-        bottom:2vw;
-        right:2vw;
-        text-align:center;
-        border-radius:100%;
-    }
-}
-@media only screen and (orientation: landscape) {
-    #scroller {
+#scroller {
     position:fixed;
     width:45px;
     height:45px;
-    bottom:10vh;
-    left:10vh;
+    bottom:2vw;
+    right:2vw;
     text-align:center;
     border-radius:100%;
-    }
+}
+img {
+    visibility: hidden;
 }
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
