@@ -24,11 +24,12 @@ header {
 iframe {
   border-color:transparent;
   width:100vw;
-  height:calc(100vh - 4.5em);
+  height:calc(100vh - 6.5em);
   margin-top:20px;
   position:static;
   background-color: #FFFFFF;
-  overflow-x:hidden;
+  Overflow-x:hidden;
+  overflow-y:hidden;
 }
 ul {
   list-style-type:none;
@@ -70,10 +71,6 @@ table {
   padding-top: calc((100% - 1em) / 2);
 }
 */
-#titles {
-border-top: 1px solid black;
-border-bottom:1px solid black;
-}
 .mentop {
   background-color:#FFFFFF;
   border-left:1px solid lightgray;
@@ -179,5 +176,24 @@ button {
   }
   button:active {
     background-color: #0f0f0f69;
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    color: black;
+    background-color: #f6f6f6;
+  }
+
+  a:hover {
+    color: #24c8db;
+  }
+
+  input,
+  button {
+    color: black;
+    background-color: #ffffff;
+  }
+  button:active {
+    background-color: #ffffff;
   }
 }

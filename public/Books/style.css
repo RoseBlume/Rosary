@@ -2,14 +2,27 @@ body {
     margin-left: 10%;
     margin-right: 10%
 }
-#scroller {
-    position:fixed;
-    width:45px;
-    height:45px;
-    bottom:2vw;
-    right:2vw;
-    text-align:center;
-    border-radius:100%;
+@media only screen and (orientation: portrait) {
+    #scroller {
+        position:fixed;
+        width:45px;
+        height:45px;
+        bottom:13vw;
+        right:13vw;
+        text-align:center;
+        border-radius:100%;
+    }
+}
+@media only screen and (orientation: landscape) {
+    #scroller {
+        position:fixed;
+        width:45px;
+        height:45px;
+        bottom:2vw;
+        right:2vw;
+        text-align:center;
+        border-radius:100%;
+    }
 }
 img {
     visibility: hidden;
@@ -171,4 +184,24 @@ hr.pg {
     border-style: solid;
     border-color: #000;
     clear: both
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        background-color:black;
+        color:#f6f6f6;
+    }
+    h1, h2, h3, h4, h5, h6, p, .transnote {
+        color:#f6f6f6;
+        background-color:#0f0f0f98;
+    }
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        color:black;
+        background-color:#f6f6f6;
+    }
+    h1, h2, h3, h4, h5, h6, p, .transnote {
+        background-color:#f6f6f6;
+        color:black;
+    }
 }

@@ -7,6 +7,7 @@ function App() {
   const [menshow, setMenshow] = useState(false);
   const [bookshow, setBookshow] = useState(false);
   const [bibleshow, setBibleshow] = useState(false);
+  const [disclaimer, setDisclaimer] = useState(false);
   const [hidden] = useState(false);
   async function togglemenu() {
     setMenshow((menshow) => !menshow)
@@ -19,17 +20,26 @@ function App() {
     }
     () => setBibleshow(false);
     () => setBookshow(false);
+    () => setDisclaimer(false);
   }
     //setBookshow((bookshow) => false)
   async function togglebooks() {
     () => setBibleshow(false);
     () => setBookshow(false);
+    () => setDisclaimer(false);
     setBookshow((bookshow) => !bookshow)
   }
   async function togglebibles() {
     () => setBibleshow(false);
     () => setBookshow(false);
+    () => setDisclaimer(false);
     setBibleshow((bibleshow) => !bibleshow)
+  }
+  async function toggledisclaimer() {
+    () => setBibleshow(false);
+    () => setBookshow(false);
+    () => setDisclaimer(false);
+    setDisclaimer((disclaimer) => !disclaimer)
   }
   return (
     <div className="container">
@@ -38,9 +48,15 @@ function App() {
     		<h2 id="met">Menu</h2>
     	</button>
     	</header>
-    	{menshow && <ul><li><button class="menu" onClick={() => {setBibleshow(false); togglebooks()}}><h3>Books</h3></button></li><li><button class="menu" onClick={() => {setBookshow(false); togglebibles()}}><h3>Bibles</h3></button></li></ul>}
-    	{bookshow && <h2 class="mentop">Books</h2>}
+      <ul>
+    	{menshow && <li><button class="menu" onClick={() => {setBibleshow(false); togglebooks()}}><h3>Books</h3></button></li>}
+    	{menshow && <li><button class="menu" onClick={() => {setBookshow(false); togglebibles()}}><h3>Bibles</h3></button></li>}
+      {menshow && <li><button class="menu" onClick={() => {setBookshow(false); toggledisclaimer()}}><h3>Disclaimer</h3></button></li>}
+      
+      </ul>
+      {bookshow && <h2 class="mentop">Books</h2>}
     	{bibleshow && <h2 class="mentop">Bibles</h2>}
+      {disclaimer && <h2 class="mentop">Disclaimer</h2>}
     	<ul>
       {bookshow && <li><button class="menu" onClick={() => {setfurl("Books/Compendium.html"); togglemenu(); setBibleshow(false); setBookshow(false)}}><h3>The Compendium Of The Catholic Church</h3></button></li>}
     	{bookshow && <li><button class="menu" onClick={() => {setfurl("Books/Catechism/_INDEX.HTM"); togglemenu(); setBibleshow(false); setBookshow(false)}}><h3>The Catechism of The Catholic Church</h3></button></li>}
@@ -59,10 +75,11 @@ function App() {
     	{bookshow && <li><button class="menu" onClick={() => {setfurl("/Books/The Lost Faith, by T. S. Childs/index.html"); togglemenu(); setBibleshow(false); setBookshow(false)}}><h3>The Lost Faith, by T. S. Childs</h3></button></li>}
     	{bookshow && <li><button class="menu" onClick={() => {setfurl("/Books/The_Preachers_Commentary/index.html"); togglemenu(); setBibleshow(false); setBookshow(false)}}><h3>The Preacher's Complete Homiletic Commentary of the Books of the Bible, by George Barlow</h3></button></li>}
 
-
     	{bibleshow && <li><button class="menu" onClick={() => {setfurl("Bibles/King_James.html"); togglemenu(); setBibleshow(false); setBookshow(false)}}><h3>The King James Bible</h3></button></li>}
-        {bibleshow && <li><button class="menu" onClick={() => {setfurl("Bibles/American/_INDEX.HTM"); togglemenu(); setBibleshow(false); setBookshow(false)}}><h3>The American Bible</h3></button></li>}
-        {bibleshow && <li><button class="menu" onClick={() => {setfurl("Bibles/The Juvenile Bible/index.html"); togglemenu(); setBibleshow(false); setBookshow(false)}}><h3>The Juvenile Interpretation of The Bible</h3></button></li>}
+      {bibleshow && <li><button class="menu" onClick={() => {setfurl("Bibles/American/_INDEX.HTM"); togglemenu(); setBibleshow(false); setBookshow(false)}}><h3>The American Bible</h3></button></li>}
+      {bibleshow && <li><button class="menu" onClick={() => {setfurl("Bibles/The Juvenile Bible/index.html"); togglemenu(); setBibleshow(false); setBookshow(false)}}><h3>The Juvenile Interpretation of The Bible</h3></button></li>}
+
+      {disclaimer && <li class="bottom"><p id="disclaimer">This application utilizes html files provided but Project Gutenberg that have been modified to improve user experience. By continuing to use this application, you agree that you understand the previous statements.</p></li>}
     	</ul>
       {!menshow && <iframe id="viewarea" src={furl} loading="lazy" />}
       </div>

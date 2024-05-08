@@ -7,6 +7,7 @@ function App() {
   const [menshow, setMenshow] = useState(false);
   const [bookshow, setBookshow] = useState(false);
   const [bibleshow, setBibleshow] = useState(false);
+  const [disclaimer, setDisclaimer] = useState(false);
   const [hidden] = useState(false);
   async function togglemenu() {
     setMenshow((menshow) => !menshow)
@@ -19,6 +20,7 @@ function App() {
     }
     () => setBibleshow(false);
     () => setBookshow(false);
+    () => setDisclaimer(false);
   }
     //setBookshow((bookshow) => false)
   async function togglebooks() {
@@ -31,6 +33,12 @@ function App() {
     () => setBookshow(false);
     setBibleshow((bibleshow) => !bibleshow)
   }
+  async function toggledisclaimer() {
+    () => setBibleshow(false);
+    () => setBookshow(false);
+
+    setDisclaimer((disclaimer) => !disclaimer)
+  }
   return (
     <div className="container">
     <header>
@@ -39,9 +47,15 @@ function App() {
     	</button>
 
     	</header>
-    	{menshow && <ul id="topper"><li><button class="menu" onClick={() => {setBibleshow(false); togglebooks()}}><h3>Books</h3></button></li><li><button class="menu" onClick={() => {setBookshow(false); togglebibles()}}><h3>Bibles</h3></button></li></ul>}
-    	{bookshow && <h2 class="mentop">Books</h2>}
+      <ul>
+      {menshow && <div id="topper"></div>}
+    	{menshow && <li><button class="menu" onClick={() => {setBibleshow(false); setDisclaimer(false); togglebooks()}}><h3>Books</h3></button></li>}
+    	{menshow && <li><button class="menu" onClick={() => {setBookshow(false); setDisclaimer(false); togglebibles()}}><h3>Bibles</h3></button></li>}
+      {menshow && <li><button class="menu" onClick={() => {setBookshow(false); setBibleshow(false);toggledisclaimer()}}><h3>Disclaimer</h3></button></li>}
+      </ul>
+      {bookshow && <h2 class="mentop">Books</h2>}
     	{bibleshow && <h2 class="mentop">Bibles</h2>}
+      {disclaimer && <h2 class="mentop">Disclaimer</h2>}
     	<ul>
     	{bookshow && <li><button class="menu" onClick={() => {setfurl("Books/The_Temptation_Of_Saint_Anthony.html"); togglemenu(); setBibleshow(false); setBookshow(false)}}><h3>The Temptation Of Saint Anthony</h3></button></li>}
     	{bookshow && <li><button class="menu" onClick={() => {setfurl("Books/The_Confession_Of_Saint_Augustine.html"); togglemenu(); setBibleshow(false); setBookshow(false)}}><h3>The Confession Of Saint Augustine</h3></button></li>}
@@ -60,7 +74,9 @@ function App() {
 
 
     	{bibleshow && <li><button class="menu" onClick={() => {setfurl("Bibles/King_James.html"); togglemenu(); setBibleshow(false); setBookshow(false)}}><h3>The King James Bible</h3></button></li>}
-        {bibleshow && <li><button class="menu" onClick={() => {setfurl("Bibles/The Juvenile Bible/index.html"); togglemenu(); setBibleshow(false); setBookshow(false)}}><h3>The Juvenile Interpretation of The Bible</h3></button></li>}
+      {bibleshow && <li><button class="menu" onClick={() => {setfurl("Bibles/The Juvenile Bible/index.html"); togglemenu(); setBibleshow(false); setBookshow(false)}}><h3>The Juvenile Interpretation of The Bible</h3></button></li>}
+
+      {disclaimer && <li><p id="disclaimer">This application contains Project Gutenbergs Assets that have been modified to provide a better user experience. By continuing to use this app you agree that you have read and understood the previous statements.</p></li>}
     	</ul>
       {!menshow && <iframe id="viewarea" src={furl} loading="lazy" />}
       </div>
