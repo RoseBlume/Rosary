@@ -6,6 +6,8 @@ export ANDROID_HOME=/home/james/Android/Sdk
 export NDK_HOME=/home/james/Android/Sdk/ndk/27.0.11718014
 export JAVA_HOME=/home/james/Documents/Studio/android-studio-2023.2.1.25-linux/android-studio/jbr
 
+npm install
+npm update
 
 npm run tauri icon Bible.png
 echo "\n\nInitializing android project"

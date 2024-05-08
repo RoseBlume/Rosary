@@ -187,12 +187,12 @@ hr.pg {
 }
 @media (prefers-color-scheme: dark) {
     :root {
-        background-color:black;
-        color:#f6f6f6;
+        background-color:#2f2f2f;
+        color:#2f2f2f;
     }
-    h1, h2, h3, h4, h5, h6, p, .transnote {
+    h1, h2, h3, h4, h5, h6, p, div, .transnote {
         color:#f6f6f6;
-        background-color:#0f0f0f98;
+        background-color:#2f2f2f;
     }
 }
 @media (prefers-color-scheme: light) {
