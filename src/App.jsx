@@ -1,5 +1,8 @@
 import { createSignal } from "solid-js";
 import { invoke } from "@tauri-apps/api/core";
+import { isPermissionGranted, requestPermission, sendNotification} from '@tauri-apps/plugin-notification';
+import { restoreStateCurrent, StateFlags, saveWindowState} from '@tauri-apps/plugin-window-state';
+
 import "./App.css";
 
 function App() {
@@ -9,6 +12,22 @@ function App() {
   const [bibleshow, setBibleshow] = createSignal(false);
   const [disclaimer, setDisclaimer] = createSignal(false);
   const [hidden] = createSignal(false);
+
+  restoreStateCurrent(StateFlags.ALL);
+  // If not we need to request it
+  async function notif() {
+    let permissionGranted = await isPermissionGranted();
+    if (!permissionGranted) {
+      const permission = await requestPermission();
+      permissionGranted = permission === 'granted';
+    }
+
+    // Once permission has been granted we can send the notification
+    if (permissionGranted) {
+      sendNotification({ title: 'Tauri', body: 'Tauri is awesome!' });
+    }
+  }
+  notif();
   async function togglemenu() {
     setMenshow((menshow) => !menshow)
     setFrameshow((frameshow) => !frameshow)
@@ -18,6 +37,7 @@ function App() {
     if (bibleshow == true) {
       setBibleshow((bibleshow) => !bibleshow)
     }
+    saveWindowState(StateFlags.ALL);
     () => setBibleshow(false);
     () => setBookshow(false);
     () => setDisclaimer(false);
@@ -42,7 +62,7 @@ function App() {
   return (
     <div className="container">
     <header>
-    <button class="menu" onClick={() => {setBibleshow(false); setBookshow(false); togglemenu()}}>
+    <button class="menu" onClick={() => {setBibleshow(false); setBookshow(false); setDisclaimer(false); togglemenu()}}>
     <h2 id="met">Menu</h2>
     </button>
 
