@@ -11,6 +11,7 @@
   "app": {"windows": [
       {
         "title": "Rosary",
+        "windowLabel": "main",
         "maximized": true
       }
     ],
