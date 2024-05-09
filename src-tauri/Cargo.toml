@@ -1,14 +1,14 @@
 [package]
 name = "rosary"
 version = "0.0.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "A Bible app written with Tauri"
+authors = ["James Rose"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
-name = "rosary_lib"
+name = "solid_lib"
 crate-type = ["lib", "cdylib", "staticlib"]
 
 [build-dependencies]
@@ -17,6 +17,7 @@ tauri-build = { version = "2.0.0-beta", features = [] }
 [dependencies]
 tauri = { version = "2.0.0-beta", features = [] }
 tauri-plugin-shell = "2.0.0-beta"
+serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 
 [profile.release]
@@ -25,4 +26,5 @@ codegen-units = 1 # Compile crates one after another so the compiler can optimiz
 lto = true # Enables link to optimizations
 opt-level = "s" # Optimize for binary size
 strip = true # Remove debug symbols
+
 
