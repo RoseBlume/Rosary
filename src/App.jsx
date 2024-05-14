@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="container">
     <header>
-    <button class="menu" onClick={() => {setBibleshow(false); setBookshow(false); setDisclaimer(false); togglemenu()}}>
+    <button class="menu" onClick={() => {setBibleshow(false); setBookshow(false); setDisclaimer(false); setLicense(false); togglemenu()}}>
     <h2 id="met">Menu</h2>
     </button>
 
