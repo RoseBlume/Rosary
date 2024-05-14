@@ -14,6 +14,7 @@ function App() {
     () => setBibleshow(false);
     () => setBookshow(false);
     () => setDisclaimer(false);
+    () => setLicense(false);
   }
   return (
     <div className="container">
