@@ -38,7 +38,7 @@ jobs:
             # Install frontend dependencies
             npm install
             # Build the application
-            npm run tauri build
+            npm run tauri build --target aarch64-unknown-linux-gnu
       - name: Upload deb bundle
         uses: actions/upload-artifact@v3
         with:
