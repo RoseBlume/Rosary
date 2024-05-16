@@ -38,7 +38,7 @@ jobs:
             # Install frontend dependencies
             npm install
             # Build the application
-            cargo tauri build
+            npm run tauri build
       - name: Upload deb bundle
         uses: actions/upload-artifact@v3
         with:
