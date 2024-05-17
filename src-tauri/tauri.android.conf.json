@@ -1,7 +1,7 @@
 {
   "productName": "Rosary",
   "version": "1.2.3",
-  "identifier": "org.bible.Rosary",
+  "identifier": "io.github.roseblume.rosary",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
