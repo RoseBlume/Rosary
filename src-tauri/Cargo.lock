@@ -149,6 +149,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "block2"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "43ff7d91d3c1d568065b06c899777d1e48dcf76103a672a0adbc238a7f247f1e"
+dependencies = [
+ "objc2",
+]
+
+[[package]]
 name = "brotli"
 version = "3.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -177,9 +186,9 @@ checksum = "79296716171880943b8470b5f8d03aa55eb2e645a4874bdbb28adb49162e012c"
 
 [[package]]
 name = "bytemuck"
-version = "1.15.0"
+version = "1.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5d6d68c57235a3a081186990eca2867354726650f42f7516ca50c28d6281fd15"
+checksum = "78834c15cb5d5efe3452d58b1e8ba890dd62d21907f867f383358198e56ebca5"
 
 [[package]]
 name = "byteorder"
@@ -304,9 +313,9 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
 name = "cfg_aliases"
-version = "0.2.0"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "77e53693616d3075149f4ead59bdeecd204ac6b8192d8969757601b74bddf00f"
+checksum = "613afe47fcd5fac7ccf1db93babcb082c5994d996f20b8b159f2ad1658eb5724"
 
 [[package]]
 name = "chrono"
@@ -1347,9 +1356,9 @@ dependencies = [
 
 [[package]]
 name = "instant"
-version = "0.1.12"
+version = "0.1.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7a5bbe824c507c5da5956355e86a746d82e0e1464f65d862cc5e71da70e94b2c"
+checksum = "e0242819d153cba4b4b05a5a8f2a7e9bbf97b6055b2a002b395c96b5ff3c0222"
 dependencies = [
  "cfg-if",
 ]
@@ -1774,6 +1783,71 @@ checksum = "915b1b472bc21c53464d6c8461c9d3af805ba1ef837e1cac254428f4a77177b1"
 dependencies = [
  "malloc_buf",
  "objc_exception",
+]
+
+[[package]]
+name = "objc-sys"
+version = "0.3.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "da284c198fb9b7b0603f8635185e85fbd5b64ee154b1ed406d489077de2d6d60"
+
+[[package]]
+name = "objc2"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b4b25e1034d0e636cd84707ccdaa9f81243d399196b8a773946dcffec0401659"
+dependencies = [
+ "objc-sys",
+ "objc2-encode",
+]
+
+[[package]]
+name = "objc2-app-kit"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fb79768a710a9a1798848179edb186d1af7e8a8679f369e4b8d201dd2a034047"
+dependencies = [
+ "block2",
+ "objc2",
+ "objc2-core-data",
+ "objc2-foundation",
+]
+
+[[package]]
+name = "objc2-core-data"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6e092bc42eaf30a08844e6a076938c60751225ec81431ab89f5d1ccd9f958d6c"
+dependencies = [
+ "block2",
+ "objc2",
+ "objc2-foundation",
+]
+
+[[package]]
+name = "objc2-encode"
+version = "4.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "88658da63e4cc2c8adb1262902cd6af51094df0488b760d6fd27194269c0950a"
+
+[[package]]
+name = "objc2-foundation"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cfaefe14254871ea16c7d88968c0ff14ba554712a20d76421eec52f0a7fb8904"
+dependencies = [
+ "block2",
+ "objc2",
+]
+
+[[package]]
+name = "objc2-quartz-core"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "153140331e87b21327f0be072ac7108e67b43986f64098e937077b1eed6e3191"
+dependencies = [
+ "objc2",
+ "objc2-foundation",
 ]
 
 [[package]]
@@ -2252,9 +2326,9 @@ checksum = "f2ff9a1f06a88b01621b7ae906ef0211290d1c8a168a15542486a8f61c0833b9"
 
 [[package]]
 name = "raw-window-handle"
-version = "0.6.1"
+version = "0.6.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8cc3bcbdb1ddfc11e700e62968e6b4cc9c75bb466464ad28fb61c5b2c964418b"
+checksum = "20675572f6f24e9e76ef639bc5552774ed45f1c30e2951e1e99c59888861c539"
 
 [[package]]
 name = "redox_syscall"
@@ -2665,19 +2739,21 @@ dependencies = [
 
 [[package]]
 name = "softbuffer"
-version = "0.4.2"
+version = "0.4.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "61d5d17f23326fe0d9b0af282f73f3af666699420fd5f42629efd9c6e7dc166f"
+checksum = "d09e57a5a6b300bf917329da0ff30a58737d83abb7b14f99a419c23e83007cb8"
 dependencies = [
  "bytemuck",
  "cfg_aliases",
- "cocoa",
  "core-graphics",
  "foreign-types",
  "js-sys",
  "log",
- "objc",
- "raw-window-handle 0.6.1",
+ "objc2",
+ "objc2-app-kit",
+ "objc2-foundation",
+ "objc2-quartz-core",
+ "raw-window-handle 0.6.2",
  "redox_syscall",
  "wasm-bindgen",
  "wayland-sys",
@@ -2812,9 +2888,9 @@ dependencies = [
 
 [[package]]
 name = "tao"
-version = "0.27.1"
+version = "0.28.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "92bcf8885e147b56d6e26751263b45876284f32ca404703f6d3b8f80d16ff4dd"
+checksum = "12a8121bd5721ebbbe0889f8286d5824673beeb04071519b68916fbed04f3093"
 dependencies = [
  "bitflags 2.5.0",
  "cocoa",
@@ -2838,7 +2914,7 @@ dependencies = [
  "objc",
  "once_cell",
  "parking_lot",
- "raw-window-handle 0.6.1",
+ "raw-window-handle 0.6.2",
  "scopeguard",
  "tao-macros",
  "unicode-segmentation",
@@ -2891,7 +2967,7 @@ dependencies = [
  "muda",
  "objc",
  "percent-encoding",
- "raw-window-handle 0.6.1",
+ "raw-window-handle 0.6.2",
  "reqwest",
  "serde",
  "serde_json",
@@ -2980,15 +3056,15 @@ dependencies = [
 
 [[package]]
 name = "tauri-runtime"
-version = "2.0.0-beta.15"
+version = "2.0.0-beta.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9316d393ecb73f9390c57637c169c6b7d06f287924fa275f59cdbcf484eb4580"
+checksum = "574f3d59cbe6c76b6d849bc35aa3a9e8061ff8f75f557dc33f38c0e43cf55a41"
 dependencies = [
  "dpi",
  "gtk",
  "http",
  "jni",
- "raw-window-handle 0.6.1",
+ "raw-window-handle 0.6.2",
  "serde",
  "serde_json",
  "tauri-utils",
@@ -2999,9 +3075,9 @@ dependencies = [
 
 [[package]]
 name = "tauri-runtime-wry"
-version = "2.0.0-beta.15"
+version = "2.0.0-beta.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6df23173f0df85d05184f397ba7129c3e5f2efd2f213cf8db43694143b3a2f29"
+checksum = "d6d1f223de1d674aaa561c900ac650b3160f11520e9b191a3574f6c493fc77fa"
 dependencies = [
  "cocoa",
  "gtk",
@@ -3009,7 +3085,7 @@ dependencies = [
  "jni",
  "log",
  "percent-encoding",
- "raw-window-handle 0.6.1",
+ "raw-window-handle 0.6.2",
  "softbuffer",
  "tao",
  "tauri-runtime",
@@ -3023,9 +3099,9 @@ dependencies = [
 
 [[package]]
 name = "tauri-utils"
-version = "2.0.0-beta.14"
+version = "2.0.0-beta.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1d236b18d5e37df540e55c99ceec3868da9a861b4089189cca299d6607c9dcd9"
+checksum = "2b4251529d92b5c611ccaa611f8a31cb41b1aa00db8bcc0a49efe5d966bfa911"
 dependencies = [
  "brotli",
  "cargo_metadata",
@@ -3765,7 +3841,7 @@ checksum = "33082acd404763b315866e14a0d5193f3422c81086657583937a750cdd3ec340"
 dependencies = [
  "cocoa",
  "objc",
- "raw-window-handle 0.6.1",
+ "raw-window-handle 0.6.2",
  "windows-sys 0.52.0",
  "windows-version",
 ]
@@ -4076,9 +4152,9 @@ dependencies = [
 
 [[package]]
 name = "wry"
-version = "0.39.4"
+version = "0.39.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f07f14ca279b6c2a797d93f82af8f04cb75c0d46bcb61752774c685bd666e152"
+checksum = "c7172fc76376d55d089c627a31a5b604b4ac372793fb5378d1c7ddf008703008"
 dependencies = [
  "base64 0.22.1",
  "block",
@@ -4102,7 +4178,7 @@ dependencies = [
  "objc_id",
  "once_cell",
  "percent-encoding",
- "raw-window-handle 0.6.1",
+ "raw-window-handle 0.6.2",
  "sha2",
  "soup3",
  "tao-macros",
