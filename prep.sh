@@ -1,2 +1,2 @@
 #!/bin/bash
-cp prep/tauri.conf.json src-tauri
+cp prep/second/tauri.conf.json src-tauri
