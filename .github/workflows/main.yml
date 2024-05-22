@@ -71,6 +71,7 @@ jobs:
       - name: install dependencies (ubuntu only)
         if: matrix.settings.platform == 'ubuntu-22.04' # This must match the platform value defined above.
         run: |
+          sudo snap remove lxd
           sudo snap install lxd
           lxd init --auto
           sudo snap install snapcraft --classic
