@@ -68,15 +68,17 @@ jobs:
           prerelease: false
           args: ${{ matrix.settings.args }}
       
-      - name: install dependencies (ubuntu only)
-        if: matrix.settings.platform == 'ubuntu-22.04' # This must match the platform value defined above.
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Install Snapcraft
+        uses: samuelmeuli/action-snapcraft@v2
+
+      - name: Build Snap
         run: |
-          sudo lxd init --auto
-          sudo snap install snapcraft --classic
-          
-          sudo snapcraft
-        # webkitgtk 4.0 is for Tauri v1 - webkitgtk 4.1 is for Tauri v2.
-        # You can remove the one that doesn't apply to your app to speed up the workflow a bit.
+          snapcraft
+
+        
       - name: Upload snap bundle
         if: matrix.settings.platform == 'ubuntu-22.04' # This must match the platform value defined above.
         uses: actions/upload-artifact@v3
