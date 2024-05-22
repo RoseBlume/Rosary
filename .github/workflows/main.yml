@@ -67,17 +67,3 @@ jobs:
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.settings.args }}
-      
-      - name: Install Snapcraft with LXD
-        uses: samuelmeuli/action-snapcraft@v2
-        with:
-          use_lxd: ${{ matrix.os == 'ubuntu-18.04' }}
-      - name: Build snap
-        run: sudo sg lxd -c 'snapcraft --use-lxd'
-        
-      - name: Upload snap bundle
-        if: matrix.settings.platform == 'ubuntu-22.04' # This must match the platform value defined above.
-        uses: actions/upload-artifact@v3
-        with:
-          name: Snap Bundle
-          path: ${{ github.workspace }}*.snap
