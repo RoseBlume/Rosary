@@ -75,6 +75,7 @@ jobs:
         # webkitgtk 4.0 is for Tauri v1 - webkitgtk 4.1 is for Tauri v2.
         # You can remove the one that doesn't apply to your app to speed up the workflow a bit.
       - name: Upload snap bundle
+        if: matrix.settings.platform == 'ubuntu-22.04' # This must match the platform value defined above.
         uses: actions/upload-artifact@v3
         with:
           name: Snap Bundle
