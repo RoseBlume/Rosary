@@ -9,10 +9,7 @@ grade: stable
 confinement: strict
 
 architectures:
-  - build-on: amd64
-    build-for: amd64
-  - build-on: arm64
-    build-for: arm64
+  - amd64
 
 apps:
   rosary:
@@ -25,23 +22,6 @@ parts:
     plugin: dump
     source: https://github.com/RoseBlume/Rosary/releases/download/v1.2.3/rosary_1.2.3_amd64.deb
     source-type: deb
-    architectures: [amd64]
-    override-pull: |
-      set -eu
-      craftctl default
-      sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" usr/share/applications/rosary.desktop
-    organize:
-      usr/bin/rosary: bin/rosary
-    stage-packages:
-      - libwebkit2gtk-4.1-0
-      - libglu1-mesa
-      - libsoup-3.0-0
-      - freeglut3
-  preparm:
-    plugin: dump
-    source: https://github.com/RoseBlume/Rosary/releases/download/v1.2.2/rosary_1.2.2_arm64.deb
-    source-type: deb
-    architectures: [arm64]
     override-pull: |
       set -eu
       craftctl default
