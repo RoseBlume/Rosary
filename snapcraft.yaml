@@ -1,6 +1,6 @@
 name: jrosarybibleapp
-base: core24
-version: '1.2.3'
+base: core22
+version: '1.2.4'
 summary: A simple Bible app. # 79 char long summary
 description: |
   A simple Bible app. This projects goal is to promote spiritual health, and to allow each person to study the bible and come to their own conclusion about their faith.
@@ -114,9 +114,9 @@ parts:
       - libsoup-3.0-0
       - freeglut3
     organize:
-      src-tauri/target/release/bundle/deb/rosary/extract/usr/bin/rosary: bin/rosary
-      src-tauri/target/release/bundle/deb/rosary-extract/usr/share/applications/rosary.desktop: usr/share/applications/rosary.desktop
-      src-tauri/target/release/bundle/deb/rosary-extract/usr/share/icons/hicolor/256x256@2/apps/rosary.png: usr/share/icons/hicolor/256x256@2/apps/rosary.png
-      src-tauri/target/release/bundle/deb/rosary-extract/usr/share/icons/hicolor/128x128/apps/rosary.png: usr/share/icons/hicolor/128x128/apps/rosary.png
-      src-tauri/target/release/bundle/deb/rosary-extract/usr/share/icons/hicolor/32x32/apps/rosary.png: usr/share/icons/hicolor/32x32/apps/rosary.png
-      src-tauri/target/release/bundle/deb/rosary-extract/usr/share/metainfo/io.github.roseblume.rosary.xml: usr/share/metainfo/io.github.roseblume.rosary.xml
+      Rosary/src-tauri/target/release/bundle/deb/rosary/extract/usr/bin/rosary: bin/rosary
+      Rosary/src-tauri/target/release/bundle/deb/rosary-extract/usr/share/applications/rosary.desktop: usr/share/applications/rosary.desktop
+      Rosary/src-tauri/target/release/bundle/deb/rosary-extract/usr/share/icons/hicolor/256x256@2/apps/rosary.png: usr/share/icons/hicolor/256x256@2/apps/rosary.png
+      Rosary/src-tauri/target/release/bundle/deb/rosary-extract/usr/share/icons/hicolor/128x128/apps/rosary.png: usr/share/icons/hicolor/128x128/apps/rosary.png
+      Rosary/src-tauri/target/release/bundle/deb/rosary-extract/usr/share/icons/hicolor/32x32/apps/rosary.png: usr/share/icons/hicolor/32x32/apps/rosary.png
+      Rosary/src-tauri/target/release/bundle/deb/rosary-extract/usr/share/metainfo/io.github.roseblume.rosary.xml: usr/share/metainfo/io.github.roseblume.rosary.xml
