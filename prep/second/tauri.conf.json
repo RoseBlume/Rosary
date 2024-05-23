@@ -32,14 +32,14 @@
     "linux": {
       "deb": {
         "files": {
-          "/usr/share/metainfo/io.github.roseblume.xml": "../extra/io.github.roseblume.xml",
+          "/usr/share/metainfo/io.github.roseblume.xml": "../extra/io.github.roseblume.rosary.xml",
           "/opt/rosary/README.md": "../README.md",
           "/opt/rosary/LICENSE": "../LICENSE"
         }
       },
       "rpm": {
         "files": {
-          "/usr/share/metainfo/io.github.roseblume.xml": "../extra/io.github.roseblume.xml",
+          "/usr/share/metainfo/io.github.roseblume.xml": "../extra/io.github.roseblume.rosary.xml",
           "/opt/rosary/README.md": "../README.md",
           "/opt/rosary/LICENSE": "../LICENSE"
         }
