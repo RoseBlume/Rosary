@@ -1,4 +1,3 @@
-cargo-features = ["trim-paths"]
 [package]
 name = "rosary"
 version = "0.0.0"
@@ -30,4 +29,3 @@ lto = true # Enables link to optimizations
 opt-level = "z" # Optimize for binary size
 strip = true # Remove debug symbols
 rpath = false
-trim-paths = "all"
