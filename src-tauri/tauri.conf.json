@@ -28,6 +28,16 @@
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "deb": {
+      "/usr/share/metainfo/io.github.roseblume.xml": "../extra/io.github.roseblume.xml",
+      "/opt/rosary/README.md": "../README.md",
+      "/opt/rosary/LICENSE": "../LICENSE"
+    },
+    "rpm": {
+      "/usr/share/metainfo/io.github.roseblume.xml": "../extra/io.github.roseblume.xml",
+      "/opt/rosary/README.md": "../README.md",
+      "/opt/rosary/LICENSE": "../LICENSE"
+    }
   }
 }
