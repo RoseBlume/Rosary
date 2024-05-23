@@ -9,112 +9,31 @@ grade: stable
 confinement: strict
 
 architectures:
-  - build-on: [amd64]
-    build-for: [amd64]
-  - build-on: [arm64]
-    build-for: [arm64]
-  - build-on: [armhf]
-    build-for: [armhf]
-  - build-on: [riscv64]
-    build-for: [riscv64]
-
+  - build-for: [amd64]
+    build-on: [amd64]
+  - build-for: [arm64]
+    build-on: [arm64]
 apps:
   rosary:
     command: bin/rosary
+    extensions: [gnome]
     desktop: usr/share/applications/rosary.desktop
 
 parts:
-  prepamd:
-    source: .
-    build-environment:
-      # Set the node version here. We recommend to use the latest LTS version.
-      - NODE_VERSION: '20.13.1'
-
-    # We don't use the npm plugin here, because it has no X-build capability (can't build arm64 target snaps on amd64).
-    # plugin: npm
-    # npm-node-version: "20.12.0"
-    plugin: nil
-    override-build: |
-
-      # # detect target arch
-      # if [ $SNAPCRAFT_TARGET_ARCH == "arm64" ]; then
-      #     target_arch="arm64"
-      # else
-      #     target_arch="x64"
-      # fi
-      #
-      # # detect build arch
-      # SNAPCRAFT_BUILD_ARCH=$(dpkg --print-architecture)
-      # if [ $SNAPCRAFT_BUILD_ARCH == "arm64" ]; then
-      #     build_arch="arm64"
-      # else
-      #     build_arch="x64"
-      # fi
-      #
-      # # fetch node for target arch to be packed
-      # if [ ! -f "${SNAPCRAFT_PART_INSTALL}/bin/node" ]; then
-      #     node_path="${SNAPCRAFT_PART_INSTALL}/bin"
-      #     node_uri="https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-${target_arch}.tar.gz"
-      #     echo fetching node for install: $node_uri
-      #     curl $node_uri | tar xzf - -C $SNAPCRAFT_PART_INSTALL --no-same-owner --strip-components=1
-      # fi
-      #
-      # # fetch node used for build (if not equal to target arch for cross build)
-      # if [ $build_arch != $target_arch ]; then
-      #   node_path=$SNAPCRAFT_PART_BUILD/bin
-      #   if [ ! -f "${SNAPCRAFT_PART_BUILD}/bin/node" ]; then
-      #     node_uri="https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-${build_arch}.tar.gz"
-      #     echo fetching node for build: $node_uri
-      #     curl $node_uri | tar xzf - -C $SNAPCRAFT_PART_BUILD --no-same-owner --strip-components=1
-      #   fi
-      # fi
-      #
-      # # set the path to build target node to be used for build
-      # echo node path: $node_path
-      # export PATH=$node_path:$PATH
-      # node --version
-      # npm --version
-      #
-      # # setup for rust
-      # echo -e "Setting up rust"
-      # curl https://sh.rustup.rs -o rustup-init.sh
-      # sudo chmod u+x rustup-init.sh
-      # sudo ./rustup-init.sh -y
-      #
-      # # install and compile
-      npm install
-      npm run tauri icon Bible.png
-      npm run tauri build
-      # pack and install the app (only production)
-      cd src-tauri/target/release/bundle/deb
-      dpkg -x *.deb rosary-here
-      cd rosary-here
+  prep:
+    plugin: dump
+    source:
+      - on amd64 to amd64: https://github.com/RoseBlume/Rosary/releases/download/v1.2.3/rosary_1.2.4_amd64.deb
+      - on arm64 to arm64: https://github.com/RoseBlume/Rosary/releases/download/v1.2.3/rosary_1.2.4_arm64.deb
+    source-type: deb
+    override-pull: |
+      set -eu
+      craftctl default
       sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" usr/share/applications/rosary.desktop
-
-      # remove ctrlx-datalayer prebuilds of unused archs to reduce snap size
-    build-packages:
-      - libwebkit2gtk-4.1-dev
-      - build-essential
-      - curl
-      - wget
-      - file
-      - libssl-dev
-      - libayatana-appindicator3-dev
-      - librsvg2-dev
-      - dpkg
-      - dnf
-      - npm
-      - nodejs
-      - rust-all
+    organize:
+      usr/bin/rosary: bin/rosary
     stage-packages:
       - libwebkit2gtk-4.1-0
       - libglu1-mesa
       - libsoup-3.0-0
       - freeglut3
-    organize:
-      Rosary/src-tauri/target/release/bundle/deb/rosary/extract/usr/bin/rosary: bin/rosary
-      Rosary/src-tauri/target/release/bundle/deb/rosary-extract/usr/share/applications/rosary.desktop: usr/share/applications/rosary.desktop
-      Rosary/src-tauri/target/release/bundle/deb/rosary-extract/usr/share/icons/hicolor/256x256@2/apps/rosary.png: usr/share/icons/hicolor/256x256@2/apps/rosary.png
-      Rosary/src-tauri/target/release/bundle/deb/rosary-extract/usr/share/icons/hicolor/128x128/apps/rosary.png: usr/share/icons/hicolor/128x128/apps/rosary.png
-      Rosary/src-tauri/target/release/bundle/deb/rosary-extract/usr/share/icons/hicolor/32x32/apps/rosary.png: usr/share/icons/hicolor/32x32/apps/rosary.png
-      Rosary/src-tauri/target/release/bundle/deb/rosary-extract/usr/share/metainfo/io.github.roseblume.rosary.xml: usr/share/metainfo/io.github.roseblume.rosary.xml
