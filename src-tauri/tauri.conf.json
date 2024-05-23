@@ -29,15 +29,21 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
-    "deb": {
-      "/usr/share/metainfo/io.github.roseblume.xml": "../extra/io.github.roseblume.xml",
-      "/opt/rosary/README.md": "../README.md",
-      "/opt/rosary/LICENSE": "../LICENSE"
-    },
-    "rpm": {
-      "/usr/share/metainfo/io.github.roseblume.xml": "../extra/io.github.roseblume.xml",
-      "/opt/rosary/README.md": "../README.md",
-      "/opt/rosary/LICENSE": "../LICENSE"
+    "linux": {
+      "deb": {
+        "files": {
+          "/usr/share/metainfo/io.github.roseblume.xml": "../extra/io.github.roseblume.xml",
+          "/opt/rosary/README.md": "../README.md",
+          "/opt/rosary/LICENSE": "../LICENSE"
+        }
+      },
+      "rpm": {
+        "files": {
+          "/usr/share/metainfo/io.github.roseblume.xml": "../extra/io.github.roseblume.xml",
+          "/opt/rosary/README.md": "../README.md",
+          "/opt/rosary/LICENSE": "../LICENSE"
+        }
+      }
     }
   }
 }
