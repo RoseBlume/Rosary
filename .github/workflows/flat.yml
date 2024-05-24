@@ -12,7 +12,7 @@ jobs:
       matrix:
         settings:
           - platform: 'ubuntu-22.04' # for Tauri v1 you could replace this with ubuntu-20.04.
-            args: ''
+            args: '-- --bundles deb'
           - platform: 'windows-latest'
             args: '--target x86_64-pc-windows-msvc'
 
