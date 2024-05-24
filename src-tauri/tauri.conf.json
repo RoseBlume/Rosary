@@ -33,6 +33,7 @@
       "deb": {
         "files": {
           "/usr/share/metainfo/io.github.roseblume.rosary.xml": "../extra/io.github.roseblume.rosary.xml",
+          "/usr/share/applications/io.github.roseblume.rosary.desktop": "../extra/io.github.roseblume.rosary.desktop",
           "/opt/rosary/README.md": "../README.md",
           "/opt/rosary/LICENSE": "../LICENSE"
         }
@@ -40,6 +41,7 @@
       "rpm": {
         "files": {
           "/usr/share/metainfo/io.github.roseblume.rosary.xml": "../extra/io.github.roseblume.rosary.xml",
+          "/usr/share/applications/io.github.roseblume.rosary.desktop": "../extra/io.github.roseblume.rosary.desktop",
           "/opt/rosary/README.md": "../README.md",
           "/opt/rosary/LICENSE": "../LICENSE"
         }

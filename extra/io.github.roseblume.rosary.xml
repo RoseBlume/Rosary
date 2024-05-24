@@ -22,10 +22,14 @@
         <keyword translate="no">Christ</keyword>
         <keyword translate="no">Jesus</keyword>
     </keywords>
+    <branding>
+        <color type="primary" scheme_preference="light">#ffffff</color>
+        <color type="primary" scheme_preference="dark">#7f2c22</color>
+    </branding>
     <recommends>
         <display_length compare="ge">360</display_length>
     </recommends>
-    <summary>A simple Bible app.</summary>
+    <summary>Read the Bible and other Christian texts</summary>
 
     <metadata_license>MIT</metadata_license>
     <project_license>MIT</project_license>
@@ -39,7 +43,7 @@
 
     <description>
         <p>
-            A simple Bible app. This projects goal is to allow each person to study the bible and come to their own conclusion about their faith.
+            Read the Bible and other Christian texts. This projects goal is to allow each person to study the bible and come to their own conclusion about their faith.
         </p>
     </description>
     <screenshots>
