@@ -1,5 +1,6 @@
 name: jrosarybibleapp
 base: core22
+adopt-info: metapart
 version: '1.2.4'
 summary: A simple Bible app. # 79 char long summary
 description: |
@@ -37,3 +38,7 @@ parts:
       - libglu1-mesa
       - libsoup-3.0-0
       - freeglut3
+  metapart:
+    plugin: dump
+    source: .
+    parse-info: [extra/io.github.roseblume.rosary.xml]
