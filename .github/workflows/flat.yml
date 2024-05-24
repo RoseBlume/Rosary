@@ -12,7 +12,7 @@ jobs:
       matrix:
         settings:
           - platform: 'ubuntu-22.04' # for Tauri v1 you could replace this with ubuntu-20.04.
-            args: '-- --bundles deb'
+            args: '--bundles deb'
 
     runs-on: ${{ matrix.settings.platform }}
     steps:
@@ -59,7 +59,7 @@ jobs:
         with:
           tagName: flatpak # the action automatically replaces \_\_VERSION\_\_ with the app version.
           releaseName: 'Flatpak Release'
-          releaseBody: 'See the assets to download this version and install.'
+          releaseBody: 'Assets for Use with flathub'
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.settings.args }}
