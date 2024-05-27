@@ -12,7 +12,7 @@ jobs:
           base_image: manjaro_arm
           cpu: cortex-a53
           bind_mount_repository: true
-          image_additional_mb: 10240
+          image_additional_mb: 30240
           optimize_image: false
           commands: |
             # Rust complains (rightly) that $HOME doesn't match eid home
@@ -20,7 +20,7 @@ jobs:
             # Workaround to CI worker being stuck on Updating crates.io index
             export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
             # Install setup prerequisites
-            apt-get update -y --allow-releaseinfo-change
+            #apt-get update -y --allow-releaseinfo-change
             sudo pacman -Syy --noconfirm
             sudo pacman -Syu --noconfirm
             sudo pacman -S --noconfirm rustup webkit2gtk-4.1 base-devel curl wget file openssl appmenu-gtk-module libappindicator-gtk3 librsvg dpkg apt base-devel
