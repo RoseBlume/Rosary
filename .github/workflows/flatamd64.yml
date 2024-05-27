@@ -58,7 +58,7 @@ jobs:
       - name: Run Extractions
         run: |
             dpkg -x src-tauri/target/release/bundle/deb/*.deb rosary-here
-            cd rosary-here
+            cd rosary-here/usr
             tar -cf Rosary_1.2.6_amd64.tar.gz bin share
 
 
