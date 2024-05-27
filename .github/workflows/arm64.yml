@@ -1,0 +1,45 @@
+name: Arm64 Compilation
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: RoseBlume/arm-runner-action@v1.0.0
+        with:
+          base_image: manjaro_arm
+          cpu: cortex-a53
+          bind_mount_repository: true
+          image_additional_mb: 10240
+          optimize_image: false
+          commands: |
+            # Rust complains (rightly) that $HOME doesn't match eid home
+            export HOME=/root
+            # Workaround to CI worker being stuck on Updating crates.io index
+            export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
+            # Install setup prerequisites
+            apt-get update -y --allow-releaseinfo-change
+            sudo pacman -Syy --noconfirm
+            sudo pacman -Syu --noconfirm
+            sudo pacman -S --noconfirm rustup webkit2gtk-4.1 base-devel curl wget file openssl appmenu-gtk-module libappindicator-gtk3 librsvg dpkg apt base-devel
+            curl https://sh.rustup.rs -sSf | sh -s -- -y
+            . "$HOME/.cargo/env"
+            #curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash
+            # Install framework specific packages
+            #apt-get install -y nodejs
+            #npm install next@latest react@latest react-dom@latest eslint-config-next@latest
+            # Install build tools and tauri-cli requirements
+            #apt-get install -y libwebkit2gtk-4.0-dev build-essential wget libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
+            cargo install tauri-cli
+            # Install frontend dependencies
+            npm install
+            # Build the application
+            npm run tauri build
+            #cargo tauri build
+      - name: Upload deb bundle
+        uses: actions/upload-artifact@v3
+        with:
+          name: Debian Bundle
+          path: ${{ github.workspace }}/src-tauri/target/release/bundle/deb/Rosary_1.2.5_arm64.deb
