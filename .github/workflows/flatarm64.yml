@@ -1,4 +1,4 @@
-name: 'Flatpak Update For x86_64'
+name: 'Flatpak Update For Arm64'
 
 on:
   workflow_dispatch:
