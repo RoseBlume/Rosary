@@ -2,7 +2,7 @@ import { createSignal, Show } from "solid-js";
 
 
 function App() {
-  const [furl, setfurl] = createSignal("Books/The_Temptation_Of_Saint_Anthony.html");
+  const [furl, setfurl] = createSignal("Bibles/King_James.html");
   const [menshow, setMenshow] = createSignal(false);
   const [bookshow, setBookshow] = createSignal(false);
   const [bibleshow, setBibleshow] = createSignal(false);
@@ -11,10 +11,10 @@ function App() {
   // If not we need to request it
   async function togglemenu() {
     setMenshow((menshow) => !menshow);
-    () => setBibleshow(false);
-    () => setBookshow(false);
-    () => setDisclaimer(false);
-    () => setLicense(false);
+    setBibleshow(false);
+    setBookshow(false);
+    setDisclaimer(false);
+    setLicense(false);
   }
   return (
     <div className="container">
