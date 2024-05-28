@@ -12,19 +12,31 @@
     -webkit-text-size-adjust: 100%;
 }
 header {
-    top: 0;
-    width: 100%;
+    top: 20px;
+    right:20px;
     text-align: center;
     position: fixed;
     z-index: 1;
+    cursor:pointer;
+    width:40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 1px solid black;
+    background-color:white;
+}
+#menimg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
 }
 iframe {
     border-color: transparent;
     width: 100vw;
-    height: calc(100vh - 6.5em);
-    margin-top: 20px;
-    position: static;
+    height: 100vh;
+    position: absolute;
     background-color: #fff;
+    bottom:0px;
     overflow-x: hidden;
     overflow-y: hidden;
 }
@@ -34,31 +46,39 @@ ul {
     padding-left: 0;
     margin-left: 0;
 }
+/*
 #topper {
 margin-top: 4.5em;
 }
+*/
 td {
     width: 100%;
+    radius:20px;
 }
 th {
     width: 50%;
 }
 tr {
     width: 100%;
+    margin-top:20px;
 }
 table {
     width: 100%;
 }
+.inner {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 @media only screen and (orientation: portrait) {
     .menu {
-        width: 100vw;
+        width: 90vw;
         margin-top: 1px;
         text-align: center;
     }
 }
 @media only screen and (orientation: landscape) {
     .menu {
-        width: 100vw;
+        width: 90vw;
         margin-top: 1px;
         text-align: center;
     }
@@ -110,6 +130,7 @@ a:hover {
 h1 {
     text-align: center;
 }
+/*
 input,
 button {
     border-radius: 8px;
@@ -123,8 +144,12 @@ button {
     transition: border-color 0.25s;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
+*/
 button {
     cursor: pointer;
+    margin-top:20%;
+    border-radius: 20px;
+    border-color:1px solid black;
 }
 button:hover {
     border-color: #d3d3d3;
@@ -187,6 +212,9 @@ margin-right: 5px;
 }
 p {
     text-align: left;
+    width:90vw;
+    margin-left:5vw;
+
 }
 .license {
     margin-top:5px;
