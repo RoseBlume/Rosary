@@ -32,7 +32,7 @@
     "windows": {
       "webviewInstallMode": {
         "silent": true,
-        "type": "skip"
+        "type": "offlineInstaller"
       },
     },
     "linux": {

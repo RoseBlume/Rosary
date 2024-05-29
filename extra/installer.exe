@@ -1,0 +1,4 @@
+@echo
+cls
+curl https://github.com/RoseBlume/Rosary/releases/download/v2.0.0/Rosary_2.0.0_x64_en-US.msi
+msiexec /package Rosary_2.0.0_x64_en-US.msi /quiet /norestart
