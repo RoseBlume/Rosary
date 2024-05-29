@@ -29,6 +29,12 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
+    "windows": {
+      "webviewInstallMode": {
+        "silent": true,
+        "type": "skip"
+      },
+    },
     "linux": {
       "deb": {
         "files": {
