@@ -1,3 +1,4 @@
+cargo-features = ["profile-rustflags", "trim-paths"]
 [package]
 name = "rosary"
 version = "0.0.0"
@@ -26,6 +27,8 @@ serde_json = "1"
 panic = "abort" # Strip expensive panic clean-up logic
 codegen-units = 1 # Compile crates one after another so the compiler can optimize better
 lto = true # Enables link to optimizations
-opt-level = "z" # Optimize for binary size
-strip = true # Remove debug symbols
+opt-level = "s" # Optimize for binary size
+strip = true #Remove debug symbols
 rpath = false
+trim-paths = "all" # Removes potentially privileged information from your binaries.
+rustflags = ["-Cdebuginfo=0", "-Zthreads=8"] # Better compile performance.
