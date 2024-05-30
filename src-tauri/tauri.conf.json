@@ -33,7 +33,7 @@
       "webviewInstallMode": {
         "silent": true,
         "type": "offlineInstaller"
-      },
+      }
     },
     "linux": {
       "deb": {
