@@ -1,0 +1,65 @@
+#! /bin/bash
+v2() {
+    cp prep/v2/vite.config.js vite.config.js
+    cp prep/v2/tauri.conf.json src-tauri
+    cp prep/v2/package.json package.json
+    
+}
+v1() {
+    cp prep/v1/vite.config.js vite.config.js
+    cp prep/v1/tauri.conf.json src-tauri
+    cp prep/v1/package.json package.json
+}
+rm package-lock.json src-tauri/Cargo.lock
+case $1 in
+    ""| "help"| "--help"| "-h")
+        source scripts/error.sh
+    ;;
+    "v1")
+        v1
+        case $2 in
+        "stable")
+            cp prep/v1/stable/Cargo.toml src-tauri
+        ;;
+        "nightly")
+            cp prep/v1/nightly/Cargo.toml src-tauri
+        ;;
+        *)
+            source scripts/error.sh
+        ;;
+        esac
+    ;;
+    "v2")
+        v2
+        case $2 in
+        "stable")
+            cp prep/v2/stable/Cargo.toml src-tauri
+        ;;
+        "nightly")
+            cp prep/v2/nightly/Cargo.toml src-tauri
+        ;;
+        *)
+            source scripts/error.sh
+        ;;
+        esac
+    ;;
+    *)
+        source scripts/error.sh
+    ;;
+    esac
+#source ./scripts/prep.sh $1 $2
+
+case $3 in
+    "build"| "")
+        source scripts/build/delegate.sh
+    ;;
+    "dev")
+        source scripts/dev/delegate.sh
+    ;;
+    "workflow")
+        exit
+    ;;
+    *)
+        exit
+    ;;
+esac

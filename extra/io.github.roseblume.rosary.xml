@@ -16,15 +16,53 @@
     </content_rating>
     <keywords>
         <keyword translate="no">Rosary</keyword>
+        <keyword translate="no">Bible</keyword>
         <keyword translate="no">Christian</keyword>
         <keyword translate="no">Christianity</keyword>
-        <keyword translate="no">Bible</keyword>
         <keyword translate="no">Christ</keyword>
         <keyword translate="no">Jesus</keyword>
+        <keyword translate="no">Offline</keyword>
+        <keyword translate="no">Religion</keyword>
+        <keyword translate="no">God</keyword>
+        <keyword translate="no">Eden</keyword>
+        <keyword translate="no">Saints</keyword>
+        <keyword translate="no">Church</keyword>
+        <keyword translate="no">Faith</keyword>
+        <keyword translate="no">Gospel</keyword>
+        <keyword translate="no">Holy</keyword>
+        <keyword translate="no">Salvation</keyword>
+        <keyword translate="no">Prayer</keyword>
+        <keyword translate="no">Worship</keyword>
+        <keyword translate="no">Sacrament</keyword>
+        <keyword translate="no">Heaven</keyword>
+        <keyword translate="no">Devotion</keyword>
+        <keyword translate="no">Divine</keyword>
+        <keyword translate="no">Sermon</keyword>
+        <keyword translate="no">Chapel</keyword>
+        <keyword translate="no">Cathedral</keyword>
+        <keyword translate="no">Monastery</keyword>
+        <keyword translate="no">Revelation</keyword>
+        <keyword translate="no">Psalms</keyword>
+        <keyword translate="no">Belief</keyword>
+        <keyword translate="no">Scripture</keyword>
+        <keyword translate="no">Faithful</keyword>
+        <keyword translate="no">Blessings</keyword>
+        <keyword translate="no">Ministry</keyword>
+        <keyword translate="no">Divine</keyword>
+        <keyword translate="no">Hymns</keyword>
+        <keyword translate="no">Sanctuary</keyword>
+        <keyword translate="no">Book</keyword>
+        <keyword translate="no">Literature</keyword>
+        <keyword translate="no">Reading</keyword>
+        <keyword translate="no">History</keyword>
+        <keyword translate="no">Education</keyword>
+        <keyword translate="no">Books</keyword>
+        <keyword translate="no">Study</keyword>
+        <keyword translate="no">Linux</keyword>
     </keywords>
     <branding>
-        <color type="primary" scheme_preference="light">#ffffff</color>
-        <color type="primary" scheme_preference="dark">#4d4d4d</color>
+        <color type="primary" scheme_preference="light">#ff3751</color>
+        <color type="primary" scheme_preference="dark">#8f0013</color>
     </branding>
     <recommends>
         <display_length compare="ge">360</display_length>
@@ -57,6 +95,9 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="2.0.0" date="2024-05-30">
+            This version includes an updated menu and improved loading speeds.
+        </release>
         <release version="1.2.6" date="2024-05-27">
             Changed Build Method
         </release>
