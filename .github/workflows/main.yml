@@ -50,7 +50,7 @@ jobs:
         run: npm install # change this to npm or pnpm depending on which one you use.
 
       - name: add icons
-        run: npm run tauri icon Bible.png
+        run: npm run tauri icon Bible3.png
         
       - uses: tauri-apps/tauri-action@v0
         env:
