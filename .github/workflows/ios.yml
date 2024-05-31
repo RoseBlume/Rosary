@@ -1,4 +1,4 @@
-name: 'publish'
+name: 'IOS Test'
 
 on:
   push:
