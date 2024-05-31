@@ -61,7 +61,7 @@ jobs:
         rm ArchLinuxARM-rpi-armv7-latest.tar.gz
         rmdir boot
         rmdir root
-    - uses: ./ # pguyot/arm-runner-action@HEAD
+    - uses: pguyot/arm-runner-action
       with:
         base_image: file://$RUNNER_TEMP/archlinux.img
         cpu: cortex-a53
