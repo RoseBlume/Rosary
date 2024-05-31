@@ -34,6 +34,7 @@ jobs:
       - name: setup HomeBrew
         run: |
           wget https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+          sudo chmod u+x install.sh
           NONINTERACTIVE=1 ./install.sh
       - name: Install Cocoapods
         run: brew install cocoapods
