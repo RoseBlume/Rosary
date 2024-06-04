@@ -24,7 +24,7 @@ jobs:
             apt-get upgrade -y
             apt-get autoremove -y
             sudo apt install wget -y
-            sudo apt install xz
+            sudo apt install xz-utils
             apt-get install curl
             curl https://sh.rustup.rs -sSf | sh -s -- -y
             . "$HOME/.cargo/env"
