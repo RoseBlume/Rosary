@@ -1,4 +1,4 @@
-name: Raspberry Pi compile
+name: Diet Compile
 on:
   workflow_dispatch:
 
