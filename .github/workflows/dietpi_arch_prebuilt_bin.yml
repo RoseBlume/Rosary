@@ -42,7 +42,7 @@ jobs:
             # Install Node
             # sudo cp -r ./node-v20.14.0-linux-arm64/{lib,share,include,bin} /usr
             # Check Version
-            node --version
+            # node --version
             # Add NodeSource repository
             # curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/nodesource.gpg
             
