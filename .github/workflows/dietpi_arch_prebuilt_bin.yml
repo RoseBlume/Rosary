@@ -37,10 +37,10 @@ jobs:
             tar -xf node-v20.14.0-linux-arm64.tar.xz
 
             # Navigate to Node
-            cd node-v20.14.0-linux-arm64
+            #cd node-v20.14.0-linux-arm64
 
             # Install Node
-            sudo cp -r ./{lib,share,include,bin} /usr
+            sudo cp -r ./node-v20.14.0-linux-arm64/{lib,share,include,bin} /usr
             # Check Version
             node --version
             # Add NodeSource repository
