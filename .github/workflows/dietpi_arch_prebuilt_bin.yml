@@ -23,8 +23,6 @@ jobs:
             apt-get update -y --allow-releaseinfo-change
             apt-get upgrade -y
             apt-get autoremove -y
-            sudo apt install wget -y
-            sudo apt install xz-utils
             apt-get install curl
             curl https://sh.rustup.rs -sSf | sh -s -- -y
             . "$HOME/.cargo/env"
@@ -38,6 +36,8 @@ jobs:
 
             # Navigate to Node
             #cd node-v20.14.0-linux-arm64
+            # Install build tools
+            apt-get install -y libwebkit2gtk-4.0-dev build-essential wget libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
 
             # Install Node
             # sudo cp -r ./node-v20.14.0-linux-arm64/{lib,share,include,bin} /usr
@@ -57,9 +57,6 @@ jobs:
             sudo apt install -y nodejs
             rm package-lock.json
             npm install next@latest react@latest react-dom@latest eslint-config-next@latest
-            # Install build tools and tauri-cli requirements
-            apt-get install -y libwebkit2gtk-4.0-dev build-essential wget libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
-            cargo install tauri-cli
             # Install frontend dependencies
             npm install
             # Build the application
@@ -68,4 +65,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Debian Bundle
-          path: ${{ github.workspace }}/target/release/bundle/deb/tauri_1.4_arm64.deb
+          path: ${{ github.workspace }}/src-tauri/target/release/bundle/deb/rosary_2.0.0_arm64.deb
