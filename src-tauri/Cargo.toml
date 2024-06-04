@@ -7,6 +7,10 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lib]
+name = "solid_lib"
+crate-type = ["lib", "cdylib", "staticlib"]
+
 [build-dependencies]
 tauri-build = { version = "1", features = [] }
 
@@ -18,6 +22,7 @@ serde_json = "1"
 [features]
 # This feature is used for production builds or when a dev server is not specified, DO NOT REMOVE!!
 custom-protocol = ["tauri/custom-protocol"]
+
 
 [profile.release]
 panic = "abort" # Strip expensive panic clean-up logic
