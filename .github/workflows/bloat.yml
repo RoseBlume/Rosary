@@ -48,7 +48,9 @@ jobs:
         uses: swatinem/rust-cache@v2
         with:
           workspaces: './src-tauri -> target'
-
+      - name: Install Cargo Bloat
+        run: |
+          cargo install cargo-bloat
       - name: Bloat Opt0
         run: |
           sed -i -e "s|opt-level = 3|opt-level = 0|g" src-tauri/Cargo.toml
