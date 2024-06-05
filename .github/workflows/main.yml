@@ -1,6 +1,9 @@
 name: 'publish'
 
 on:
+  push:
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
@@ -30,10 +33,10 @@ jobs:
       - name: Prep For x86_64
         if: matrix.settings.platform == 'ubuntu-22.04' # Ensures on linux does this
         run: |
-          cp prep/v1/package.json package.json
-          cp prep/v1/tauri.conf.json src-tauri/tauri.conf.json
-          cp prep/v1/vite.config.js vite.config.js
-          cp prep/v1/stable/Cargo.toml src-tauri/Cargo.toml
+          cp prep/v2/package.json package.json
+          cp prep/v2/tauri.conf.json src-tauri/tauri.conf.json
+          cp prep/v2/vite.config.js vite.config.js
+          cp prep/v2/stable/Cargo.toml src-tauri/Cargo.toml
         # Moves Cargo.toml to src-tauri
       - name: setup node
         uses: actions/setup-node@v4
