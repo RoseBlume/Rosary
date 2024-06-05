@@ -1,14 +1,23 @@
 {
-  "productName": "Rosary",
-  "version": "2.0.0",
-  "identifier": "io.github.roseblume.rosary",
   "build": {
     "beforeDevCommand": "npm run dev",
-    "devUrl": "http://localhost:1420",
     "beforeBuildCommand": "npm run build",
-    "frontendDist": "../dist"
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist"
   },
-  "app": {"windows": [
+  "package": {
+    "productName": "Rosary",
+    "version": "2.0.1"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true
+      }
+    },
+    "windows": [
       {
         "title": "Rosary",
         "label": "main",
@@ -17,37 +26,21 @@
     ],
     "security": {
       "csp": null
-    }
-  },
-  "bundle": {
-    "active": true,
-    "targets": ["deb","rpm", "nsis"],
-    "icon": [
-      "icons/32x32.png",
-      "icons/128x128.png",
-      "icons/128x128@2x.png",
-      "icons/icon.icns",
-      "icons/icon.ico"
-    ],
-    "windows": {
-      "webviewInstallMode": {
-        "silent": true,
-        "type": "offlineInstaller"
-      }
     },
-    "linux": {
+    "bundle": {
+      "active": true,
+      "targets": ["deb", "nsis", "msi", "appimage"],
+      "identifier": "io.github.roseblume.rosary",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
       "deb": {
         "files": {
-          "/usr/share/metainfo/io.github.roseblume.rosary.xml": "../extra/io.github.roseblume.rosary.xml",
-          "/usr/share/applications/io.github.roseblume.rosary.desktop": "../extra/io.github.roseblume.rosary.desktop",
-          "/opt/rosary/README.md": "../README.md",
-          "/opt/rosary/LICENSE": "../LICENSE"
-        }
-      },
-      "rpm": {
-        "files": {
-          "/usr/share/metainfo/io.github.roseblume.rosary.xml": "../extra/io.github.roseblume.rosary.xml",
-          "/usr/share/applications/io.github.roseblume.rosary.desktop": "../extra/io.github.roseblume.rosary.desktop",
+          "/usr/share/metainfo/io.github.roseblume.xml": "../extra/io.github.roseblume.rosary.xml",
           "/opt/rosary/README.md": "../README.md",
           "/opt/rosary/LICENSE": "../LICENSE"
         }
