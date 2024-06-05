@@ -1,8 +1,9 @@
+# cargo-features = ["profile-rustflags", "trim-paths"]
 [package]
-name = "Rosary"
+name = "rosary"
 version = "0.0.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "A Bible app written with Tauri"
+authors = ["James Rose"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -12,22 +13,22 @@ name = "solid_lib"
 crate-type = ["lib", "cdylib", "staticlib"]
 
 [build-dependencies]
-tauri-build = { version = "1", features = [] }
+tauri-build = { version = "2.0.0-beta", features = [] }
 
 [dependencies]
-tauri = { version = "1", features = ["shell-open"] }
+tauri = { version = "2.0.0-beta", features = [] }
 serde = { version = "1", features = ["derive"] }
+#raw-window-handle = "0.6.2"
 serde_json = "1"
-
-[features]
-# This feature is used for production builds or when a dev server is not specified, DO NOT REMOVE!!
-custom-protocol = ["tauri/custom-protocol"]
-
+#image = "0.25"
+#tracing = "0.1.40"
 
 [profile.release]
 panic = "abort" # Strip expensive panic clean-up logic
 codegen-units = 1 # Compile crates one after another so the compiler can optimize better
 lto = true # Enables link to optimizations
-opt-level = 3 # Optimize for binary size
+opt-level = "z" # Optimize for binary size
 strip = true #Remove debug symbols
 rpath = false
+# trim-paths = "all" # Removes potentially privileged information from your binaries.
+# rustflags = ["-Cdebuginfo=0", "-Zthreads=8"] # Better compile performance.

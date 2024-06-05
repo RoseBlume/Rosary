@@ -1,0 +1,144 @@
+name: 'Bloat-Test'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cargo-bloat-stable:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        settings:
+          - platform: 'ubuntu-22.04' # for Tauri v1 you could replace this with ubuntu-20.04.
+            args: ''
+    runs-on: ${{ matrix.settings.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install dependencies (ubuntu only)
+        if: matrix.settings.platform == 'ubuntu-22.04' # This must match the platform value defined above.
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.0-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+        # webkitgtk 4.0 is for Tauri v1 - webkitgtk 4.1 is for Tauri v2.
+        # You can remove the one that doesn't apply to your app to speed up the workflow a bit.
+      - name: Prep For x86_64
+        if: matrix.settings.platform == 'ubuntu-22.04' # Ensures on linux does this
+        run: |
+          cp prep/v2/package.json package.json
+          cp prep/v2/tauri.conf.json src-tauri/tauri.conf.json
+          cp prep/v2/vite.config.js vite.config.js
+          cp prep/v2/stable/Cargo.toml src-tauri/Cargo.toml
+        # Moves Cargo.toml to src-tauri
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: 'npm' # Set this to npm, yarn or pnpm.
+
+      - name: install Rust Nightly
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          # Those targets are only used on macos runners so it's in an `if` to slightly speed up windows and linux builds.
+          targets: ${{ matrix.settings.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: Bloat Opt0
+        run: |
+          sed -i -e "s|opt-level = 3|opt-level = 0|g" src-tauri/Cargo.toml
+          src-tauri/bloat.sh
+      - name: Bloat Opt1
+        run: |
+          sed -i -e "s|opt-level = 0|opt-level = 1|g" src-tauri/Cargo.toml
+          src-tauri/bloat.sh
+      - name: Bloat Opt2
+        run: |
+          sed -i -e "s|opt-level = 1|opt-level = 2|g" src-tauri/Cargo.toml
+          src-tauri/bloat.sh
+      - name: Bloat Opt3
+        run: |
+          sed -i -e "s|opt-level = 2|opt-level = 3|g" src-tauri/Cargo.toml
+          src-tauri/bloat.sh
+      - name: Bloat OptS
+        run: |
+          sed -i -e "s|opt-level = 3|opt-level = \"s\"|g" src-tauri/Cargo.toml
+          src-tauri/bloat.sh
+      - name: Bloat OptZ
+        run: |
+          sed -i -e "s|opt-level = \"s\"|opt-level = \"z\"|g" src-tauri/Cargo.toml
+          src-tauri/bloat.sh
+  cargo-bloat-nightly:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        settings:
+          - platform: 'ubuntu-22.04' # for Tauri v1 you could replace this with ubuntu-20.04.
+            args: ''
+    runs-on: ${{ matrix.settings.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install dependencies (ubuntu only)
+        if: matrix.settings.platform == 'ubuntu-22.04' # This must match the platform value defined above.
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.0-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+        # webkitgtk 4.0 is for Tauri v1 - webkitgtk 4.1 is for Tauri v2.
+        # You can remove the one that doesn't apply to your app to speed up the workflow a bit.
+      - name: Prep For x86_64
+        if: matrix.settings.platform == 'ubuntu-22.04' # Ensures on linux does this
+        run: |
+          cp prep/v2/package.json package.json
+          cp prep/v2/tauri.conf.json src-tauri/tauri.conf.json
+          cp prep/v2/vite.config.js vite.config.js
+          cp prep/v2/nightly/Cargo.toml src-tauri/Cargo.toml
+        # Moves Cargo.toml to src-tauri
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: 'npm' # Set this to npm, yarn or pnpm.
+
+      - name: install Rust Nightly
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          # Those targets are only used on macos runners so it's in an `if` to slightly speed up windows and linux builds.
+          targets: ${{ matrix.settings.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: Bloat Opt0
+        run: |
+          sed -i -e "s|opt-level = 3|opt-level = 0|g" src-tauri/Cargo.toml
+          src-tauri/bloat.sh
+      - name: Bloat Opt1
+        run: |
+          sed -i -e "s|opt-level = 0|opt-level = 1|g" src-tauri/Cargo.toml
+          src-tauri/bloat.sh
+      - name: Bloat Opt2
+        run: |
+          sed -i -e "s|opt-level = 1|opt-level = 2|g" src-tauri/Cargo.toml
+          src-tauri/bloat.sh
+      - name: Bloat Opt3
+        run: |
+          sed -i -e "s|opt-level = 2|opt-level = 3|g" src-tauri/Cargo.toml
+          src-tauri/bloat.sh
+      - name: Bloat OptS
+        run: |
+          sed -i -e "s|opt-level = 3|opt-level = \"s\"|g" src-tauri/Cargo.toml
+          src-tauri/bloat.sh
+      - name: Bloat OptZ
+        run: |
+          sed -i -e "s|opt-level = \"s\"|opt-level = \"z\"|g" src-tauri/Cargo.toml
+          src-tauri/bloat.sh
