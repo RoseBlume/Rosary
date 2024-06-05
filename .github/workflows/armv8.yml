@@ -35,7 +35,7 @@ jobs:
             cp prep/v1/tauri.conf.json src-tauri/tauri.conf.json
             cp prep/v1/vite.config.js vite.config.js
             cp prep/v1/stable/Cargo.toml src-tauri/Cargo.toml
-  
+            sudo apt install -y libwebkit2gtk-4.0-dev build-essential curl wget file libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
             # Install NodeJS
             sudo apt install -y nodejs
             rm package-lock.json
