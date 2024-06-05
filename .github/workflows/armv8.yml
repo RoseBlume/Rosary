@@ -1,5 +1,8 @@
 name: Armv8 Compile
 on:
+  push:
+    branches:
+    - releases
   workflow_dispatch:
 
 jobs:
