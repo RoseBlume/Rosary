@@ -68,6 +68,11 @@ jobs:
           optimize_image: false
           commands: |
             # Rust complains (rightly) that $HOME doesn't match eid home
+            cp prep/v1/package.json package.json
+            cp prep/v1/tauri.conf.json src-tauri/tauri.conf.json
+            cp prep/v1/vite.config.js vite.config.js
+            cp prep/v1/stable/Cargo.toml src-tauri/Cargo.toml
+  
             export HOME=/root
             # Workaround to CI worker being stuck on Updating crates.io index
             export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
