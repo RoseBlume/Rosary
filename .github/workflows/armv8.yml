@@ -31,6 +31,7 @@ jobs:
             . "$HOME/.cargo/env"
             curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash
             # Prep for Tauri Version 1
+            rm package-lock.json
             cp prep/v1/package.json package.json
             cp prep/v1/tauri.conf.json src-tauri/tauri.conf.json
             cp prep/v1/vite.config.js vite.config.js
