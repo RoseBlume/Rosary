@@ -1,7 +1,9 @@
-name: 'publish'
+name: 'test'
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - master
 
 jobs:
   publish-tauri:
@@ -27,21 +29,13 @@ jobs:
           sudo apt-get install -y libwebkit2gtk-4.0-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
         # webkitgtk 4.0 is for Tauri v1 - webkitgtk 4.1 is for Tauri v2.
         # You can remove the one that doesn't apply to your app to speed up the workflow a bit.
-      - name: Prep For x86_64
-        if: matrix.settings.platform == 'ubuntu-22.04' # Ensures on linux does this
-        run: |
-          cp prep/v1/package.json package.json
-          cp prep/v1/tauri.conf.json src-tauri/tauri.conf.json
-          cp prep/v1/vite.config.js vite.config.js
-          cp prep/v1/stable/Cargo.toml src-tauri/Cargo.toml
-        # Moves Cargo.toml to src-tauri
       - name: setup node
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: 'npm' # Set this to npm, yarn or pnpm.
 
-      - name: install Rust Nightly
+      - name: install Rust stable
         uses: dtolnay/rust-toolchain@nightly
         with:
           # Those targets are only used on macos runners so it's in an `if` to slightly speed up windows and linux builds.
@@ -59,13 +53,42 @@ jobs:
       - name: add icons
         run: npm run tauri icon Bible3.png
         
-      - uses: tauri-apps/tauri-action@v0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build With Cargo
+        run: |
+          cd src-tauri
+          cargo build
+  Arm64Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pguyot/arm-runner-action@v2.5.2
         with:
-          tagName: v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version.
-          releaseName: 'Full Release v__VERSION__'
-          releaseBody: 'See the assets to download this version and install.'
-          releaseDraft: false
-          prerelease: false
-          args: ${{ matrix.settings.args }}
+          base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv8-Bullseye.img.xz
+          cpu: cortex-a53
+          bind_mount_repository: true
+          image_additional_mb: 10240
+          optimize_image: false
+          commands: |
+            # Rust complains (rightly) that $HOME doesn't match eid home
+            export HOME=/root
+            # Workaround to CI worker being stuck on Updating crates.io index
+            export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
+            # Install setup prerequisites
+            apt-get update -y --allow-releaseinfo-change
+            apt-get upgrade -y
+            apt-get autoremove -y
+            apt-get install curl
+            curl https://sh.rustup.rs -sSf | sh -s -- -y
+            . "$HOME/.cargo/env"
+            curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash
+            # Prep for Tauri Version 1
+            cp prep/v1/package.json package.json
+            cp prep/v1/tauri.conf.json src-tauri/tauri.conf.json
+            cp prep/v1/vite.config.js vite.config.js
+            cp prep/v1/stable/Cargo.toml src-tauri/Cargo.toml
+  
+            # Install NodeJS
+            sudo apt install -y nodejs
+            rm package-lock.json
+            cd src-tauri
+            cargo build

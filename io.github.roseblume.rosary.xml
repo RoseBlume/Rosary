@@ -1,103 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop-application">
-    <id>io.github.roseblume.rosary</id>
-    <launchable type="desktop-id">io.github.roseblume.rosary.desktop</launchable>
-    <name>Rosary</name>
-    <developer_name>James A. Rose</developer_name>
-    <content_rating type="oars-1.1">
-        <content_attribute id="violence-realistic">mild</content_attribute>
-        <content_attribute id="violence-bloodshed">mild</content_attribute>
-        <content_attribute id="violence-desecration">mild</content_attribute>
-        <content_attribute id="violence-slavery">mild</content_attribute>
-        <content_attribute id="drugs-alcohol">mild</content_attribute>
-        <content_attribute id="sex-nudity">mild</content_attribute>
-        <content_attribute id="sex-themes">mild</content_attribute>
-        <content_attribute id="language-discrimination">mild</content_attribute>
-    </content_rating>
-    <keywords>
-        <keyword translate="no">Rosary</keyword>
-        <keyword translate="no">Bible</keyword>
-        <keyword translate="no">Christian</keyword>
-        <keyword translate="no">Christianity</keyword>
-        <keyword translate="no">Christ</keyword>
-        <keyword translate="no">Jesus</keyword>
-        <keyword translate="no">Offline</keyword>
-        <keyword translate="no">Religion</keyword>
-        <keyword translate="no">God</keyword>
-        <keyword translate="no">Eden</keyword>
-        <keyword translate="no">Saints</keyword>
-        <keyword translate="no">Church</keyword>
-        <keyword translate="no">Faith</keyword>
-        <keyword translate="no">Gospel</keyword>
-        <keyword translate="no">Holy</keyword>
-        <keyword translate="no">Salvation</keyword>
-        <keyword translate="no">Prayer</keyword>
-        <keyword translate="no">Worship</keyword>
-        <keyword translate="no">Sacrament</keyword>
-        <keyword translate="no">Heaven</keyword>
-        <keyword translate="no">Devotion</keyword>
-        <keyword translate="no">Divine</keyword>
-        <keyword translate="no">Sermon</keyword>
-        <keyword translate="no">Chapel</keyword>
-        <keyword translate="no">Cathedral</keyword>
-        <keyword translate="no">Monastery</keyword>
-        <keyword translate="no">Revelation</keyword>
-        <keyword translate="no">Psalms</keyword>
-        <keyword translate="no">Belief</keyword>
-        <keyword translate="no">Scripture</keyword>
-        <keyword translate="no">Faithful</keyword>
-        <keyword translate="no">Blessings</keyword>
-        <keyword translate="no">Ministry</keyword>
-        <keyword translate="no">Divine</keyword>
-        <keyword translate="no">Hymns</keyword>
-        <keyword translate="no">Sanctuary</keyword>
-        <keyword translate="no">Book</keyword>
-        <keyword translate="no">Literature</keyword>
-        <keyword translate="no">Reading</keyword>
-        <keyword translate="no">History</keyword>
-        <keyword translate="no">Education</keyword>
-        <keyword translate="no">Books</keyword>
-        <keyword translate="no">Study</keyword>
-        <keyword translate="no">Linux</keyword>
-    </keywords>
-    <branding>
-        <color type="primary" scheme_preference="light">#ffffff</color>
-        <color type="primary" scheme_preference="dark">#4d4d4d</color>
-    </branding>
-    <recommends>
-        <display_length compare="ge">360</display_length>
-    </recommends>
-    <summary>Read and the Bible</summary>
-
-    <metadata_license>MIT</metadata_license>
-    <project_license>MIT</project_license>
-    <url type="homepage">https://github.com/RoseBlume/Rosary</url>
-
-    <supports>
-        <control>pointing</control>
-        <control>keyboard</control>
-        <control>touch</control>
-    </supports>
-
-    <description>
-        <p>
-            Read the Bible and other Christian texts. This projects goal is to allow each person to study the bible and come to their own conclusion about their faith.
-        </p>
-    </description>
-    <screenshots>
-        <screenshot type="default">
-            <image>https://raw.githubusercontent.com/RoseBlume/Rosary/side/main.png</image>
-        </screenshot>
-        <screenshot>
-            <image>https://raw.githubusercontent.com/RoseBlume/Rosary/side/menu.png</image>
-        </screenshot>
-    </screenshots>
-    <releases>
-        <release version="1.2.6" date="2024-05-27">
-            Changed Build Method
-        </release>
-        <release version="1.2.5" date="2024-05-24" />
-        <release version="1.2.4" date="2024-05-23" />
-        <release version="1.2.3" date="2024-05-21" />
-    </releases>
-</component>
+id: io.github.roseblume.rosary
+runtime: org.gnome.Platform
+runtime-version: '46'
+sdk: org.gnome.Sdk
+command: rosary
+finish-args:
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+  - --share=ipc
+modules:
+  - name: rosaryx86
+    buildsystem: simple
+    build-commands:
+      - ar -x *.deb
+      - tar -xf data.tar.gz
+      - install -Dm755 usr/bin/rosary /app/bin/rosary
+      - sed -i -e 's|Categories=|Categories=Education|g' usr/share/applications/rosary.desktop
+      - sed -i -e 's|Icon=rosary|Icon=io.github.roseblume.rosary|g' usr/share/applications/rosary.desktop
+      - install -Dm644 usr/share/applications/rosary.desktop /app/share/applications/io.github.roseblume.rosary.desktop
+      - install -Dm644 usr/share/icons/hicolor/32x32/apps/rosary.png /app/share/icons/hicolor/32x32/apps/io.github.roseblume.rosary.png
+      - install -Dm644 usr/share/icons/hicolor/128x128/apps/rosary.png /app/share/icons/hicolor/128x128/apps/io.github.roseblume.rosary.png
+      - install -Dm644 usr/share/icons/hicolor/256x256@2/apps/rosary.png /app/share/icons/hicolor/256x256@2/apps/io.github.roseblume.rosary.png
+      - install -Dm644 io.github.roseblume.rosary.metainfo.xml /app/share/metainfo/io.github.roseblume.rosary.metainfo.xml
+    sources:
+      - type: file
+        url: https://github.com/RoseBlume/Rosary/releases/download/flatpak/rosary_2.0.0_amd64.deb
+        sha256: c45f569293b3cb30a2aa102277b36298bd0c5ce242d884951bcd88ef4cfc791a
+        dest-filename: rosary.deb
+        only-arches: [x86_64]
+      - type: file
+        url: https://github.com/RoseBlume/Rosary/releases/download/flatpak/rosary_2.0.0_arm64.deb
+        sha256: c8bac16ff010528afa7495bcc4c450bae92bbdbd86dd8a29d832a620476a4a49
+        dest-filename: rosary.deb
+        only-arches: [aarch64]
+      - type: file
+        path: io.github.roseblume.rosary.metainfo.xml
