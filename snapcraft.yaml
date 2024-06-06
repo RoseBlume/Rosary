@@ -1,7 +1,7 @@
 name: jrosarybibleapp
 base: core24
 adopt-info: metapart
-version: '2.0.1'
+version: '2.0.2'
 summary: Read the Bible and other Christian texts. # 79 char long summary
 description: |
   Study the Bible, and read Christianity related works. This projects goal is to promote spiritual health, and to allow each person to study the bible and come to their own conclusion about their faith.
@@ -21,8 +21,8 @@ parts:
   prep:
     plugin: dump
     source:
-      - on amd64 to amd64: https://github.com/RoseBlume/Rosary/releases/download/v${SNAP_VERSION}/rosary_${SNAP_VERSION}_amd64.deb
-      - on arm64 to arm64: https://github.com/RoseBlume/Rosary/releases/download/v${SNAP_VERSION}/rosary_${SNAP_VERSION}_arm64.deb
+      - on amd64 to amd64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.2/rosary_2.0.2_amd64.deb
+      - on arm64 to arm64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.2/rosary_2.0.2_arm64.deb
     source-type: deb
     override-pull: |
       set -eu
