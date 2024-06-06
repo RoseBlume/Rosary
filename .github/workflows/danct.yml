@@ -3,7 +3,7 @@ name: Danctnix
 on:
     push:
         branches:
-            - releases
+            - master
     workflow_dispatch:
 
 jobs:
