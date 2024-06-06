@@ -1,13 +1,10 @@
-name: 'Compile'
+name: 'Publish'
 
 on:
   push:
     branches:
       - releases
   workflow_dispatch:
-
-env:
-  version: 2.0.2
 jobs:
   publish-tauri:
     permissions:
@@ -20,6 +17,8 @@ jobs:
             args: ''
           - platform: 'windows-latest'
             args: '--target x86_64-pc-windows-msvc'
+          - platform: 'self-hosted'
+            args: ''
 
     runs-on: ${{ matrix.settings.platform }}
     steps:
@@ -74,46 +73,3 @@ jobs:
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.settings.args }}
-  Arm64_Compile:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: pguyot/arm-runner-action@v2.5.2
-        with:
-          base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv8-Bullseye.img.xz
-          cpu: cortex-a53
-          bind_mount_repository: true
-          image_additional_mb: 10240
-          optimize_image: false
-          commands: |
-            # Rust complains (rightly) that $HOME doesn't match eid home
-            export HOME=/root
-            # Workaround to CI worker being stuck on Updating crates.io index
-            export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
-            # Install setup prerequisites
-            apt-get update -y --allow-releaseinfo-change
-            apt-get upgrade -y
-            apt-get autoremove -y
-            apt-get install curl
-            curl https://sh.rustup.rs -sSf | sh -s -- -y
-            . "$HOME/.cargo/env"
-            curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash
-            # Prep for Tauri Version 1
-            cp prep/v1/package.json package.json
-            cp prep/v1/tauri.conf.json src-tauri/tauri.conf.json
-            cp prep/v1/vite.config.js vite.config.js
-            cp prep/v1/stable/Cargo.toml src-tauri/Cargo.toml
-            sudo apt install -y libwebkit2gtk-4.0-dev build-essential curl wget file libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
-            # Install NodeJS
-            sudo apt install -y nodejs
-            rm package-lock.json
-            npm install next@latest react@latest react-dom@latest eslint-config-next@latest
-            # Install frontend dependencies
-            npm install
-            # Build the application
-            npm run tauri build -- --bundles deb
-      - name: Upload deb bundle
-        uses: actions/upload-artifact@v3
-        with:
-          name: Debian Bundle
-          path: ${{ github.workspace }}/src-tauri/target/release/bundle/deb/rosary_${{ env.version }}_arm64.deb
