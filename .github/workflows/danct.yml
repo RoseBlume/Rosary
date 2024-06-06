@@ -12,29 +12,6 @@ jobs:
 
         steps:
         - uses: actions/checkout@v4
-    
-        - name: install dependencies
-          run: |
-            sudo pacman -Syu
-            sudo pacman -S --needed \
-              webkit2gtk-4.1 \
-              base-devel \
-              curl \
-              wget \
-              file \
-              openssl \
-              appmenu-gtk-module \
-              libappindicator-gtk3 \
-              librsvg
-        # webkitgtk 4.0 is for Tauri v1 - webkitgtk 4.1 is for Tauri v2.
-        # You can remove the one that doesn't apply to your app to speed up the workflow a bit.
-        - name: Prep For x86_64
-          run: |
-            cp prep/v1/package.json package.json
-            cp prep/v1/tauri.conf.json src-tauri/tauri.conf.json
-            cp prep/v1/vite.config.js vite.config.js
-            cp prep/v1/stable/Cargo.toml src-tauri/Cargo.toml
-        # Moves Cargo.toml to src-tauri
         - name: setup node
           uses: actions/setup-node@v4
           with:
