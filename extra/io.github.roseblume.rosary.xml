@@ -284,7 +284,15 @@
         </screenshot>
     </screenshots>
     <releases>
-        <release version="2.0.0" date="2024-06-05">
+        <release version="2.0.2" date="2024-05-06">
+            <description>
+                <ul>
+                    <li>Minor Changes to UI</li>
+                    <li>Bug Fixes</li>
+                </ul>
+            </description>
+        </release>
+        <release version="2.0.0" date="2024-05-05">
             <description>
             <ul>
                 <li>Updated Menu</li>
@@ -294,7 +302,7 @@
             </ul>
             </description>
         </release>
-        <release version="1.2.6" date="2024-05-27">
+        <release version="1.2.6" date="2024-04-27">
             <description>
             <ul>
                 <li>Improved Speed optimizations</li>

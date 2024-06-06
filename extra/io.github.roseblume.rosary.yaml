@@ -1,0 +1,37 @@
+id: io.github.roseblume.rosary
+runtime: org.gnome.Platform
+runtime-version: '46'
+sdk: org.gnome.Sdk
+command: rosary
+finish-args:
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+  - --share=ipc
+modules:
+  - name: rosaryx86
+    buildsystem: simple
+    build-commands:
+      - ar -x *.deb
+      - tar -xf data.tar.gz
+      - install -Dm755 usr/bin/rosary /app/bin/rosary
+      - sed -i -e 's|Categories=|Categories=Education|g' usr/share/applications/rosary.desktop
+      - sed -i -e 's|Icon=rosary|Icon=io.github.roseblume.rosary|g' usr/share/applications/rosary.desktop
+      - install -Dm644 usr/share/applications/rosary.desktop /app/share/applications/io.github.roseblume.rosary.desktop
+      - install -Dm644 usr/share/icons/hicolor/32x32/apps/rosary.png /app/share/icons/hicolor/32x32/apps/io.github.roseblume.rosary.png
+      - install -Dm644 usr/share/icons/hicolor/128x128/apps/rosary.png /app/share/icons/hicolor/128x128/apps/io.github.roseblume.rosary.png
+      - install -Dm644 usr/share/icons/hicolor/256x256@2/apps/rosary.png /app/share/icons/hicolor/256x256@2/apps/io.github.roseblume.rosary.png
+      - install -Dm644 io.github.roseblume.rosary.metainfo.xml /app/share/metainfo/io.github.roseblume.rosary.metainfo.xml
+    sources:
+      - type: file
+        url: https://github.com/RoseBlume/Rosary/releases/download/flatpak/rosary_2.0.1_amd64.deb
+        sha256: f6813a9fcf408b41053f33a34e8870eea2144235706f46eeda115c253deb11c5
+        dest-filename: rosary.deb
+        only-arches: [x86_64]
+      - type: file
+        url: https://github.com/RoseBlume/Rosary/releases/download/flatpak/rosary_2.0.1_arm64.deb
+        sha256: 6840dfc85cbcf9eb45ef6f79055fe0c724d139a786c00220a247aaf240030c6f
+        dest-filename: rosary.deb
+        only-arches: [aarch64]
+      - type: file
+        path: io.github.roseblume.rosary.metainfo.xml
