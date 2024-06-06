@@ -12,8 +12,8 @@
     -webkit-text-size-adjust: 100%;
 }
 header {
-    top: 20px;
-    right:20px;
+    top: 5px;
+    right:5px;
     text-align: center;
     position: fixed;
     z-index: 1;
@@ -171,7 +171,7 @@ margin-right: 5px;
         background-color: #2f2f2f;
     }
     iframe {
-        border-color: #0f0f0f99;
+        border-color: transparent;
     }
     a:hover {
         color: #24c8db;
@@ -192,6 +192,9 @@ margin-right: 5px;
     :root {
         background-color: #f6f6f6;
         color: #000;
+    }
+    iframe {
+        border-color: transparent;
     }
     a:hover {
         color: #24c8db;

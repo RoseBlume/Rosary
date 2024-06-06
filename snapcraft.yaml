@@ -1,5 +1,5 @@
 name: jrosarybibleapp
-base: core22
+base: core24
 adopt-info: metapart
 version: '2.0.1'
 summary: Read the Bible and other Christian texts. # 79 char long summary
@@ -9,15 +9,12 @@ description: |
 grade: stable
 confinement: strict
 
-architectures:
-  - build-for: [amd64]
-    build-on: [amd64]
-  - build-for: [arm64]
-    build-on: [arm64]
+platforms:
+  amd64:
+  arm64:
 apps:
   rosary:
     command: bin/rosary
-    extensions: [gnome]
     desktop: usr/share/applications/rosary.desktop
 
 parts:
@@ -37,7 +34,7 @@ parts:
       - libwebkit2gtk-4.1-0
       - libglu1-mesa
       - libsoup-3.0-0
-      - freeglut3
+      - freeglut3-dev
   metapart:
     plugin: dump
     source: .

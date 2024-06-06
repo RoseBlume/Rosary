@@ -17,239 +17,236 @@
         <content_attribute id="language-discrimination">mild</content_attribute>
     </content_rating>
     <keywords>
-        <keyword translate="no">Jesus</keyword>
-        <keyword translate="no">Books</keyword>
-        <keyword translate="no">Bible</keyword>
-        <keyword translate="no">Bibles</keyword>
-        <keyword translate="no">God</keyword>
-        <keyword translate="no">Christian</keyword>
-        <keyword translate="no">Christianity</keyword>
-        <keyword translate="no">Church</keyword>
-        <keyword translate="no">Faith</keyword>
-        <keyword translate="no">Religion</keyword>
-        <keyword translate="no">Prayer</keyword>
-        <keyword translate="no">Gospel</keyword>
-        <keyword translate="no">Holy</keyword>
-        <keyword translate="no">Salvation</keyword>
-        <keyword translate="no">Worship</keyword>
-        <keyword translate="no">Heaven</keyword>
-        <keyword translate="no">Grace</keyword>
-        <keyword translate="no">Holy</keyword>
-        <keyword translate="no">Jesus</keyword>
-        <keyword translate="no">God</keyword>
-        <keyword translate="no">Faith</keyword>
-        <keyword translate="no">Religion</keyword>
-        <keyword translate="no">Prayer</keyword>
-        <keyword translate="no">Gospel</keyword>
-        <keyword translate="no">Holy</keyword>
-        <keyword translate="no">Salvation</keyword>
-        <keyword translate="no">Worship</keyword>
-        <keyword translate="no">Heaven</keyword>
-        <keyword translate="no">Grace</keyword>
-        <keyword translate="no">Christ</keyword>
-        <keyword translate="no">Devotion</keyword>
-        <keyword translate="no">Saints</keyword>
-        <keyword translate="no">Chapel</keyword>
-        <keyword translate="no">Cathedral</keyword>
-        <keyword translate="no">Eden</keyword>
-        <keyword translate="no">Genesis</keyword>
-        <keyword translate="no">Revelation</keyword>
-        <keyword translate="no">Pentecost</keyword>
-        <keyword translate="no">Epistle</keyword>
-        <keyword translate="no">Apostles</keyword>
-        <keyword translate="no">Disciple</keyword>
-        <keyword translate="no">Messiah</keyword>
-        <keyword translate="no">Prophecy</keyword>
-        <keyword translate="no">Trinity</keyword>
-        <keyword translate="no">Miracles</keyword>
-        <keyword translate="no">Savior</keyword>
-        <keyword translate="no">Blessings</keyword>
-        <keyword translate="no">Pastor</keyword>
-        <keyword translate="no">Ministry</keyword>
-        <keyword translate="no">Sanctuary</keyword>
-        <keyword translate="no">New Testament</keyword>
-        <keyword translate="no">Old Testament</keyword>
-        <keyword translate="no">Scripture</keyword>
-        <keyword translate="no">Sermon</keyword>
-        <keyword translate="no">Shepherd</keyword>
-        <keyword translate="no">Immaculate</keyword>
-        <keyword translate="no">Incarnation</keyword>
-        <keyword translate="no">Parables</keyword>
-        <keyword translate="no">Tabernacle</keyword>
-        <keyword translate="no">Divine</keyword>
-        <keyword translate="no">Sacred</keyword>
-        <keyword translate="no">Sin</keyword>
-        <keyword translate="no">Spirit</keyword>
-        <keyword translate="no">Preacher</keyword>
-        <keyword translate="no">Hallelujah</keyword>
-        <keyword translate="no">Baptism</keyword>
-        <keyword translate="no">Rosary</keyword>
-        <keyword translate="no">Psalms</keyword>
-        <keyword translate="no">Exodus</keyword>
-        <keyword translate="no">Monastery</keyword>
-        <keyword translate="no">Hymns</keyword>
-        <keyword translate="no">Sacrament</keyword>
-        <keyword translate="no">Literature</keyword>
-        <keyword translate="no">Reading</keyword>
-        <keyword translate="no">History</keyword>
-        <keyword translate="no">Education</keyword>
-        <keyword translate="no">Books</keyword>
-        <keyword translate="no">Study</keyword>
-        <keyword translate="no">Linux</keyword>
-        <keyword translate="no">Book</keyword>
-        <keyword translate="no">Apostle</keyword>
-        <keyword translate="no">BibleStudy</keyword>
-        <keyword translate="no">Chapel</keyword>
-        <keyword translate="no">Covenant</keyword>
-        <keyword translate="no">Disciple</keyword>
-        <keyword translate="no">Eucharist</keyword>
-        <keyword translate="no">Evangelist</keyword>
-        <keyword translate="no">Faithful</keyword>
-        <keyword translate="no">Gospel</keyword>
-        <keyword translate="no">Grace</keyword>
-        <keyword translate="no">Heaven</keyword>
-        <keyword translate="no">Holy</keyword>
-        <keyword translate="no">Inspiration</keyword>
-        <keyword translate="no">Jerusalem</keyword>
-        <keyword translate="no">Kingdom</keyword>
-        <keyword translate="no">Liturgy</keyword>
-        <keyword translate="no">Miracle</keyword>
-        <keyword translate="no">Mission</keyword>
-        <keyword translate="no">Mystic</keyword>
-        <keyword translate="no">Parish</keyword>
-        <keyword translate="no">Pilgrimage</keyword>
-        <keyword translate="no">Prayer</keyword>
-        <keyword translate="no">Prophet</keyword>
-        <keyword translate="no">Redemption</keyword>
-        <keyword translate="no">Revelation</keyword>
-        <keyword translate="no">Saint</keyword>
-        <keyword translate="no">Salvation</keyword>
-        <keyword translate="no">Sanctuary</keyword>
-        <keyword translate="no">Theology</keyword>
-        <keyword translate="no">Virtue</keyword>
-        <keyword translate="no">Wisdom</keyword>
-        <keyword translate="no">Worship</keyword>
-        <keyword translate="no">Zeal</keyword>
-        <keyword translate="no">Anthology</keyword>
-        <keyword translate="no">Biography</keyword>
-        <keyword translate="no">Classic</keyword>
-        <keyword translate="no">Criticism</keyword>
-        <keyword translate="no">Drama</keyword>
-        <keyword translate="no">Essay</keyword>
-        <keyword translate="no">Fiction</keyword>
-        <keyword translate="no">Genre</keyword>
-        <keyword translate="no">Imagination</keyword>
-        <keyword translate="no">Journal</keyword>
-        <keyword translate="no">Literacy</keyword>
-        <keyword translate="no">Manuscript</keyword>
-        <keyword translate="no">Narrative</keyword>
-        <keyword translate="no">Novel</keyword>
-        <keyword translate="no">Poetry</keyword>
-        <keyword translate="no">Prose</keyword>
-        <keyword translate="no">Publish</keyword>
-        <keyword translate="no">Quotation</keyword>
-        <keyword translate="no">Reading</keyword>
-        <keyword translate="no">Story</keyword>
-        <keyword translate="no">Text</keyword>
-        <keyword translate="no">Writer</keyword>
-        <keyword translate="no">Anthropology</keyword>
-        <keyword translate="no">Archaeology</keyword>
-        <keyword translate="no">Culture</keyword>
-        <keyword translate="no">Demography</keyword>
-        <keyword translate="no">Economics</keyword>
-        <keyword translate="no">Geography</keyword>
-        <keyword translate="no">History</keyword>
-        <keyword translate="no">Law</keyword>
-        <keyword translate="no">Linguistics</keyword>
-        <keyword translate="no">Philosophy</keyword>
-        <keyword translate="no">Politics</keyword>
-        <keyword translate="no">Psychology</keyword>
-        <keyword translate="no">Sociology</keyword>
-        <keyword translate="no">Theology</keyword>
-        <keyword translate="no">Scripture</keyword>
-        <keyword translate="no">Spirituality</keyword>
-        <keyword translate="no">Meditation</keyword>
-        <keyword translate="no">Devotion</keyword>
-        <keyword translate="no">Blessing</keyword>
-        <keyword translate="no">Miracle</keyword>
-        <keyword translate="no">Prophecy</keyword>
-        <keyword translate="no">Resurrection</keyword>
-        <keyword translate="no">Sacrament</keyword>
-        <keyword translate="no">Saint</keyword>
-        <keyword translate="no">Sermon</keyword>
-        <keyword translate="no">Testament</keyword>
-        <keyword translate="no">Theology</keyword>
-        <keyword translate="no">Trinity</keyword>
-        <keyword translate="no">Virtue</keyword>
-        <keyword translate="no">Wisdom</keyword>
-        <keyword translate="no">Worship</keyword>
-        <keyword translate="no">Zeal</keyword>
-        <keyword translate="no">Apostle</keyword>
-        <keyword translate="no">Disciple</keyword>
-        <keyword translate="no">Evangelist</keyword>
-        <keyword translate="no">Martyr</keyword>
-        <keyword translate="no">Missionary</keyword>
-        <keyword translate="no">Parish</keyword>
-        <keyword translate="no">Pilgrimage</keyword>
-        <keyword translate="no">Revelation</keyword>
-        <keyword translate="no">Sanctuary</keyword>
-        <keyword translate="no">Sin</keyword>
-        <keyword translate="no">Soul</keyword>
-        <keyword translate="no">Spirit</keyword>
-        <keyword translate="no">Veneration</keyword>
-        <keyword translate="no">Vow</keyword>
-        <keyword translate="no">Worship</keyword>
-        <keyword translate="no">Youth</keyword>
-        <keyword translate="no">Zeal</keyword>
-        <keyword translate="no">Baptism</keyword>
-        <keyword translate="no">Charity</keyword>
-        <keyword translate="no">Communion</keyword>
-        <keyword translate="no">Confession</keyword>
-        <keyword translate="no">Confirmation</keyword>
-        <keyword translate="no">Consecration</keyword>
-        <keyword translate="no">Covenant</keyword>
-        <keyword translate="no">Creed</keyword>
-        <keyword translate="no">Doctrine</keyword>
-        <keyword translate="no">Eucharist</keyword>
-        <keyword translate="no">Evangelism</keyword>
-        <keyword translate="no">Fellowship</keyword>
-        <keyword translate="no">Glory</keyword>
-        <keyword translate="no">Hymn</keyword>
-        <keyword translate="no">Incarnation</keyword>
-        <keyword translate="no">Kingdom</keyword>
-        <keyword translate="no">Liturgy</keyword>
-        <keyword translate="no">Ministry</keyword>
-        <keyword translate="no">Miracle</keyword>
-        <keyword translate="no">Mission</keyword>
-        <keyword translate="no">Mystic</keyword>
-        <keyword translate="no">Parable</keyword>
-        <keyword translate="no">Penance</keyword>
-        <keyword translate="no">Praise</keyword>
-        <keyword translate="no">Preaching</keyword>
-        <keyword translate="no">Prophecy</keyword>
-        <keyword translate="no">Redemption</keyword>
-        <keyword translate="no">Repentance</keyword>
-        <keyword translate="no">Resurrection</keyword>
-        <keyword translate="no">Revelation</keyword>
-        <keyword translate="no">Sacrament</keyword>
-        <keyword translate="no">Saint</keyword>
-        <keyword translate="no">Salvation</keyword>
-        <keyword translate="no">Sanctification</keyword>
-        <keyword translate="no">Scripture</keyword>
-        <keyword translate="no">Sermon</keyword>
-        <keyword translate="no">Sin</keyword>
-        <keyword translate="no">Soul</keyword>
-        <keyword translate="no">Spirit</keyword>
-        <keyword translate="no">Testament</keyword>
-        <keyword translate="no">Theology</keyword>
-        <keyword translate="no">Trinity</keyword>
-        <keyword translate="no">Virtue</keyword>
-        <keyword translate="no">Wisdom</keyword>
-        <keyword translate="no">Worship</keyword>
-        <keyword translate="no">Zeal</keyword>
-        </keywords>
-        
-        </keywords>
+        <keyword>Jesus</keyword>
+        <keyword>Books</keyword>
+        <keyword>Bible</keyword>
+        <keyword>Bibles</keyword>
+        <keyword>God</keyword>
+        <keyword>Christian</keyword>
+        <keyword>Christianity</keyword>
+        <keyword>Church</keyword>
+        <keyword>Faith</keyword>
+        <keyword>Religion</keyword>
+        <keyword>Prayer</keyword>
+        <keyword>Gospel</keyword>
+        <keyword>Holy</keyword>
+        <keyword>Salvation</keyword>
+        <keyword>Worship</keyword>
+        <keyword>Heaven</keyword>
+        <keyword>Grace</keyword>
+        <keyword>Holy</keyword>
+        <keyword>Jesus</keyword>
+        <keyword>God</keyword>
+        <keyword>Faith</keyword>
+        <keyword>Religion</keyword>
+        <keyword>Prayer</keyword>
+        <keyword>Gospel</keyword>
+        <keyword>Holy</keyword>
+        <keyword>Salvation</keyword>
+        <keyword>Worship</keyword>
+        <keyword>Heaven</keyword>
+        <keyword>Grace</keyword>
+        <keyword>Christ</keyword>
+        <keyword>Devotion</keyword>
+        <keyword>Saints</keyword>
+        <keyword>Chapel</keyword>
+        <keyword>Cathedral</keyword>
+        <keyword>Eden</keyword>
+        <keyword>Genesis</keyword>
+        <keyword>Revelation</keyword>
+        <keyword>Pentecost</keyword>
+        <keyword>Epistle</keyword>
+        <keyword>Apostles</keyword>
+        <keyword>Disciple</keyword>
+        <keyword>Messiah</keyword>
+        <keyword>Prophecy</keyword>
+        <keyword>Trinity</keyword>
+        <keyword>Miracles</keyword>
+        <keyword>Savior</keyword>
+        <keyword>Blessings</keyword>
+        <keyword>Pastor</keyword>
+        <keyword>Ministry</keyword>
+        <keyword>Sanctuary</keyword>
+        <keyword>New Testament</keyword>
+        <keyword>Old Testament</keyword>
+        <keyword>Scripture</keyword>
+        <keyword>Sermon</keyword>
+        <keyword>Shepherd</keyword>
+        <keyword>Immaculate</keyword>
+        <keyword>Incarnation</keyword>
+        <keyword>Parables</keyword>
+        <keyword>Tabernacle</keyword>
+        <keyword>Divine</keyword>
+        <keyword>Sacred</keyword>
+        <keyword>Sin</keyword>
+        <keyword>Spirit</keyword>
+        <keyword>Preacher</keyword>
+        <keyword>Hallelujah</keyword>
+        <keyword>Baptism</keyword>
+        <keyword>Rosary</keyword>
+        <keyword>Psalms</keyword>
+        <keyword>Exodus</keyword>
+        <keyword>Monastery</keyword>
+        <keyword>Hymns</keyword>
+        <keyword>Sacrament</keyword>
+        <keyword>Literature</keyword>
+        <keyword>Reading</keyword>
+        <keyword>History</keyword>
+        <keyword>Education</keyword>
+        <keyword>Books</keyword>
+        <keyword>Study</keyword>
+        <keyword>Linux</keyword>
+        <keyword>Book</keyword>
+        <keyword>Apostle</keyword>
+        <keyword>BibleStudy</keyword>
+        <keyword>Chapel</keyword>
+        <keyword>Covenant</keyword>
+        <keyword>Disciple</keyword>
+        <keyword>Eucharist</keyword>
+        <keyword>Evangelist</keyword>
+        <keyword>Faithful</keyword>
+        <keyword>Gospel</keyword>
+        <keyword>Grace</keyword>
+        <keyword>Heaven</keyword>
+        <keyword>Holy</keyword>
+        <keyword>Inspiration</keyword>
+        <keyword>Jerusalem</keyword>
+        <keyword>Kingdom</keyword>
+        <keyword>Liturgy</keyword>
+        <keyword>Miracle</keyword>
+        <keyword>Mission</keyword>
+        <keyword>Mystic</keyword>
+        <keyword>Parish</keyword>
+        <keyword>Pilgrimage</keyword>
+        <keyword>Prayer</keyword>
+        <keyword>Prophet</keyword>
+        <keyword>Redemption</keyword>
+        <keyword>Revelation</keyword>
+        <keyword>Saint</keyword>
+        <keyword>Salvation</keyword>
+        <keyword>Sanctuary</keyword>
+        <keyword>Theology</keyword>
+        <keyword>Virtue</keyword>
+        <keyword>Wisdom</keyword>
+        <keyword>Worship</keyword>
+        <keyword>Zeal</keyword>
+        <keyword>Anthology</keyword>
+        <keyword>Biography</keyword>
+        <keyword>Classic</keyword>
+        <keyword>Criticism</keyword>
+        <keyword>Drama</keyword>
+        <keyword>Essay</keyword>
+        <keyword>Fiction</keyword>
+        <keyword>Genre</keyword>
+        <keyword>Imagination</keyword>
+        <keyword>Journal</keyword>
+        <keyword>Literacy</keyword>
+        <keyword>Manuscript</keyword>
+        <keyword>Narrative</keyword>
+        <keyword>Novel</keyword>
+        <keyword>Poetry</keyword>
+        <keyword>Prose</keyword>
+        <keyword>Publish</keyword>
+        <keyword>Quotation</keyword>
+        <keyword>Reading</keyword>
+        <keyword>Story</keyword>
+        <keyword>Text</keyword>
+        <keyword>Writer</keyword>
+        <keyword>Anthropology</keyword>
+        <keyword>Archaeology</keyword>
+        <keyword>Culture</keyword>
+        <keyword>Demography</keyword>
+        <keyword>Economics</keyword>
+        <keyword>Geography</keyword>
+        <keyword>History</keyword>
+        <keyword>Law</keyword>
+        <keyword>Linguistics</keyword>
+        <keyword>Philosophy</keyword>
+        <keyword>Politics</keyword>
+        <keyword>Psychology</keyword>
+        <keyword>Sociology</keyword>
+        <keyword>Theology</keyword>
+        <keyword>Scripture</keyword>
+        <keyword>Spirituality</keyword>
+        <keyword>Meditation</keyword>
+        <keyword>Devotion</keyword>
+        <keyword>Blessing</keyword>
+        <keyword>Miracle</keyword>
+        <keyword>Prophecy</keyword>
+        <keyword>Resurrection</keyword>
+        <keyword>Sacrament</keyword>
+        <keyword>Saint</keyword>
+        <keyword>Sermon</keyword>
+        <keyword>Testament</keyword>
+        <keyword>Theology</keyword>
+        <keyword>Trinity</keyword>
+        <keyword>Virtue</keyword>
+        <keyword>Wisdom</keyword>
+        <keyword>Worship</keyword>
+        <keyword>Zeal</keyword>
+        <keyword>Apostle</keyword>
+        <keyword>Disciple</keyword>
+        <keyword>Evangelist</keyword>
+        <keyword>Martyr</keyword>
+        <keyword>Missionary</keyword>
+        <keyword>Parish</keyword>
+        <keyword>Pilgrimage</keyword>
+        <keyword>Revelation</keyword>
+        <keyword>Sanctuary</keyword>
+        <keyword>Sin</keyword>
+        <keyword>Soul</keyword>
+        <keyword>Spirit</keyword>
+        <keyword>Veneration</keyword>
+        <keyword>Vow</keyword>
+        <keyword>Worship</keyword>
+        <keyword>Youth</keyword>
+        <keyword>Zeal</keyword>
+        <keyword>Baptism</keyword>
+        <keyword>Charity</keyword>
+        <keyword>Communion</keyword>
+        <keyword>Confession</keyword>
+        <keyword>Confirmation</keyword>
+        <keyword>Consecration</keyword>
+        <keyword>Covenant</keyword>
+        <keyword>Creed</keyword>
+        <keyword>Doctrine</keyword>
+        <keyword>Eucharist</keyword>
+        <keyword>Evangelism</keyword>
+        <keyword>Fellowship</keyword>
+        <keyword>Glory</keyword>
+        <keyword>Hymn</keyword>
+        <keyword>Incarnation</keyword>
+        <keyword>Kingdom</keyword>
+        <keyword>Liturgy</keyword>
+        <keyword>Ministry</keyword>
+        <keyword>Miracle</keyword>
+        <keyword>Mission</keyword>
+        <keyword>Mystic</keyword>
+        <keyword>Parable</keyword>
+        <keyword>Penance</keyword>
+        <keyword>Praise</keyword>
+        <keyword>Preaching</keyword>
+        <keyword>Prophecy</keyword>
+        <keyword>Redemption</keyword>
+        <keyword>Repentance</keyword>
+        <keyword>Resurrection</keyword>
+        <keyword>Revelation</keyword>
+        <keyword>Sacrament</keyword>
+        <keyword>Saint</keyword>
+        <keyword>Salvation</keyword>
+        <keyword>Sanctification</keyword>
+        <keyword>Scripture</keyword>
+        <keyword>Sermon</keyword>
+        <keyword>Sin</keyword>
+        <keyword>Soul</keyword>
+        <keyword>Spirit</keyword>
+        <keyword>Testament</keyword>
+        <keyword>Theology</keyword>
+        <keyword>Trinity</keyword>
+        <keyword>Virtue</keyword>
+        <keyword>Wisdom</keyword>
+        <keyword>Worship</keyword>
+        <keyword>Zeal</keyword>
 
     </keywords>
     <branding>

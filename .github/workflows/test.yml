@@ -1,12 +1,50 @@
-name: Armv8 Compile
+name: 'Test'
+
 on:
   push:
     branches:
-    - releases
+      - releases
   workflow_dispatch:
-
+  pull_request:
 jobs:
-  build:
+  Amd64_Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install dependencies (ubuntu only)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.0-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+        # webkitgtk 4.0 is for Tauri v1 - webkitgtk 4.1 is for Tauri v2.
+        # You can remove the one that doesn't apply to your app to speed up the workflow a bit.
+      - name: Prep For x86_64
+        run: |
+          cp prep/v1/package.json package.json
+          cp prep/v1/tauri.conf.json src-tauri/tauri.conf.json
+          cp prep/v1/vite.config.js vite.config.js
+          cp prep/v1/stable/Cargo.toml src-tauri/Cargo.toml
+        # Moves Cargo.toml to src-tauri
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: 'npm' # Set this to npm, yarn or pnpm.
+
+      - name: install Rust Nightly
+        uses: dtolnay/rust-toolchain@nightly
+          # Those targets are only used on macos runners so it's in an `if` to slightly speed up windows and linux builds.
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+      
+      - name: Compile
+        run: |
+          cd src-tauri
+          cargo build
+  Arm64_Test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -37,15 +75,5 @@ jobs:
             cp prep/v1/stable/Cargo.toml src-tauri/Cargo.toml
             sudo apt install -y libwebkit2gtk-4.0-dev build-essential curl wget file libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
             # Install NodeJS
-            sudo apt install -y nodejs
-            rm package-lock.json
-            npm install next@latest react@latest react-dom@latest eslint-config-next@latest
-            # Install frontend dependencies
-            npm install
-            # Build the application
-            npm run tauri build -- --bundles deb
-      - name: Upload deb bundle
-        uses: actions/upload-artifact@v3
-        with:
-          name: Debian Bundle
-          path: ${{ github.workspace }}/src-tauri/target/release/bundle/deb/rosary_2.0.1_arm64.deb
+            cd src-tauri
+            cargo build
