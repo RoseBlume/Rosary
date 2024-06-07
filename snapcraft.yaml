@@ -1,5 +1,5 @@
 name: jrosarybibleapp
-base: core24
+base: core22
 adopt-info: metapart
 version: '2.0.2'
 summary: Read the Bible and other Christian texts. # 79 char long summary
@@ -9,12 +9,10 @@ description: |
 grade: stable
 confinement: strict
 
-platforms:
-  amd64:
-    build-on: [amd64]
+architectures:
+  - build-on: [amd64]
     build-for: [amd64]
-  arm64:
-    build-on: [arm64]
+  - build-on: [arm64]
     build-for: [arm64]
 apps:
   rosary:
@@ -22,24 +20,70 @@ apps:
     desktop: usr/share/applications/rosary.desktop
 
 parts:
-  prep:
-    plugin: dump
-    source:
-      - on amd64 to amd64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.2/rosary_2.0.2_amd64.deb
-      - on arm64 to arm64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.2/rosary_2.0.2_arm64.deb
-    source-type: deb
-    override-pull: |
-      set -eu
-      craftctl default
-      sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" usr/share/applications/rosary.desktop
-    organize:
-      usr/bin/rosary: bin/rosary
-    stage-packages:
-      - libwebkit2gtk-4.1-0
-      - libglu1-mesa
-      - libsoup-3.0-0
-      - libglut3.12
   metapart:
     plugin: dump
     source: .
     parse-info: [extra/io.github.roseblume.rosary.xml]
+  comppart:
+    plugin: dump
+    source: .
+    build-packages:
+    - libwebkit2gtk-4.0-dev
+    - build-essential
+    - curl
+    - wget
+    - file
+    - libssl-dev
+    - libgtk-3-dev
+    - libayatana-appindicator3-dev
+    - librsvg2-dev
+    - binutils
+    - xz-utils
+    - dpkg
+    stage-packages:
+    - libwebkit2gtk-4.1-0
+    - libglu1-mesa
+    - libsoup-3.0-0
+    - freeglut3
+    build-snaps:
+    - rustup/latest/stable
+    - node/20/stable
+    override-pull: |
+      set -eu
+      craftctl default
+      rustup default nightly
+      echo -e "Finished setting up rust"
+      npm install
+      echo -e "Finished installing frontend deps"
+      npm run tauri build -- --bundles deb
+      dpkg -x src-tauri/target/release/deb/*.deb here
+      mkdir deb
+      mv src-tauri/target/release/deb/here/usr deb
+      sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" deb/usr/share/applications/rosary.desktop
+    organize:
+      deb/usr/bin/rosary: bin/rosary
+      deb/usr/share/applications/rosary.desktop: usr/share/applications/rosary.desktop
+      deb/usr/share/icons/hicolor/32x32/apps/rosary.png: usr/share/icons/hicolor/32x32/apps/rosary.png
+      deb/usr/share/icons/hicolor/128x128/apps/rosary.png: usr/share/icons/hicolor/128x128/apps/rosary.png
+      deb/usr/share/icons/hicolor/256x256@2/apps/rosary.png: usr/share/icons/hicolor/256x256@2/apps/rosary.png
+
+    #   prep:
+#     plugin: dump
+#     build-packages:
+#       - npm
+#       - nodejs
+#     source:
+#       - on amd64 to amd64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.2/rosary_2.0.2_amd64.deb
+#       - on arm64 to arm64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.2/rosary_2.0.2_arm64.deb
+#     source-type: deb
+#     override-pull: |
+#       set -eu
+#       craftctl default
+#       sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" usr/share/applications/rosary.desktop
+#     organize:
+#       usr/bin/rosary: bin/rosary
+#     stage-packages:
+#       - libwebkit2gtk-4.1-0
+#       - libglu1-mesa
+#       - libsoup-3.0-0
+#       - libglut3.12
