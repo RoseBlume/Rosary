@@ -14,10 +14,6 @@ jobs:
             args: ''
           - platform: 'windows-latest'
             args: '--target x86_64-pc-windows-msvc'
-          - platform: 'self-hosted, ARM64'
-            args: '--bundles deb'
-          - platform: 'self-hosted, armhf'
-            args: '--bundles deb'
 
     runs-on: ${{ matrix.settings.platform }}
     steps:
@@ -73,14 +69,213 @@ jobs:
           prerelease: false
           args: ${{ matrix.settings.args }}
       - name: Building Snap
-        if: ${{ matrix.settings.platform }} == 'ubuntu-22.04' || ${{ matrix.settings.platform }} == 'self-hosted, armhf' || ${{ matrix.settings.platform }} == 'self-hosted, ARM64'
+        if: matrix.settings.platform == 'ubuntu-22.04' # Ensures on linux does this
         uses: snapcore/action-build@v1
         id: build
       - uses: snapcore/action-publish@v1
-        if: ${{ matrix.settings.platform }} == 'ubuntu-22.04' || ${{ matrix.settings.platform }} == 'self-hosted, armhf' || ${{ matrix.settings.platform }} == 'self-hosted, ARM64'
+        if: matrix.settings.platform == 'ubuntu-22.04' # Ensures on linux does this
         env:
           SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
         with:
           snap: ${{ steps.build.outputs.snap }}
           release: edge
+  Arm64Publish:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
 
+    runs-on: 'self-hosted, linux, ARM64'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install dependencies (ubuntu only)
+        if: matrix.settings.platform == 'ubuntu-22.04' # This must match the platform value defined above.
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.0-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+        # webkitgtk 4.0 is for Tauri v1 - webkitgtk 4.1 is for Tauri v2.
+        # You can remove the one that doesn't apply to your app to speed up the workflow a bit.
+      - name: Prep For x86_64
+        if: matrix.settings.platform == 'ubuntu-22.04' # Ensures on linux does this
+        run: |
+          cp prep/v2/package.json package.json
+          cp prep/v2/tauri.conf.json src-tauri/tauri.conf.json
+          cp prep/v2/vite.config.js vite.config.js
+          cp prep/v2/stable/Cargo.toml src-tauri/Cargo.toml
+        # Moves Cargo.toml to src-tauri
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: 'npm' # Set this to npm, yarn or pnpm.
+
+      - name: install Rust Nightly
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          # Those targets are only used on macos runners so it's in an `if` to slightly speed up windows and linux builds.
+          targets: ${{ matrix.settings.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: install frontend dependencies
+        # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
+        run: npm install # change this to npm or pnpm depending on which one you use.
+
+      - name: add icons
+        run: npm run tauri icon Bible3.png
+        
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version.
+          releaseName: 'Full Release v__VERSION__'
+          releaseBody: 'See the assets to download this version and install.'
+          releaseDraft: false
+          prerelease: false
+          args: '--bundles deb'
+      - name: Building Snap
+        uses: snapcore/action-build@v1
+        id: build
+      - uses: snapcore/action-publish@v1
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
+        with:
+          snap: ${{ steps.build.outputs.snap }}
+          release: edge
+  ArmhfPublish:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+
+    runs-on: 'self-hosted, linux, ARM'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install dependencies (ubuntu only)
+        if: matrix.settings.platform == 'ubuntu-22.04' # This must match the platform value defined above.
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.0-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+        # webkitgtk 4.0 is for Tauri v1 - webkitgtk 4.1 is for Tauri v2.
+        # You can remove the one that doesn't apply to your app to speed up the workflow a bit.
+      - name: Prep For x86_64
+        if: matrix.settings.platform == 'ubuntu-22.04' # Ensures on linux does this
+        run: |
+          cp prep/v2/package.json package.json
+          cp prep/v2/tauri.conf.json src-tauri/tauri.conf.json
+          cp prep/v2/vite.config.js vite.config.js
+          cp prep/v2/stable/Cargo.toml src-tauri/Cargo.toml
+        # Moves Cargo.toml to src-tauri
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: 'npm' # Set this to npm, yarn or pnpm.
+
+      - name: install Rust Nightly
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          # Those targets are only used on macos runners so it's in an `if` to slightly speed up windows and linux builds.
+          targets: ${{ matrix.settings.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: install frontend dependencies
+        # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
+        run: npm install # change this to npm or pnpm depending on which one you use.
+
+      - name: add icons
+        run: npm run tauri icon Bible3.png
+        
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version.
+          releaseName: 'Full Release v__VERSION__'
+          releaseBody: 'See the assets to download this version and install.'
+          releaseDraft: false
+          prerelease: false
+          args: '--bundles deb'
+      - name: Building Snap
+        uses: snapcore/action-build@v1
+        id: build
+      - uses: snapcore/action-publish@v1
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: Arm64Publish:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+
+    runs-on: 'self-hosted, linux, ARM64'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install dependencies (ubuntu only)
+        if: matrix.settings.platform == 'ubuntu-22.04' # This must match the platform value defined above.
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.0-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+        # webkitgtk 4.0 is for Tauri v1 - webkitgtk 4.1 is for Tauri v2.
+        # You can remove the one that doesn't apply to your app to speed up the workflow a bit.
+      - name: Prep For x86_64
+        if: matrix.settings.platform == 'ubuntu-22.04' # Ensures on linux does this
+        run: |
+          cp prep/v2/package.json package.json
+          cp prep/v2/tauri.conf.json src-tauri/tauri.conf.json
+          cp prep/v2/vite.config.js vite.config.js
+          cp prep/v2/stable/Cargo.toml src-tauri/Cargo.toml
+        # Moves Cargo.toml to src-tauri
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: 'npm' # Set this to npm, yarn or pnpm.
+
+      - name: install Rust Nightly
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          # Those targets are only used on macos runners so it's in an `if` to slightly speed up windows and linux builds.
+          targets: ${{ matrix.settings.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: install frontend dependencies
+        # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
+        run: npm install # change this to npm or pnpm depending on which one you use.
+
+      - name: add icons
+        run: npm run tauri icon Bible3.png
+        
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version.
+          releaseName: 'Full Release v__VERSION__'
+          releaseBody: 'See the assets to download this version and install.'
+          releaseDraft: false
+          prerelease: false
+          args: '--bundles deb'
+      - name: Building Snap
+        uses: snapcore/action-build@v1
+        id: build
+      - uses: snapcore/action-publish@v1
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
+        with:
+          snap: ${{ steps.build.outputs.snap }}
+          release: edge
