@@ -36,4 +36,4 @@ parts:
       - libwebkit2gtk-4.1-0
       - libglu1-mesa
       - libsoup-3.0-0
-      - libglut3.12
+      - freeglut3
