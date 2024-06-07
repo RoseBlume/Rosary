@@ -1,9 +1,6 @@
 name: 'Publish'
 
 on:
-  push:
-    branches:
-      - releases
   workflow_dispatch:
 jobs:
   Publish-Tauri:
@@ -17,7 +14,7 @@ jobs:
             args: ''
           - platform: 'windows-latest'
             args: '--target x86_64-pc-windows-msvc'
-          - platform: 'self-hosted'
+          - platform: 'self-hosted, arm64'
             args: '--bundles deb rpm'
 
     runs-on: ${{ matrix.settings.platform }}
