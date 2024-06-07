@@ -2,6 +2,8 @@ name: 'Publish'
 
 on:
   workflow_dispatch:
+env:
+  SNAPVERS: '2.0.3'
 jobs:
   Publish-Tauri:
     permissions:
@@ -184,12 +186,16 @@ jobs:
           prerelease: false
           args: '--bundles deb'
       - name: Building Snap
-        uses: snapcore/action-build@v1
-        id: build
+        run: |
+          sudo snapcraft
+        # uses: snapcore/action-build@v1
+        # id: build
       - name: Publishing Snap
-        uses: snapcore/action-publish@v1
-        env:
-          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
-        with:
-          snap: ${{ steps.build.outputs.snap }}
-          release: edge
+        #uses: snapcore/action-publish@v1
+        run: |
+          snapcraft upload --release=edge *.snap
+        # env:
+        #   SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
+        # with:
+        #   snap: jrosarybibleapp_${{ env.SNAPVERS}}_
+        #   release: edge
