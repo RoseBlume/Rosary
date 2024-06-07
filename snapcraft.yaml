@@ -30,6 +30,8 @@ parts:
     build-packages:
     - libwebkit2gtk-4.0-dev
     - build-essential
+    # - libsoup-3.0-dev
+    # - libjavascriptcoregtk-4.1-dev
     - curl
     - wget
     - file
@@ -58,7 +60,6 @@ parts:
       mv prep/v1/tauri.conf.json src-tauri/tauri.conf.json
       mv prep/v1/vite.config.js vite.config.json
       mv prep/v1/package.json package.json
-      mv prep/v1/package.json
       rm package-lock.json
       npm install
       echo -e "Finished installing frontend deps"
