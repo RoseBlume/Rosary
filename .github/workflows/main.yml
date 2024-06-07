@@ -85,7 +85,7 @@ jobs:
     strategy:
       fail-fast: false
 
-    runs-on: 'self-hosted, linux, ARM64'
+    runs-on: arm64
     steps:
       - uses: actions/checkout@v4
       - name: Prep For x86_64
@@ -141,7 +141,7 @@ jobs:
     strategy:
       fail-fast: false
 
-    runs-on: 'self-hosted, linux, ARM'
+    runs-on: armhf
     steps:
       - uses: actions/checkout@v4
         # webkitgtk 4.0 is for Tauri v1 - webkitgtk 4.1 is for Tauri v2.
