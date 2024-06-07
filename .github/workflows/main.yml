@@ -16,6 +16,10 @@ jobs:
             args: ''
           - platform: 'windows-latest'
             args: '--target x86_64-pc-windows-msvc'
+          - platform: 'arm64'
+            args: '--bundles deb rpm'
+          - platform: 'armhf'
+            args: '--bundles deb rpm'
 
     runs-on: ${{ matrix.settings.platform }}
     steps:
@@ -81,121 +85,104 @@ jobs:
         with:
           snap: ${{ steps.build.outputs.snap }}
           release: edge
-  Arm64Publish:
-    permissions:
-      contents: write
-    strategy:
-      fail-fast: false
-
-    runs-on: arm64
-    steps:
-      - uses: actions/checkout@v4
-      - name: Prep For x86_64
-        run: |
-          cp prep/v2/package.json package.json
-          cp prep/v2/tauri.conf.json src-tauri/tauri.conf.json
-          cp prep/v2/vite.config.js vite.config.js
-          cp prep/v2/stable/Cargo.toml src-tauri/Cargo.toml
-        # Moves Cargo.toml to src-tauri
-      - name: setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          cache: 'npm' # Set this to npm, yarn or pnpm.
-
-      - name: install Rust Nightly
-        uses: dtolnay/rust-toolchain@nightly
-
-      - name: Rust cache
-        uses: swatinem/rust-cache@v2
-        with:
-          workspaces: './src-tauri -> target'
-
-      - name: install frontend dependencies
-        # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
-        run: npm install # change this to npm or pnpm depending on which one you use.
-
-      - name: add icons
-        run: npm run tauri icon Bible3.png
-        
-      - uses: tauri-apps/tauri-action@v0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tagName: v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version.
-          releaseName: 'Full Release v__VERSION__'
-          releaseBody: 'See the assets to download this version and install.'
-          releaseDraft: false
-          prerelease: false
-          args: '--bundles deb'
-      - name: Building Snap
-        uses: snapcore/action-build@v1
-        id: build
-      - uses: snapcore/action-publish@v1
-        env:
-          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
-        with:
-          snap: ${{ steps.build.outputs.snap }}
-          release: edge
-  ArmhfPublish:
-    permissions:
-      contents: write
-    strategy:
-      fail-fast: false
-
-    runs-on: armhf
-    steps:
-      - uses: actions/checkout@v4
-        # webkitgtk 4.0 is for Tauri v1 - webkitgtk 4.1 is for Tauri v2.
-        # You can remove the one that doesn't apply to your app to speed up the workflow a bit.
-      - name: Prep For x86_64
-        run: |
-          cp prep/v2/package.json package.json
-          cp prep/v2/tauri.conf.json src-tauri/tauri.conf.json
-          cp prep/v2/vite.config.js vite.config.js
-          cp prep/v2/stable/Cargo.toml src-tauri/Cargo.toml
-        # Moves Cargo.toml to src-tauri
-      - name: setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          cache: 'npm' # Set this to npm, yarn or pnpm.
-
-      - name: install Rust Nightly
-        uses: dtolnay/rust-toolchain@nightly
-      - name: Rust cache
-        uses: swatinem/rust-cache@v2
-        with:
-          workspaces: './src-tauri -> target'
-
-      - name: install frontend dependencies
-        # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
-        run: npm install # change this to npm or pnpm depending on which one you use.
-
-      - name: add icons
-        run: npm run tauri icon Bible3.png
-        
-      - uses: tauri-apps/tauri-action@v0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tagName: v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version.
-          releaseName: 'Full Release v__VERSION__'
-          releaseBody: 'See the assets to download this version and install.'
-          releaseDraft: false
-          prerelease: false
-          args: '--bundles deb'
-      - name: Building Snap
-        run: |
-          sudo snapcraft
-        # uses: snapcore/action-build@v1
-        # id: build
-      - name: Publishing Snap
-        #uses: snapcore/action-publish@v1
-        run: |
-          snapcraft upload --release=edge *.snap
-        # env:
-        #   SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
-        # with:
-        #   snap: jrosarybibleapp_${{ env.SNAPVERS}}_
-        #   release: edge
+#   Arm64Publish:
+#     permissions:
+#       contents: write
+#     strategy:
+#       fail-fast: false
+#
+#     runs-on: arm64
+#     steps:
+#       - uses: actions/checkout@v4
+#       - name: Prep For x86_64
+#         run: |
+#           cp prep/v2/package.json package.json
+#           cp prep/v2/tauri.conf.json src-tauri/tauri.conf.json
+#           cp prep/v2/vite.config.js vite.config.js
+#           cp prep/v2/stable/Cargo.toml src-tauri/Cargo.toml
+#         # Moves Cargo.toml to src-tauri
+#       - name: setup node
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: lts/*
+#           cache: 'npm' # Set this to npm, yarn or pnpm.
+#
+#       - name: install Rust Nightly
+#         uses: dtolnay/rust-toolchain@nightly
+#
+#       - name: Rust cache
+#         uses: swatinem/rust-cache@v2
+#         with:
+#           workspaces: './src-tauri -> target'
+#
+#       - name: install frontend dependencies
+#         # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
+#         run: npm install # change this to npm or pnpm depending on which one you use.
+#
+#       - name: add icons
+#         run: npm run tauri icon Bible3.png
+#
+#       - uses: tauri-apps/tauri-action@v0
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         with:
+#           tagName: v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version.
+#           releaseName: 'Full Release v__VERSION__'
+#           releaseBody: 'See the assets to download this version and install.'
+#           releaseDraft: false
+#           prerelease: false
+#           args: '--bundles deb'
+#
+#   ArmhfPublish:
+#     permissions:
+#       contents: write
+#     strategy:
+#       fail-fast: false
+#
+#     runs-on: armhf
+#     steps:
+#       - uses: actions/checkout@v4
+#         # webkitgtk 4.0 is for Tauri v1 - webkitgtk 4.1 is for Tauri v2.
+#         # You can remove the one that doesn't apply to your app to speed up the workflow a bit.
+#       - name: Prep For x86_64
+#         run: |
+#           cp prep/v2/package.json package.json
+#           cp prep/v2/tauri.conf.json src-tauri/tauri.conf.json
+#           cp prep/v2/vite.config.js vite.config.js
+#           cp prep/v2/stable/Cargo.toml src-tauri/Cargo.toml
+#         # Moves Cargo.toml to src-tauri
+#       - name: setup node
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: lts/*
+#           cache: 'npm' # Set this to npm, yarn or pnpm.
+#
+#       - name: install Rust Nightly
+#         uses: dtolnay/rust-toolchain@nightly
+#       - name: Rust cache
+#         uses: swatinem/rust-cache@v2
+#         with:
+#           workspaces: './src-tauri -> target'
+#
+#       - name: install frontend dependencies
+#         # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
+#         run: npm install # change this to npm or pnpm depending on which one you use.
+#
+#       - name: add icons
+#         run: npm run tauri icon Bible3.png
+#
+#       - uses: tauri-apps/tauri-action@v0
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         with:
+#           tagName: v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version.
+#           releaseName: 'Full Release v__VERSION__'
+#           releaseBody: 'See the assets to download this version and install.'
+#           releaseDraft: false
+#           prerelease: false
+#           args: '--bundles deb'
+#         # env:
+#         #   SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
+#         # with:
+#         #   snap: jrosarybibleapp_${{ env.SNAPVERS}}_
+#         #   release: edge
