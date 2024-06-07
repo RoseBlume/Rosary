@@ -29,7 +29,7 @@ parts:
     source: .
     build-packages:
     - libwebkit2gtk-4.0-dev
-    - libwebkit2gtk-4.1-dev
+    - libjavascriptcoregtk-4.1-dev
     - build-essential
     - curl
     - wget
@@ -68,6 +68,26 @@ parts:
       deb/usr/share/icons/hicolor/128x128/apps/rosary.png: usr/share/icons/hicolor/128x128/apps/rosary.png
       deb/usr/share/icons/hicolor/256x256@2/apps/rosary.png: usr/share/icons/hicolor/256x256@2/apps/rosary.png
 
+    #   prep:
+#     plugin: dump
+#     build-packages:
+#       - npm
+#       - nodejs
+#     source:
+#       - on amd64 to amd64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.2/rosary_2.0.2_amd64.deb
+#       - on arm64 to arm64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.2/rosary_2.0.2_arm64.deb
+#     source-type: deb
+#     override-pull: |
+#       set -eu
+#       craftctl default
+#       sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" usr/share/applications/rosary.desktop
+#     organize:
+#       usr/bin/rosary: bin/rosary
+#     stage-packages:
+#       - libwebkit2gtk-4.1-0
+#       - libglu1-mesa
+#       - libsoup-3.0-0
+#       - libglut3.12
     #   prep:
 #     plugin: dump
 #     build-packages:
