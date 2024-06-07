@@ -14,8 +14,10 @@ jobs:
             args: ''
           - platform: 'windows-latest'
             args: '--target x86_64-pc-windows-msvc'
-          - platform: 'self-hosted, arm64'
-            args: '--bundles deb rpm'
+          - platform: 'self-hosted, ARM64'
+            args: '--bundles deb'
+          - platform: 'self-hosted, armhf'
+            args: '--bundles deb'
 
     runs-on: ${{ matrix.settings.platform }}
     steps:
@@ -70,3 +72,15 @@ jobs:
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.settings.args }}
+      - name: Building Snap
+        if: ${{ matrix.settings.platform }} == 'ubuntu-22.04' || ${{ matrix.settings.platform }} == 'self-hosted, armhf' || ${{ matrix.settings.platform }} == 'self-hosted, ARM64'
+        uses: snapcore/action-build@v1
+        id: build
+      - uses: snapcore/action-publish@v1
+        if: ${{ matrix.settings.platform }} == 'ubuntu-22.04' || ${{ matrix.settings.platform }} == 'self-hosted, armhf' || ${{ matrix.settings.platform }} == 'self-hosted, ARM64'
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
+        with:
+          snap: ${{ steps.build.outputs.snap }}
+          release: edge
+
