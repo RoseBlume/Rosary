@@ -1,7 +1,7 @@
 name: jrosarybibleapp
 base: core22
 adopt-info: metapart
-version: '2.0.2'
+version: '2.0.3'
 summary: Read the Bible and other Christian texts. # 79 char long summary
 description: |
   Study the Bible, and read Christianity related works. This projects goal is to promote spiritual health, and to allow each person to study the bible and come to their own conclusion about their faith.
@@ -25,9 +25,9 @@ parts:
   prep:
     plugin: dump
     source:
-      - on amd64 to amd64: src-tauri/target/release/bundle/deb/rosary_2.0.2_amd64.deb
-      - on arm64 to arm64: src-tauri/target/release/bundle/deb/rosary_2.0.2_arm64.deb
-      - on armhf to armhf: src-tauri/target/release/bundle/deb/rosary_2.0.2_armhf.deb
+      - on amd64 to amd64: src-tauri/target/release/bundle/deb/rosary_2.0.3_amd64.deb
+      - on arm64 to arm64: src-tauri/target/release/bundle/deb/rosary_2.0.3_arm64.deb
+      - on armhf to armhf: src-tauri/target/release/bundle/deb/rosary_2.0.3_armhf.deb
     source-type: deb
     override-pull: |
       set -eu
