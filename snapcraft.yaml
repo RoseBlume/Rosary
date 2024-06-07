@@ -20,106 +20,20 @@ apps:
     desktop: usr/share/applications/rosary.desktop
 
 parts:
-  webkit2gtk41:
+  prep:
     plugin: dump
     source:
-      - on amd64 to amd64: http://security.debian.org/debian-security/pool/updates/main/w/webkit2gtk/libwebkit2gtk-4.1-dev_2.44.2-1~deb12u1_amd64.deb
-      - on arm64 to arm64: http://security.debian.org/debian-security/pool/updates/main/w/webkit2gtk/libwebkit2gtk-4.1-dev_2.44.2-1~deb12u1_arm64.deb
+      - on amd64 to amd64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.2/rosary_2.0.2_amd64.deb
+      - on arm64 to arm64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.2/rosary_2.0.2_arm64.deb
     source-type: deb
-  metapart:
-    plugin: dump
-    source: .
-    parse-info: [extra/io.github.roseblume.rosary.xml]
-  comppart:
-    plugin: dump
-    source: .
-    after:
-    - webkit2gtk41
-    build-packages:
-    - libwebkit2gtk-4.0-dev
-    - build-essential
-    - libsoup-3.0-dev
-    - libjavascriptcoregtk-4.1-dev
-    - curl
-    - wget
-    - file
-    - libssl-dev
-    - libgtk-3-dev
-    - libayatana-appindicator3-dev
-    - librsvg2-dev
-    - binutils
-    - xz-utils
-    - dpkg
-    stage-packages:
-    - libwebkit2gtk-4.1-0
-    - libglu1-mesa
-    - libsoup-3.0-0
-    - freeglut3
-    build-snaps:
-    - rustup/latest/stable
-    - node/20/stable
     override-pull: |
       set -eu
       craftctl default
-      rustup default nightly
-      echo -e "Finished setting up rust"
-      # echo -e "\nPrepping\n"
-      # mv prep/v1/nightly/Cargo.toml src-tauri/Cargo.toml
-      # mv prep/v1/tauri.conf.json src-tauri/tauri.conf.json
-      # mv prep/v1/vite.config.js vite.config.json
-      # mv prep/v1/package.json package.json
-      # rm package-lock.json
-      npm install
-      echo -e "Finished installing frontend deps"
-      npm run tauri build -- --bundles deb
-      dpkg -x src-tauri/target/release/deb/*.deb here
-      mkdir deb
-      mv src-tauri/target/release/deb/here/usr deb
-      sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" deb/usr/share/applications/rosary.desktop
+      sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" usr/share/applications/rosary.desktop
     organize:
-      deb/usr/bin/rosary: bin/rosary
-      deb/usr/share/applications/rosary.desktop: usr/share/applications/rosary.desktop
-      deb/usr/share/icons/hicolor/32x32/apps/rosary.png: usr/share/icons/hicolor/32x32/apps/rosary.png
-      deb/usr/share/icons/hicolor/128x128/apps/rosary.png: usr/share/icons/hicolor/128x128/apps/rosary.png
-      deb/usr/share/icons/hicolor/256x256@2/apps/rosary.png: usr/share/icons/hicolor/256x256@2/apps/rosary.png
-
-    #   prep:
-#     plugin: dump
-#     build-packages:
-#       - npm
-#       - nodejs
-#     source:
-#       - on amd64 to amd64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.2/rosary_2.0.2_amd64.deb
-#       - on arm64 to arm64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.2/rosary_2.0.2_arm64.deb
-#     source-type: deb
-#     override-pull: |
-#       set -eu
-#       craftctl default
-#       sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" usr/share/applications/rosary.desktop
-#     organize:
-#       usr/bin/rosary: bin/rosary
-#     stage-packages:
-#       - libwebkit2gtk-4.1-0
-#       - libglu1-mesa
-#       - libsoup-3.0-0
-#       - libglut3.12
-    #   prep:
-#     plugin: dump
-#     build-packages:
-#       - npm
-#       - nodejs
-#     source:
-#       - on amd64 to amd64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.2/rosary_2.0.2_amd64.deb
-#       - on arm64 to arm64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.2/rosary_2.0.2_arm64.deb
-#     source-type: deb
-#     override-pull: |
-#       set -eu
-#       craftctl default
-#       sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" usr/share/applications/rosary.desktop
-#     organize:
-#       usr/bin/rosary: bin/rosary
-#     stage-packages:
-#       - libwebkit2gtk-4.1-0
-#       - libglu1-mesa
-#       - libsoup-3.0-0
-#       - libglut3.12
+      usr/bin/rosary: bin/rosary
+    stage-packages:
+      - libwebkit2gtk-4.1-0
+      - libglu1-mesa
+      - libsoup-3.0-0
+      - libglut3.12
