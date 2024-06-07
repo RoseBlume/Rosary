@@ -30,8 +30,8 @@ parts:
     build-packages:
     - libwebkit2gtk-4.0-dev
     - build-essential
-    # - libsoup-3.0-dev
-    # - libjavascriptcoregtk-4.1-dev
+    - libsoup-3.0-dev
+    - libjavascriptcoregtk-4.1-dev
     - curl
     - wget
     - file
@@ -55,12 +55,12 @@ parts:
       craftctl default
       rustup default nightly
       echo -e "Finished setting up rust"
-      echo -e "\nPrepping\n"
-      mv prep/v1/nightly/Cargo.toml src-tauri/Cargo.toml
-      mv prep/v1/tauri.conf.json src-tauri/tauri.conf.json
-      mv prep/v1/vite.config.js vite.config.json
-      mv prep/v1/package.json package.json
-      rm package-lock.json
+      # echo -e "\nPrepping\n"
+      # mv prep/v1/nightly/Cargo.toml src-tauri/Cargo.toml
+      # mv prep/v1/tauri.conf.json src-tauri/tauri.conf.json
+      # mv prep/v1/vite.config.js vite.config.json
+      # mv prep/v1/package.json package.json
+      # rm package-lock.json
       npm install
       echo -e "Finished installing frontend deps"
       npm run tauri build -- --bundles deb
