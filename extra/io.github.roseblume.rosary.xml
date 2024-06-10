@@ -282,9 +282,28 @@
             <image>https://raw.githubusercontent.com/RoseBlume/Rosary/side/menu.png</image>
             <caption />
         </screenshot>
+        <screenshot>
+            <image>https://raw.githubusercontent.com/RoseBlume/Rosary/side/menuex.png</image>
+            <caption />
+        </screenshot>
     </screenshots>
     <releases>
-        <release version="2.0.2" date="2024-05-06">
+        <release version="2.0.4" date="2024-06-08">
+            <description>
+                <ul>
+                    <li>Added Support for armhf</li>
+                    <li>Minor Bug Fixes</li>
+                </ul>
+            </description>
+        </release>
+        <release version="2.0.3" date="2024-06-07">
+            <description>
+                <ul>
+                    <li>Bug Fixes</li>
+                </ul>
+            </description>
+        </release>
+        <release version="2.0.2" date="2024-06-06">
             <description>
                 <ul>
                     <li>Minor Changes to UI</li>
@@ -292,7 +311,7 @@
                 </ul>
             </description>
         </release>
-        <release version="2.0.0" date="2024-05-05">
+        <release version="2.0.0" date="2024-06-05">
             <description>
             <ul>
                 <li>Updated Menu</li>
@@ -302,7 +321,7 @@
             </ul>
             </description>
         </release>
-        <release version="1.2.6" date="2024-04-27">
+        <release version="1.2.6" date="2024-05-27">
             <description>
             <ul>
                 <li>Improved Speed optimizations</li>
