@@ -18,7 +18,9 @@ const [books] = createSignal([
   {title: "The Believer not Ashamed of the Gospel, by Edward Hoare", url: "/Books/The Believer not Ashamed of the Gospel, by Edward Hoare/index.html"},
   {title: "The Influence of the Bible on Civilisation, by Ernst Von Dobschutz", url: "/Books/The Influence of the Bible on Civilisation, by Ernst Von Dobschutz/index.html"},
   {title: "The Lost Faith, by T. S. Childs", url: "/Books/The Lost Faith, by T. S. Childs/index.html"},
-  {title: "The Preacher's Complete Homiletic Commentary of the Books of the Bible, by George Barlow", url: "/Books/The_Preachers_Commentary/index.html"}
+  {title: "The Preacher's Complete Homiletic Commentary of the Books of the Bible, by George Barlow", url: "/Books/The_Preachers_Commentary/index.html"},
+  {title: "The writings of Clement of Alexandria, Vol. 1 (of 2) by Saint of Alexandria Clement", url: "/Books/Clement/index.html"},
+  {title: "New Witnesses for God (Volume 3 of 3) by B. H. Roberts", url: "/Books/Witnesses/index.html"}
 
 ]);
 
