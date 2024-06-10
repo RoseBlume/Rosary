@@ -18,9 +18,9 @@ parts:
   prep:
     plugin: dump
     source:
-      - on amd64 to amd64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.3/Rosary_2.0.3_amd64.deb
-      - on arm64 to arm64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.3/Rosary_2.0.3_arm64.deb
-      - on armhf to armhf: https://github.com/RoseBlume/Rosary/releases/download/v2.0.3/Rosary_2.0.3_armhf.deb
+      - on amd64 to amd64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.4/Rosary_2.0.4_amd64.deb
+      - on arm64 to arm64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.4/Rosary_2.0.4_arm64.deb
+      - on armhf to armhf: https://github.com/RoseBlume/Rosary/releases/download/v2.0.4/Rosary_2.0.4_armhf.deb
     source-type: deb
     override-pull: |
       set -eu
