@@ -73,6 +73,7 @@ jobs:
           prerelease: false
           args: ${{ matrix.settings.args }}
   Publish-AppImages:
+    needs: Publish-Tauri
     permissions:
       contents: write
     strategy:
