@@ -14,17 +14,59 @@ apps:
     command: bin/rosary
     desktop: usr/share/applications/rosary.desktop
 
+package-repositories:
+  - type: apt
+    components: [main]
+    suites: [noble]
+    key-id: keyserver.ubuntu.com
+    url: http://ppa.launchpad.net/snappy-dev/snapcraft-daily/ubuntu
+
 parts:
   prep:
     plugin: dump
+    build-snaps:
+      - node/20/stable
+      - rustup/latest/stable
+    build-packages:
+      - libwebkit2gtk-4.1-dev
+      - build-essential 
+      - curl 
+      - wget 
+      - file 
+      - libxdo-dev 
+      - libssl-dev 
+      - libayatana-appindicator3-dev 
+      - librsvg2-dev
+      - dpkg
+    stage-packages:
+      - libwebkit2gtk-4.1-0
+      - libglu1-mesa
+      - libsoup-3.0-0
+      - freeglut3
+    source: .
+    #  - on amd64 to amd64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.4/Rosary_2.0.4_amd64.deb
+    #  - on arm64 to arm64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.4/Rosary_2.0.4_arm64.deb
+    #  - on armhf to armhf: https://github.com/RoseBlume/Rosary/releases/download/v2.0.4/Rosary_2.0.4_armhf.deb
+    #source-type: deb
+    override-pull: |
+    #  set -eu
+    #  craftctl default
+    rustup default nightly
+    #  sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" usr/share/applications/rosary.desktop
+    #organize:
+    #  usr/bin/rosary: bin/rosary
+  assemble:
+    after: [prep]
+    plugin: dump
     source:
-      - on amd64 to amd64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.4/Rosary_2.0.4_amd64.deb
-      - on arm64 to arm64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.4/Rosary_2.0.4_arm64.deb
-      - on armhf to armhf: https://github.com/RoseBlume/Rosary/releases/download/v2.0.4/Rosary_2.0.4_armhf.deb
+      - on amd64 to amd64: src-tauri/target/release/bundle/deb/Rosary_2.0.4_amd64.deb
+      - on arm64 to arm64: src-tauri/target/release/bundle/deb/Rosary_2.0.4_arm64.deb
+      - on armhf to armhf: src-tauri/target/release/bundle/deb/Rosary_2.0.4_armhf.deb
     source-type: deb
     override-pull: |
       set -eu
       craftctl default
+      rustup default nightly
       sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" usr/share/applications/rosary.desktop
     organize:
       usr/bin/rosary: bin/rosary
