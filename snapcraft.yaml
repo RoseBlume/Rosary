@@ -49,12 +49,9 @@ parts:
     #  - on armhf to armhf: https://github.com/RoseBlume/Rosary/releases/download/v2.0.4/Rosary_2.0.4_armhf.deb
     #source-type: deb
     override-pull: |
-    #  set -eu
-    #  craftctl default
-    rustup default nightly
-    #  sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" usr/share/applications/rosary.desktop
-    #organize:
-    #  usr/bin/rosary: bin/rosary
+      set -eu
+      craftctl default
+      rustup default nightly
   assemble:
     after: [prep]
     plugin: dump
