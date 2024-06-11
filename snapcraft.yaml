@@ -1,5 +1,5 @@
 name: jrosarybibleapp
-base: core20
+base: core22
 adopt-info: metapart
 version: '2.0.4'
 summary: Read the Bible and other Christian texts. # 79 char long summary
