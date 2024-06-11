@@ -55,8 +55,8 @@ parts:
       npm install
       npm run tauri icon Bible3.png
       npm run tauri build -- --bundles deb
-      dpkg -x src-tauri/target/release/deb/*.deb here
+      dpkg -x src-tauri/target/release/bundle/deb/*.deb here
       sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" here/usr/share/applications/rosary.desktop
-      cp -r here / 
+      cp -r here/* .
     organize:
       usr/bin/rosary: bin/rosary
