@@ -18,7 +18,7 @@ package-repositories:
   - type: apt
     components: [main]
     suites: [noble]
-    key-id: keyserver.ubuntu.com
+    key-server: keyserver.ubuntu.com
     url: http://ppa.launchpad.net/snappy-dev/snapcraft-daily/ubuntu
 
 parts:
@@ -52,6 +52,9 @@ parts:
       set -eu
       craftctl default
       rustup default nightly
+      npm install
+      npm run tauri icon Bible3.png
+      npm run tauri build
   assemble:
     after: [prep]
     plugin: dump
@@ -63,7 +66,6 @@ parts:
     override-pull: |
       set -eu
       craftctl default
-      rustup default nightly
       sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" usr/share/applications/rosary.desktop
     organize:
       usr/bin/rosary: bin/rosary
