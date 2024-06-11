@@ -18,7 +18,7 @@ package-repositories:
   - type: apt
     components: [main]
     suites: [noble]
-    key-server: keyserver.ubuntu.com
+    key-id: 78E1918602959B9C59103100F1831DDAFC42E99D
     url: http://ppa.launchpad.net/snappy-dev/snapcraft-daily/ubuntu
 
 parts:
