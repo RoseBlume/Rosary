@@ -54,23 +54,9 @@ parts:
       rustup default nightly
       npm install
       npm run tauri icon Bible3.png
-      npm run tauri build
-  assemble:
-    after: [prep]
-    plugin: dump
-    source:
-      - on amd64 to amd64: src-tauri/target/release/bundle/deb/Rosary_2.0.4_amd64.deb
-      - on arm64 to arm64: src-tauri/target/release/bundle/deb/Rosary_2.0.4_arm64.deb
-      - on armhf to armhf: src-tauri/target/release/bundle/deb/Rosary_2.0.4_armhf.deb
-    source-type: deb
-    override-pull: |
-      set -eu
-      craftctl default
-      sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" usr/share/applications/rosary.desktop
+      npm run tauri build -- --bundles deb
+      dpkg -x src-tauri/target/release/deb/*.deb here
+      sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" here/usr/share/applications/rosary.desktop
+      cp -r here / 
     organize:
       usr/bin/rosary: bin/rosary
-    stage-packages:
-      - libwebkit2gtk-4.1-0
-      - libglu1-mesa
-      - libsoup-3.0-0
-      - freeglut3
