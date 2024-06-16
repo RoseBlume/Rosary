@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>io.github.roseblume.rosary</id>
+    <launchable type="desktop-id">io.github.roseblume.rosary.desktop</launchable>
+    <name>Rosary</name>
+    <developer id="io.github.roseblume.rosary">
+        <name>James A. Rose</name>
+    </developer>
+    <content_rating type="oars-1.1">
+        <content_attribute id="violence-realistic">mild</content_attribute>
+        <content_attribute id="violence-bloodshed">mild</content_attribute>
+        <content_attribute id="violence-desecration">mild</content_attribute>
+        <content_attribute id="violence-slavery">mild</content_attribute>
+        <content_attribute id="drugs-alcohol">mild</content_attribute>
+        <content_attribute id="sex-nudity">mild</content_attribute>
+        <content_attribute id="sex-themes">mild</content_attribute>
+        <content_attribute id="language-discrimination">mild</content_attribute>
+    </content_rating>
+    <keywords>
+        <keyword>Jesus</keyword>
+        <keyword>Books</keyword>
+        <keyword>Bible</keyword>
+        <keyword>Bibles</keyword>
+        <keyword>God</keyword>
+        <keyword>Christian</keyword>
+        <keyword>Christianity</keyword>
+        <keyword>Church</keyword>
+        <keyword>Faith</keyword>
+        <keyword>Religion</keyword>
+        <keyword>Prayer</keyword>
+        <keyword>Gospel</keyword>
+        <keyword>Holy</keyword>
+        <keyword>Salvation</keyword>
+        <keyword>Worship</keyword>
+        <keyword>Heaven</keyword>
+        <keyword>Grace</keyword>
+        <keyword>Holy</keyword>
+        <keyword>Jesus</keyword>
+        <keyword>God</keyword>
+        <keyword>Faith</keyword>
+        <keyword>Religion</keyword>
+        <keyword>Prayer</keyword>
+        <keyword>Gospel</keyword>
+        <keyword>Holy</keyword>
+        <keyword>Salvation</keyword>
+        <keyword>Worship</keyword>
+        <keyword>Heaven</keyword>
+        <keyword>Grace</keyword>
+        <keyword>Christ</keyword>
+        <keyword>Devotion</keyword>
+        <keyword>Saints</keyword>
+        <keyword>Chapel</keyword>
+        <keyword>Cathedral</keyword>
+        <keyword>Eden</keyword>
+        <keyword>Genesis</keyword>
+        <keyword>Revelation</keyword>
+        <keyword>Pentecost</keyword>
+        <keyword>Epistle</keyword>
+        <keyword>Apostles</keyword>
+        <keyword>Disciple</keyword>
+        <keyword>Messiah</keyword>
+        <keyword>Prophecy</keyword>
+        <keyword>Trinity</keyword>
+        <keyword>Miracles</keyword>
+        <keyword>Savior</keyword>
+        <keyword>Blessings</keyword>
+        <keyword>Pastor</keyword>
+        <keyword>Ministry</keyword>
+        <keyword>Sanctuary</keyword>
+        <keyword>New Testament</keyword>
+        <keyword>Old Testament</keyword>
+        <keyword>Scripture</keyword>
+        <keyword>Sermon</keyword>
+        <keyword>Shepherd</keyword>
+        <keyword>Immaculate</keyword>
+        <keyword>Incarnation</keyword>
+        <keyword>Parables</keyword>
+        <keyword>Tabernacle</keyword>
+        <keyword>Divine</keyword>
+        <keyword>Sacred</keyword>
+        <keyword>Sin</keyword>
+        <keyword>Spirit</keyword>
+        <keyword>Preacher</keyword>
+        <keyword>Hallelujah</keyword>
+        <keyword>Baptism</keyword>
+        <keyword>Rosary</keyword>
+        <keyword>Psalms</keyword>
+        <keyword>Exodus</keyword>
+        <keyword>Monastery</keyword>
+        <keyword>Hymns</keyword>
+        <keyword>Sacrament</keyword>
+        <keyword>Literature</keyword>
+        <keyword>Reading</keyword>
+        <keyword>History</keyword>
+        <keyword>Education</keyword>
+        <keyword>Books</keyword>
+        <keyword>Study</keyword>
+        <keyword>Linux</keyword>
+        <keyword>Book</keyword>
+        <keyword>Apostle</keyword>
+        <keyword>BibleStudy</keyword>
+        <keyword>Chapel</keyword>
+        <keyword>Covenant</keyword>
+        <keyword>Disciple</keyword>
+        <keyword>Eucharist</keyword>
+        <keyword>Evangelist</keyword>
+        <keyword>Faithful</keyword>
+        <keyword>Gospel</keyword>
+        <keyword>Grace</keyword>
+        <keyword>Heaven</keyword>
+        <keyword>Holy</keyword>
+        <keyword>Inspiration</keyword>
+        <keyword>Jerusalem</keyword>
+        <keyword>Kingdom</keyword>
+        <keyword>Liturgy</keyword>
+        <keyword>Miracle</keyword>
+        <keyword>Mission</keyword>
+        <keyword>Mystic</keyword>
+        <keyword>Parish</keyword>
+        <keyword>Pilgrimage</keyword>
+        <keyword>Prayer</keyword>
+        <keyword>Prophet</keyword>
+        <keyword>Redemption</keyword>
+        <keyword>Revelation</keyword>
+        <keyword>Saint</keyword>
+        <keyword>Salvation</keyword>
+        <keyword>Sanctuary</keyword>
+        <keyword>Theology</keyword>
+        <keyword>Virtue</keyword>
+        <keyword>Wisdom</keyword>
+        <keyword>Worship</keyword>
+        <keyword>Zeal</keyword>
+        <keyword>Anthology</keyword>
+        <keyword>Biography</keyword>
+        <keyword>Classic</keyword>
+        <keyword>Criticism</keyword>
+        <keyword>Drama</keyword>
+        <keyword>Essay</keyword>
+        <keyword>Fiction</keyword>
+        <keyword>Genre</keyword>
+        <keyword>Imagination</keyword>
+        <keyword>Journal</keyword>
+        <keyword>Literacy</keyword>
+        <keyword>Manuscript</keyword>
+        <keyword>Narrative</keyword>
+        <keyword>Novel</keyword>
+        <keyword>Poetry</keyword>
+        <keyword>Prose</keyword>
+        <keyword>Publish</keyword>
+        <keyword>Quotation</keyword>
+        <keyword>Reading</keyword>
+        <keyword>Story</keyword>
+        <keyword>Text</keyword>
+        <keyword>Writer</keyword>
+        <keyword>Anthropology</keyword>
+        <keyword>Archaeology</keyword>
+        <keyword>Culture</keyword>
+        <keyword>Demography</keyword>
+        <keyword>Economics</keyword>
+        <keyword>Geography</keyword>
+        <keyword>History</keyword>
+        <keyword>Law</keyword>
+        <keyword>Linguistics</keyword>
+        <keyword>Philosophy</keyword>
+        <keyword>Politics</keyword>
+        <keyword>Psychology</keyword>
+        <keyword>Sociology</keyword>
+        <keyword>Theology</keyword>
+        <keyword>Scripture</keyword>
+        <keyword>Spirituality</keyword>
+        <keyword>Meditation</keyword>
+        <keyword>Devotion</keyword>
+        <keyword>Blessing</keyword>
+        <keyword>Miracle</keyword>
+        <keyword>Prophecy</keyword>
+        <keyword>Resurrection</keyword>
+        <keyword>Sacrament</keyword>
+        <keyword>Saint</keyword>
+        <keyword>Sermon</keyword>
+        <keyword>Testament</keyword>
+        <keyword>Theology</keyword>
+        <keyword>Trinity</keyword>
+        <keyword>Virtue</keyword>
+        <keyword>Wisdom</keyword>
+        <keyword>Worship</keyword>
+        <keyword>Zeal</keyword>
+        <keyword>Apostle</keyword>
+        <keyword>Disciple</keyword>
+        <keyword>Evangelist</keyword>
+        <keyword>Martyr</keyword>
+        <keyword>Missionary</keyword>
+        <keyword>Parish</keyword>
+        <keyword>Pilgrimage</keyword>
+        <keyword>Revelation</keyword>
+        <keyword>Sanctuary</keyword>
+        <keyword>Sin</keyword>
+        <keyword>Soul</keyword>
+        <keyword>Spirit</keyword>
+        <keyword>Veneration</keyword>
+        <keyword>Vow</keyword>
+        <keyword>Worship</keyword>
+        <keyword>Youth</keyword>
+        <keyword>Zeal</keyword>
+        <keyword>Baptism</keyword>
+        <keyword>Charity</keyword>
+        <keyword>Communion</keyword>
+        <keyword>Confession</keyword>
+        <keyword>Confirmation</keyword>
+        <keyword>Consecration</keyword>
+        <keyword>Covenant</keyword>
+        <keyword>Creed</keyword>
+        <keyword>Doctrine</keyword>
+        <keyword>Eucharist</keyword>
+        <keyword>Evangelism</keyword>
+        <keyword>Fellowship</keyword>
+        <keyword>Glory</keyword>
+        <keyword>Hymn</keyword>
+        <keyword>Incarnation</keyword>
+        <keyword>Kingdom</keyword>
+        <keyword>Liturgy</keyword>
+        <keyword>Ministry</keyword>
+        <keyword>Miracle</keyword>
+        <keyword>Mission</keyword>
+        <keyword>Mystic</keyword>
+        <keyword>Parable</keyword>
+        <keyword>Penance</keyword>
+        <keyword>Praise</keyword>
+        <keyword>Preaching</keyword>
+        <keyword>Prophecy</keyword>
+        <keyword>Redemption</keyword>
+        <keyword>Repentance</keyword>
+        <keyword>Resurrection</keyword>
+        <keyword>Revelation</keyword>
+        <keyword>Sacrament</keyword>
+        <keyword>Saint</keyword>
+        <keyword>Salvation</keyword>
+        <keyword>Sanctification</keyword>
+        <keyword>Scripture</keyword>
+        <keyword>Sermon</keyword>
+        <keyword>Sin</keyword>
+        <keyword>Soul</keyword>
+        <keyword>Spirit</keyword>
+        <keyword>Testament</keyword>
+        <keyword>Theology</keyword>
+        <keyword>Trinity</keyword>
+        <keyword>Virtue</keyword>
+        <keyword>Wisdom</keyword>
+        <keyword>Worship</keyword>
+        <keyword>Zeal</keyword>
+
+    </keywords>
+    <branding>
+        <color type="primary" scheme_preference="light">#ff3751</color>
+        <color type="primary" scheme_preference="dark">#8f0013</color>
+    </branding>
+    <recommends>
+        <display_length compare="ge">360</display_length>
+    </recommends>
+    <summary>Study Christianity</summary>
+
+    <metadata_license>MIT</metadata_license>
+    <project_license>MIT</project_license>
+    <url type="homepage">https://github.com/RoseBlume/Rosary</url>
+
+    <supports>
+        <control>pointing</control>
+        <control>keyboard</control>
+        <control>touch</control>
+    </supports>
+
+    <description>
+        <p>
+            Read the Bible and other Christian texts. This projects goal is to allow each person to study the bible and come to their own conclusion about their faith.
+        </p>
+    </description>
+    <screenshots>
+        <screenshot type="default">
+            <image>https://raw.githubusercontent.com/RoseBlume/Rosary/side/main.png</image>
+            <caption />
+        </screenshot>
+        <screenshot>
+            <image>https://raw.githubusercontent.com/RoseBlume/Rosary/side/menu.png</image>
+            <caption />
+        </screenshot>
+        <screenshot>
+            <image>https://raw.githubusercontent.com/RoseBlume/Rosary/side/menuex.png</image>
+            <caption />
+        </screenshot>
+    </screenshots>
+    <releases>
+        <release version="2.0.4" date="2024-06-08">
+            <description>
+                <ul>
+                    <li>Added Support for armhf</li>
+                    <li>Minor Bug Fixes</li>
+                </ul>
+            </description>
+        </release>
+        <release version="2.0.3" date="2024-06-07">
+            <description>
+                <ul>
+                    <li>Bug Fixes</li>
+                </ul>
+            </description>
+        </release>
+        <release version="2.0.2" date="2024-06-06">
+            <description>
+                <ul>
+                    <li>Minor Changes to UI</li>
+                    <li>Bug Fixes</li>
+                </ul>
+            </description>
+        </release>
+        <release version="2.0.0" date="2024-06-05">
+            <description>
+            <ul>
+                <li>Updated Menu</li>
+                <li>New Icon</li>
+                <li>Improved Loading times</li>
+                <li>Added Better Support for aarch64</li>
+            </ul>
+            </description>
+        </release>
+        <release version="1.2.6" date="2024-05-27">
+            <description>
+            <ul>
+                <li>Improved Speed optimizations</li>
+            </ul>
+            </description>
+        </release>
+        <release version="1.2.5" date="2024-05-24">
+            <description>
+            <ul>
+                <li>Improved Binary Sizes</li>
+                <li>Compiled using a more cutting edge </li>
+            </ul>
+            </description>
+        </release>
+        <release version="1.2.4" date="2024-05-23" >
+            <description>
+            <ul>
+                <li>Improved Conditional Rendering</li>
+            </ul>
+            </description>
+        </release>
+        <release version="1.2.3" date="2024-05-21" >
+            <description>
+            <ul>
+                <li>Switched from React to SolidJS frontend framework</li>
+            </ul>
+            </description>
+        </release>
+    </releases>
+    <update_contact>jrosary-dev@outlook.com</update_contact>
+</component>

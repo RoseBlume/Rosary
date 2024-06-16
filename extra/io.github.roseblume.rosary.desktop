@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=A Bible app written with Tauri
+Exec=rosary
+Icon=rosary
+Name=Rosary
+Terminal=false
+Type=Application
