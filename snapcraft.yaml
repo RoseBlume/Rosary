@@ -50,7 +50,7 @@ parts:
       - libwebkit2gtk-4.1-0
       - libglu1-mesa
       - libsoup-3.0-0
-      - freeglut3
+      - freeglut3-dev
     source: .
     #  - on amd64 to amd64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.4/Rosary_2.0.4_amd64.deb
     #  - on arm64 to arm64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.4/Rosary_2.0.4_arm64.deb
