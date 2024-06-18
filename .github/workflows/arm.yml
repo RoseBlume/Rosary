@@ -10,7 +10,7 @@ jobs:
         arch: [armv7l, aarch64]
         include:
         - arch: armv7l
-          cpu: cortex-a7
+          cpu: cortex-a76
           deb: armhf
           base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv7-Bookworm.img.xz
           cpu_info: raspberrypi_3b
