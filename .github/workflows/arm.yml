@@ -28,7 +28,7 @@ jobs:
             . "$HOME/.cargo/env"
             # curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash
             # Install framework specific packages
-            apt-get install -y snap
+            apt-get install -y snapd
             sudo snap install node --channel=20/stable --classic
             npm install next@latest react@latest react-dom@latest eslint-config-next@latest
             # Install build tools and tauri-cli requirements
@@ -41,4 +41,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Debian Bundle
-          path: ${{ github.workspace }}src-tauri/target/release/bundle/deb/tauri_1.4_arm64.deb
+          path: ${{ github.workspace }}/src-tauri/target/release/bundle/deb/tauri_1.4_arm64.deb
