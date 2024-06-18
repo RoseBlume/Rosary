@@ -46,3 +46,4 @@ jobs:
         with:
           name: Debian Bundle
           path: ${{ github.workspace }}/src-tauri/target/release/bundle/deb/tauri_1.4_arm64.deb
+    
