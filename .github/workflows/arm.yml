@@ -7,7 +7,7 @@ jobs:
   build:
     strategy:
       matrix:
-        arch: [armv7l, aarch64]
+        arch: [aarch64, armv7l]
         include:
         - arch: aarch64
           cpu: cortex-a72
