@@ -49,7 +49,7 @@ jobs:
             # Install frontend dependencies
             npm install
             # Build the application
-            npm run tauri build -- --bundles deb rpm
+            NO_STRIP=true npm run tauri build -- --bundles deb rpm appimage
       - name: Upload deb bundle
         uses: actions/upload-artifact@v3
         with:
@@ -60,3 +60,8 @@ jobs:
         with:
           name: RPM Bundle
           path: ${{ github.workspace }}/src-tauri/target/release/bundle/rpm/rosary_${{ env.VERSION }}_${{ matrix.other }}.rpm
+      - name: Upload appimage bundle
+        uses: actions/upload-artifact@v3
+        with:
+          name: AppImage Bundle
+          path: ${{ github.workspace }}/src-tauri/target/release/bundle/appimage/rosary_${{ env.VERSION }}_${{ matrix.other }}.appimage
