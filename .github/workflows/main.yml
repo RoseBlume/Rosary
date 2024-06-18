@@ -66,8 +66,69 @@ jobs:
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.settings.args }}
+  #   runs-on: ubuntu-latest
+  Publish-Arm64:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        settings:
+          - platform: 'ubuntu-22.04' # for Tauri v1 you could replace this with ubuntu-20.04.
+            args: ''
+          #- platform: 'arm64'
+          #  args: '--bundles deb rpm'
+          #- platform: 'armhf'
+          #  args: '--bundles deb rpm'
 
-      - uses: actions/checkout@v3
+    runs-on: ${{ matrix.settings.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install dependencies (ubuntu only)
+        if: matrix.settings.platform == 'ubuntu-22.04' # This must match the platform value defined above.
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.0-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+        # webkitgtk 4.0 is for Tauri v1 - webkitgtk 4.1 is for Tauri v2.
+        # You can remove the one that doesn't apply to your app to speed up the workflow a bit.
+        # Moves Cargo.toml to src-tauri
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: 'npm' # Set this to npm, npm or pnpm.
+
+      - name: install Rust Nightly
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          # Those targets are only used on macos runners so it's in an `if` to slightly speed up windows and linux builds.
+          targets: ${{ matrix.settings.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: install frontend dependencies
+        # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
+        run: npm install # change this to npm or pnpm depending on which one you use.
+
+      - name: add icons
+        run: npm run tauri icon Bible3.png
+        
+      - uses: tauri-apps/tauri-action@v0.5.5
+        id: tauri
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version.
+          releaseName: 'Full Release v__VERSION__'
+          releaseBody: 'See the assets to download this version and install.'
+          releaseDraft: false
+          prerelease: false
+          args: ${{ matrix.settings.args }}
+      
       - uses: pguyot/arm-runner-action@v2.5.2
         with:
           base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv8-Bookworm.img.xz
@@ -107,56 +168,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.tauri.outputs.releaseUploadUrl }} # This pulls from the output of the `tauri-apps/tauri-action` step
+          upload_url: ${{ steps.tauri.outputs.releaseUploadUrl.description }} # This pulls from the output of the `tauri-apps/tauri-action` step
           content_type: application/octet-stream
-          name: Rosary_${{steps.tauri.outputs.appVersion}}_arm64.deb
-          file: src-tauri/target/release/bundle/deb/Rosary_${{steps.tauri.outputs.appVersion}}_arm64.deb # Replace this with the path to your deb file
-  # build:
-  #   needs: Publish-Tauri
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - uses: pguyot/arm-runner-action@v2.5.2
-  #       with:
-  #         base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv8-Bookworm.img.xz
-  #         cpu: cortex-a76
-  #         bind_mount_repository: true
-  #         image_additional_mb: 10240
-  #         optimize_image: false
-  #         commands: |
-  #           # Rust complains (rightly) that $HOME doesn't match eid home
-  #           export HOME=/root
-  #           # Workaround to CI worker being stuck on Updating crates.io index
-  #           export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
-  #           # Install setup prerequisites
-  #           apt-get update -y --allow-releaseinfo-change
-  #           apt-get upgrade -y
-  #           apt-get autoremove -y
-  #           apt-get install curl
-  #           curl https://sh.rustup.rs -sSf | sh -s -- -y
-  #           . "$HOME/.cargo/env"
-  #           # curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash
-  #           # Install framework specific packages
-  #           apt-get install -y nodejs
-  #           apt-get install -y npm
-  #           npm install -g npm@latest
-  #           npm install -g node@latest
-  #           npm install next@latest react@latest react-dom@latest eslint-config-next@latest
-  #           # Install build tools and tauri-cli requirements
-  #           apt-get install -y libwebkit2gtk-4.1-dev build-essential wget libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
-  #           # Install Rust Nightly
-  #           rustup default nightly # Only Enable for nightly builds
-  #           # Install frontend dependencies
-  #           npm install
-  #           # Build the application
-  #           npm run tauri build
-  #     - name: Upload deb bundle
-  #       uses: actions/upload-artifact@v3
-  #       with:
-  #         name: Debian Bundle
-  #         path: ${{ github.workspace }}/src-tauri/target/release/bundle/deb/tauri_1.4_arm64.deb
+          name: Rosary_${{steps.tauri.outputs.appVersion.description }}_arm64.deb
+          file: src-tauri/target/release/bundle/deb/Rosary_${{steps.tauri.outputs.appVersion.description }}_arm64.deb # Replace this with the path to your deb file 
 
-          #   Arm64Publish:
+#   Arm64Publish:
 #     permissions:
 #       contents: write
 #     strategy:
