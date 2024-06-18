@@ -8,8 +8,8 @@ updates:
   - package-ecosystem: npm
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "hourly"
   - package-ecosystem: cargo
     directory: "/src-tauri"
     schedule:
-      interval: "daily"
+      interval: "hourly"
