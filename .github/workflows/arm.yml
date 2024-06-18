@@ -9,6 +9,11 @@ jobs:
       matrix:
         arch: [armv7l, aarch64]
         include:
+        - arch: armv6l
+          cpu: arm1176
+          deb: armhf
+          base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv6-Bookworm.img.xz
+          cpu_info: raspberrypi_zero_w
         - arch: armv7l
           cpu: cortex-a73
           deb: armhf
