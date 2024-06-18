@@ -1,4 +1,4 @@
-FROM rust:1.78.0-trixie
+FROM rust:latest
 
 WORKDIR /usr/app/raspirus
 COPY . .
