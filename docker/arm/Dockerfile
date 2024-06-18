@@ -15,9 +15,7 @@ RUN apt-get update && apt-get install -y build-essential \
     libgtk-3-dev \
     libayatana-appindicator3-dev \
     librsvg2-dev \
-    gcc-aarch64-linux-gnu \
-    libssl-dev \
-    libwebkit2gtk-4.1-dev
+    gcc-aarch64-linux-gnu
 
 # Add architecture
 RUN dpkg --add-architecture arm64 \
