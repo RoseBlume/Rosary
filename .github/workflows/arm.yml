@@ -14,11 +14,11 @@ jobs:
           base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv8-Bookworm.img.xz
           deb: arm64
           other: aarch64
-        - arch: armv7l
-          cpu: cortex-a53
-          deb: armhf
-          other: arm
-          base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv7-Bookworm.img.xz
+        #- arch: armv7l
+        #  cpu: cortex-a53
+        #  deb: armhf
+        #  other: arm
+        #  base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv7-Bookworm.img.xz
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
