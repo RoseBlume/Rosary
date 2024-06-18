@@ -4,13 +4,25 @@ on:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        arch: [armv7l, aarch64]
+        include:
+        - arch: armv7l
+          cpu: cortex-a7
+          base_image: raspi_2_bookworm:20231109
+          cpu_info: raspberrypi_3b
+        - arch: aarch64
+          cpu: cortex-a76
+          base_image: raspi_4_bookworm:20231109
+          cpu_info: raspberrypi_zero2_w_arm64_w
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: pguyot/arm-runner-action@v2.5.2
         with:
-          base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv8-Bookworm.img.xz
-          cpu: cortex-a72
+          base_image: ${{ matrix.base_image }}
+          cpu: ${{ matrix.cpu }}
           bind_mount_repository: true
           image_additional_mb: 10240
           optimize_image: false
