@@ -15,12 +15,14 @@ RUN apt-get update && apt-get install -y build-essential \
     libgtk-3-dev \
     libayatana-appindicator3-dev \
     librsvg2-dev \
-    gcc-aarch64-linux-gnu
+    gcc-aarch64-linux-gnu \
+    libwebkit2gtk-4.1-dev \
+    libssl-dev
 
 # Add architecture
-RUN dpkg --add-architecture arm64 \
-    && apt-get -qq update \
-    && apt-get -qq install -y libwebkit2gtk-4.1-dev:arm64 libssl-dev:arm64
+RUN dpkg --add-architecture arm64 
+RUN apt-get update
+RUN apt-get install -y libwebkit2gtk-4.1-dev:arm64 libssl-dev:arm64
 
 # Add Rust target
 RUN rustup target add aarch64-unknown-linux-gnu
