@@ -41,7 +41,7 @@ RUN cargo install --path src-tauri/
 RUN cargo install tauri-cli --locked
 
 # Set environment variables
-ENV PKG_CONFIG_SYSROOT_DIR=/usr/aarch64-linux-gnu/
+ENV PKG_CONFIG_SYSROOT_DIR=/usr/arm-linux-gnueabihf/
 
 # Build app
-RUN cargo tauri build --target aarch64-unknown-linux-gnu -b deb
+RUN cargo tauri build --target armv7-unknown-linux-gnueabihf -b deb
