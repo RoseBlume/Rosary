@@ -1,0 +1,12 @@
+/home/james/Documents/Rosary/src-tauri/target/debug/deps/libico-08bbb2d614a0162a.rmeta: /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/lib.rs /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/macros.rs /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/bmpdepth.rs /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/icondir.rs /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/image.rs /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/restype.rs
+
+/home/james/Documents/Rosary/src-tauri/target/debug/deps/libico-08bbb2d614a0162a.rlib: /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/lib.rs /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/macros.rs /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/bmpdepth.rs /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/icondir.rs /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/image.rs /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/restype.rs
+
+/home/james/Documents/Rosary/src-tauri/target/debug/deps/ico-08bbb2d614a0162a.d: /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/lib.rs /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/macros.rs /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/bmpdepth.rs /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/icondir.rs /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/image.rs /home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/restype.rs
+
+/home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/lib.rs:
+/home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/macros.rs:
+/home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/bmpdepth.rs:
+/home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/icondir.rs:
+/home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/image.rs:
+/home/james/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ico-0.3.0/src/restype.rs:
