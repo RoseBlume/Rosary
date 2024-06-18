@@ -43,7 +43,7 @@ jobs:
             . "$HOME/.cargo/env"
             # curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash
             # Install framework specific packages
-            # apt-get install -y nodejs
+            apt-get install -y nodejs
             apt-get install -y npm
             sudo npm install --force -g npm@latest
             sudo npm install --force -g node@latest
