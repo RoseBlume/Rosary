@@ -1,7 +1,8 @@
 name: Raspberry Pi compile
 on:
   workflow_dispatch:
-
+env:
+    VERSION: 2.0.5
 jobs:
   build:
     strategy:
@@ -10,11 +11,13 @@ jobs:
         include:
         - arch: armv7l
           cpu: cortex-a7
+          deb: armhf
           base_image: raspi_2_bookworm:20231109
           cpu_info: raspberrypi_3b
         - arch: aarch64
           cpu: cortex-a76
           base_image: raspi_4_bookworm:20231109
+          deb: arm64
           cpu_info: raspberrypi_zero2_w_arm64_w
     runs-on: ubuntu-latest
     steps:
@@ -57,5 +60,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Debian Bundle
-          path: ${{ github.workspace }}/src-tauri/target/release/bundle/deb/tauri_1.4_arm64.deb
+          path: ${{ github.workspace }}/src-tauri/target/release/bundle/deb/Rosary_${{ env.VERSION }}_${{ matrix.deb }}.deb
     
