@@ -12,11 +12,11 @@ jobs:
         - arch: armv7l
           cpu: cortex-a7
           deb: armhf
-          base_image: raspi_2_bookworm:20231109
+          base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv7-Bookworm.img.xz
           cpu_info: raspberrypi_3b
         - arch: aarch64
           cpu: cortex-a76
-          base_image: raspi_4_bookworm:20231109
+          base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv8-Bookworm.img.xz
           deb: arm64
           cpu_info: raspberrypi_zero2_w_arm64_w
     runs-on: ubuntu-latest
