@@ -69,8 +69,9 @@ parts:
       npm install --force -g nodejs@latest
       rustup default nightly
       npm install
-      npm run tauri icon Bible3.png
-      npm run tauri build -- --bundles deb
+      cargo install --path src-tauri/
+      cargo install tauri-cli --locked
+      cargo tauri build --target aarch64-unknown-linux-gnu -b deb
       dpkg -x src-tauri/target/release/bundle/deb/*.deb here
       sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" here/usr/share/applications/rosary.desktop
       cp -r here/* .
