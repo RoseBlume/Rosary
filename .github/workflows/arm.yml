@@ -11,13 +11,13 @@ jobs:
         include:
         - arch: aarch64
           cpu: cortex-a72
-          base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv8-Bookworm.img.xz
           deb: arm64
           other: aarch64
+          base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv8-Bookworm.img.xz
         - arch: armv7l
           cpu: cortex-a53
           deb: armhf
-          other: arm
+          other: armhfp
           base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv7-Bookworm.img.xz
     runs-on: ubuntu-latest
     steps:
@@ -49,19 +49,14 @@ jobs:
             # Install frontend dependencies
             npm install
             # Build the application
-            NO_STRIP=true npm run tauri build -- --bundles deb rpm appimage
+            npm run tauri build -- --bundles deb rpm
       - name: Upload deb bundle
         uses: actions/upload-artifact@v3
         with:
-          name: Debian Bundle
+          name: Debian ${{ matrix.deb }}Bundle
           path: ${{ github.workspace }}/src-tauri/target/release/bundle/deb/Rosary_${{ env.VERSION }}_${{ matrix.deb }}.deb
-      - name: Upload rpm bundle
+      - name: Upload rpm ${{}}bundle
         uses: actions/upload-artifact@v3
         with:
-          name: RPM Bundle
+          name: RPM ${{ matrix.other }}Bundle
           path: ${{ github.workspace }}/src-tauri/target/release/bundle/rpm/rosary_${{ env.VERSION }}-1_${{ matrix.other }}.rpm
-      - name: Upload appimage bundle
-        uses: actions/upload-artifact@v3
-        with:
-          name: AppImage Bundle
-          path: ${{ github.workspace }}/src-tauri/target/release/bundle/appimage/rosary_${{ env.VERSION }}_${{ matrix.other }}.appimage
