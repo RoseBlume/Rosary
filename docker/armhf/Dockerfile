@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM rust:1.79.0-bookworm
 
 WORKDIR /usr/app/raspirus
 COPY . .
@@ -18,12 +18,12 @@ RUN apt-get update && apt-get install -y build-essential \
     gcc-aarch64-linux-gnu
 
 # Add architecture
-RUN dpkg --add-architecture arm64 \
+RUN dpkg --add-architecture armhf \
     && apt-get -qq update \
-    && apt-get -qq install -y libwebkit2gtk-4.1-dev:armhf libssl-dev:armhf
+    && apt-get -qq install -y libwebkit2gtk-4.1-dev:armhf
 
 # Add Rust target
-RUN rustup target add aarch64-unknown-linux-gnu
+RUN rustup target add armv7-unknown-linux-gnueabihf
 
 # Use latest npm version
 RUN npm install -g npm@latest

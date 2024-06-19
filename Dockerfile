@@ -25,10 +25,11 @@ RUN apt-get update && apt-get install -y libwebkit2gtk-4.1-dev \
 #RUN apt-get install -y libwebkit2gtk-4.1-dev:arm64 libssl-dev:arm64
 
 # Add Rust target
-RUN rustup target add aarch64-unknown-linux-gnu
+RUN rustup target add armv7-unknown-linux-gnueabihf
 
 # Use latest npm version
 RUN npm install -g npm@latest
+RUN npm install -g nodejs@latest
 
 # Perform npm install
 RUN npm install
