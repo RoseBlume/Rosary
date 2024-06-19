@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:latest
 
 WORKDIR /usr/app/raspirus
 COPY . .
