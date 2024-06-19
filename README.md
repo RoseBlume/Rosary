@@ -1,6 +1,6 @@
 # Install for Windows
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 1. Navigate to releases, and click on the lastest release.
 2. Download the setup.exe file.
@@ -72,6 +72,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://paul-guyot.com/"><img src="https://avatars.githubusercontent.com/u/168407?v=4?s=100" width="100px;" alt="Paul Guyot"/><br /><sub><b>Paul Guyot</b></sub></a><br /><a href="#tool-pguyot" title="Tools">🔧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://benji377.netlify.app"><img src="https://avatars.githubusercontent.com/u/50681275?v=4?s=100" width="100px;" alt="Benjamin Demetz"/><br /><sub><b>Benjamin Demetz</b></sub></a><br /><a href="https://github.com/RoseBlume/Rosary/commits?author=Benji377" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
