@@ -39,7 +39,6 @@ parts:
   prep:
     plugin: dump
     build-snaps:
-      - node/20/stable
       - rustup/latest/stable
     build-packages:
       - libwebkit2gtk-4.1-dev
@@ -52,6 +51,7 @@ parts:
       - libayatana-appindicator3-dev 
       - librsvg2-dev
       - dpkg
+      - npm
     stage-packages:
       - libwebkit2gtk-4.1-0
       - libglu1-mesa
@@ -65,6 +65,8 @@ parts:
     override-pull: |
       set -eu
       craftctl default
+      npm install --force -g npm@latest
+      npm install --force -g nodejs@latest
       rustup default nightly
       npm install
       npm run tauri icon Bible3.png

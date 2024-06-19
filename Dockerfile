@@ -35,7 +35,7 @@ RUN npm install
 
 # Create the out directory
 RUN mkdir out
-
+RUN rustup default nightly
 # Install app deps
 RUN cargo install --path src-tauri/
 RUN cargo install tauri-cli --locked
