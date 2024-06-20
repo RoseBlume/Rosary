@@ -57,9 +57,6 @@ RUN cd ../..
 RUN export ANDROID_HOME=$PWD/Android
 RUN export NDK_HOME=$PWD/Android/ndk/27.0.11718014
 
-RUN apt-get -y update
-RUN apt-get install -y libwebkit2gtk-4.0-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
-
 RUN npm install
 RUN npm run tauri android init
 RUN npm run tauri android build
