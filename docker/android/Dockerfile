@@ -47,8 +47,7 @@ RUN mkdir Android
 RUN wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
 RUN unzip *.zip -d Android
 
-RUN cd Android/cmdline-tools
-RUN yes | bin/sdkmanager --licenses --sdk_root=..> /dev/null || true
+RUN yes | Android/cmdline-tools/bin/sdkmanager --licenses --sdk_root=..> /dev/null || true
 
 RUN ANDROID/cmdline-tools/bin/sdkmanager --sdk_root=Android "platforms;android-33"
 RUN ANDROID/cmdline-tools/bin/sdkmanager --sdk_root=Android "platform-tools"
