@@ -32,10 +32,6 @@ RUN npm install
 # Create the out directory
 RUN mkdir out
 
-# Install app deps
-RUN cargo install --path src-tauri/
-RUN cargo install tauri-cli --locked
-
 RUN apt-get install -y openjdk-21-jre
 RUN apt-get install -y gradle
 RUN apt-get install -y rustup
@@ -49,7 +45,7 @@ RUN mkdir Android
 RUN wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
 RUN unzip *.zip -d Android
 
-RUN cd Android/cmdline-tools
+RUN cd Android/cmdline-tools/latest
 RUN yes | bin/sdkmanager --licenses --sdk_root=..> /dev/null || true
 
 RUN bin/sdkmanager --sdk_root=.. "platforms;android-33"
