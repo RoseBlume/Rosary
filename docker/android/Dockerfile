@@ -49,10 +49,10 @@ RUN unzip *.zip -d Android
 
 RUN yes | Android/cmdline-tools/bin/sdkmanager --licenses --sdk_root=..> /dev/null || true
 
-RUN ANDROID/cmdline-tools/bin/sdkmanager --sdk_root=Android "platforms;android-33"
-RUN ANDROID/cmdline-tools/bin/sdkmanager --sdk_root=Android "platform-tools"
-RUN ANDROID/cmdline-tools/bin/sdkmanager --sdk_root=Android "build-tools;34.0.0"
-RUN ANDROID/cmdline-tools/bin/sdkmanager --sdk_root=Android "ndk;27.0.11718014"
+RUN Android/cmdline-tools/bin/sdkmanager --sdk_root=Android "platforms;android-33"
+RUN Android/cmdline-tools/bin/sdkmanager --sdk_root=Android "platform-tools"
+RUN Android/cmdline-tools/bin/sdkmanager --sdk_root=Android "build-tools;34.0.0"
+RUN Android/cmdline-tools/bin/sdkmanager --sdk_root=Android "ndk;27.0.11718014"
 RUN cd ../..
 RUN export ANDROID_HOME=$PWD/Android
 RUN export NDK_HOME=$PWD/Android/ndk/27.0.11718014
