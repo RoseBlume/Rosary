@@ -1,4 +1,4 @@
-name: 'Publish'
+name: 'Android Test'
 
 on:
   workflow_dispatch:
