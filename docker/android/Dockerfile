@@ -56,8 +56,8 @@ RUN Android/cmdline-tools/bin/sdkmanager --sdk_root=Android "ndk;27.0.11718014"
 RUN cd ../..
 RUN export ANDROID_HOME=$PWD/Android
 RUN export NDK_HOME=$PWD/Android/ndk/27.0.11718014
-ENV ANDROID_HOME=Android
-ENV NDK_HOME=Android/ndk/27.0.11718014
+ENV ANDROID_HOME=/usr/app/raspirus/Android
+ENV NDK_HOME=/usr/app/raspirus/Android/ndk/27.0.11718014
 RUN npm install
 RUN npm run tauri android init
 RUN npm run tauri android build
