@@ -39,6 +39,8 @@ RUN apt-get install -y npm
 RUN npm install --force -g npm@latest
 RUN npm install --force -g nodejs@latest
 
+RUN rustup default nightly
+
 RUN rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
 
 RUN mkdir Android
