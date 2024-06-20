@@ -1,0 +1,38 @@
+name: Android Docker Image CI
+
+on:
+  workflow_dispatch:
+  push:
+env:
+  VERSION: 2.0.5
+jobs:
+  build_arm64:
+    strategy:
+      matrix:
+        include:
+          - arch: arm64 # This is the architecture for your deb file
+            triple: aarch64-unknown-linux-gnu # This is your triple for the arm64 architecture
+            dir: arm # This is the directory where the Dockerfile is located 
+          - arch: armhf # This is the architecture for your deb file
+            triple: armv7-unknown-linux-gnueabihf # This is your triple for the armhf architecture
+            dir: armhf # This is the directory where the Dockerfile is located
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Build the arm64 Docker image
+      run: docker build -t raspirus-android -f ./docker/android/Dockerfile .
+    
+    - name: Create the Docker container
+      run: docker create --name raspirus raspirus-android
+
+    - name: Create dist folder
+      run: mkdir -p ./dist
+
+    # - name: Upload file to artifacts
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: raspirus_${{ env.VERSION }}_${{ matrix.arch}}_${{ github.run_number }}.deb
+    #     path: ./dist/raspirus_${{ env.VERSION }}_${{ matrix.arch }}.deb
