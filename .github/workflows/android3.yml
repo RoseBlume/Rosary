@@ -52,6 +52,10 @@ jobs:
 
       - name: add icons
         run: npm run tauri icon Bible3.png
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu' # See 'Supported distributions' for available options
+          java-version: '21'
       - name: setup android
         run: |
           sudo apt-get clean && sudo apt-get update && sudo apt-get upgrade -y
@@ -83,8 +87,6 @@ jobs:
             # Create the out directory
           mkdir out
 
-          sudo apt-get install -y openjdk-21-jre
-          sudo apt-get install -y gradle
           # sudo apt-get install -y rustup
           sudo apt-get install -y npm
           sudo npm install --force -g npm@latest
