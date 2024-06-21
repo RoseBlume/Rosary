@@ -106,7 +106,6 @@ jobs:
           echo "yes"| Android/cmdline-tools/bin/sdkmanager --sdk_root=.. "platform-tools"
           echo "yes"| Android/cmdline-tools/bin/sdkmanager --sdk_root=.. "build-tools;34.0.0"
           echo "yes"| Android/cmdline-tools/bin/sdkmanager --sdk_root=.. "ndk;27.0.11718014"
-          cd ../..
           export ANDROID_HOME=$PWD/Android
           export NDK_HOME=$PWD/Android/ndk/27.0.11718014
             #ENV ANDROID_HOME=/usr/app/raspirus/Android
