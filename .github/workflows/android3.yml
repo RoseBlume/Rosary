@@ -54,8 +54,8 @@ jobs:
         run: npm run tauri icon Bible3.png
       - name: setup android
         run: |
-          apt-get clean && apt-get update && apt-get upgrade -y
-          apt-get update && apt-get install -y libwebkit2gtk-4.1-dev \
+          sudo apt-get clean && sudo apt-get update && apt-get upgrade -y
+          sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev \
           build-essential \
           curl \
           wget \
