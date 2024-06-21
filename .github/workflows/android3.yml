@@ -81,12 +81,12 @@ jobs:
             # Create the out directory
           mkdir out
 
-          apt-get install -y openjdk-21-jre
-          apt-get install -y gradle
-          apt-get install -y rustup
-          apt-get install -y npm
-          npm install --force -g npm@latest
-          npm install --force -g nodejs@latest
+          sudo apt-get install -y openjdk-21-jre
+          sudo apt-get install -y gradle
+          sudo apt-get install -y rustup
+          sudo apt-get install -y npm
+          sudo npm install --force -g npm@latest
+          sudo npm install --force -g nodejs@latest
 
           rustup default nightly
 
@@ -96,7 +96,7 @@ jobs:
           wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
           unzip *.zip -d Android
 
-          yes | Android/cmdline-tools/bin/sdkmanager --licenses --sdk_root=..> /dev/null || true
+          #yes | Android/cmdline-tools/bin/sdkmanager --licenses --sdk_root=..> /dev/null || true
 
           echo "yes"| Android/cmdline-tools/bin/sdkmanager --sdk_root=.. "platforms;android-33"
           echo "yes"| Android/cmdline-tools/bin/sdkmanager --sdk_root=.. "platform-tools"
