@@ -1,0 +1,124 @@
+name: 'Android Build'
+
+on:
+  workflow_dispatch:
+jobs:
+  Publish-Tauri:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        settings:
+          - platform: 'ubuntu-22.04' # for Tauri v1 you could replace this with ubuntu-20.04.
+            args: ''
+          #- platform: 'arm64'
+          #  args: '--bundles deb rpm'
+          #- platform: 'armhf'
+          #  args: '--bundles deb rpm'
+
+    runs-on: ${{ matrix.settings.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install dependencies (ubuntu only)
+        if: matrix.settings.platform == 'ubuntu-22.04' # This must match the platform value defined above.
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.0-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+        # webkitgtk 4.0 is for Tauri v1 - webkitgtk 4.1 is for Tauri v2.
+        # You can remove the one that doesn't apply to your app to speed up the workflow a bit.
+        # Moves Cargo.toml to src-tauri
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: 'npm' # Set this to npm, npm or pnpm.
+
+      - name: install Rust Nightly
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          # Those targets are only used on macos runners so it's in an `if` to slightly speed up windows and linux builds.
+          targets: ${{ matrix.settings.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: install frontend dependencies
+        # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
+        run: npm install # change this to npm or pnpm depending on which one you use.
+
+      - name: add icons
+        run: npm run tauri icon Bible3.png
+      - name: setup android
+        run: |
+          apt-get clean && apt-get update && apt-get upgrade -y
+          apt-get update && apt-get install -y libwebkit2gtk-4.1-dev \
+          build-essential \
+          curl \
+          wget \
+          file \
+          libxdo-dev \
+          libssl-dev \
+          libayatana-appindicator3-dev \
+          librsvg2-dev\
+          npm \
+          cargo \
+          gradle
+
+            # Add Rust target
+          rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
+
+            # Use latest npm version
+          npm install -g npm@latest
+          npm install -g nodejs@latest
+
+            # Perform npm install
+          npm install
+
+            # Create the out directory
+          mkdir out
+
+          apt-get install -y openjdk-21-jre
+          apt-get install -y gradle
+          apt-get install -y rustup
+          apt-get install -y npm
+          npm install --force -g npm@latest
+          npm install --force -g nodejs@latest
+
+          rustup default nightly
+
+          rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
+
+          mkdir Android
+          wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+          unzip *.zip -d Android
+
+          yes | Android/cmdline-tools/bin/sdkmanager --licenses --sdk_root=..> /dev/null || true
+
+          echo "yes"| Android/cmdline-tools/bin/sdkmanager --sdk_root=.. "platforms;android-33"
+          echo "yes"| Android/cmdline-tools/bin/sdkmanager --sdk_root=.. "platform-tools"
+          echo "yes"| Android/cmdline-tools/bin/sdkmanager --sdk_root=.. "build-tools;34.0.0"
+          echo "yes"| Android/cmdline-tools/bin/sdkmanager --sdk_root=.. "ndk;27.0.11718014"
+          cd ../..
+          export ANDROID_HOME=$PWD/Android
+          export NDK_HOME=$PWD/Android/ndk/27.0.11718014
+            #ENV ANDROID_HOME=/usr/app/raspirus/Android
+            #ENV NDK_HOME=/usr/app/raspirus/Android/ndk/27.0.11718014
+          npm install
+          npm run tauri android init
+          npm run tauri android build
+      - uses: tauri-apps/tauri-action@v0.5.5
+        id: tauri
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+            tagName: v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version.
+            releaseName: 'Full Release v__VERSION__'
+            releaseBody: 'See the assets to download this version and install.'
+            releaseDraft: false
+            prerelease: false
+            args: ${{ matrix.settings.args }}
+  #   runs-on: ubuntu-latest
