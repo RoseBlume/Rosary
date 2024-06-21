@@ -77,18 +77,20 @@ jobs:
 
             # Perform npm install
           npm install
-
+          curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly
+          . "$HOME/.cargo/env"
+          rustup default nightly
             # Create the out directory
           mkdir out
 
           sudo apt-get install -y openjdk-21-jre
           sudo apt-get install -y gradle
-          sudo apt-get install -y rustup
+          # sudo apt-get install -y rustup
           sudo apt-get install -y npm
           sudo npm install --force -g npm@latest
           sudo npm install --force -g nodejs@latest
 
-          rustup default nightly
+          # rustup default nightly
 
           rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
 
