@@ -13,9 +13,9 @@ jobs:
           - arch: arm64 # This is the architecture for your deb file
             triple: aarch64-unknown-linux-gnu # This is your triple for the arm64 architecture
             dir: arm # This is the directory where the Dockerfile is located 
-          - arch: armhf # This is the architecture for your deb file
-            triple: armv7-unknown-linux-gnueabihf # This is your triple for the armhf architecture
-            dir: armhf # This is the directory where the Dockerfile is located
+          #- arch: armhf # This is the architecture for your deb file
+          #  triple: armv7-unknown-linux-gnueabihf # This is your triple for the armhf architecture
+          #  dir: armhf # This is the directory where the Dockerfile is located
     runs-on: ubuntu-latest
 
     steps:
