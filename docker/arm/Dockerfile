@@ -14,7 +14,11 @@ RUN apt-get update && apt-get install -y build-essential \
     libssl-dev \
     libayatana-appindicator3-dev \
     librsvg2-dev\
-    npm
+    npm \
+    libwebkit2gtk-4.1-dev \
+    python3 \
+    python3-mako \
+    python3-markdown
 
 # Add architecture
 RUN dpkg --add-architecture arm64 
