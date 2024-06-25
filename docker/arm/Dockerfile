@@ -6,8 +6,7 @@ COPY . .
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get clean && apt-get update && apt-get upgrade -y
-RUN apt-get update && apt-get install -y libwebkit2gtk-4.1-dev \
-    build-essential \
+RUN apt-get update && apt-get install -y build-essential \
     curl \
     wget \
     file \
@@ -16,7 +15,6 @@ RUN apt-get update && apt-get install -y libwebkit2gtk-4.1-dev \
     libayatana-appindicator3-dev \
     librsvg2-dev\
     npm \
-    cargo
 
 # Add architecture
 RUN dpkg --add-architecture arm64 
