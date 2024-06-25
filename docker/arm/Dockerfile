@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y build-essential \
     libssl-dev \
     libayatana-appindicator3-dev \
     librsvg2-dev\
-    npm \
+    npm
 
 # Add architecture
 RUN dpkg --add-architecture arm64 
