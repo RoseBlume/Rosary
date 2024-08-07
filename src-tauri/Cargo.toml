@@ -1,4 +1,4 @@
-cargo-features = ["profile-rustflags", "trim-paths"]
+#cargo-features = ["profile-rustflags", "trim-paths"]
 [package]
 name = "rosary"
 version = "0.0.0"
@@ -30,5 +30,5 @@ lto = true # Enables link to optimizations
 opt-level = 3 # Optimize for binary size
 strip = true #Remove debug symbols
 rpath = false
-trim-paths = "all" # Removes potentially privileged information from your binaries.
-rustflags = ["-Cdebuginfo=0", "-Zthreads=8"] # Better compile performance.
+#trim-paths = "all" # Removes potentially privileged information from your binaries.
+#rustflags = ["-Cdebuginfo=0", "-Zthreads=8"] # Better compile performance.
