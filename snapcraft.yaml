@@ -1,7 +1,7 @@
 name: jrosarybibleapp
 base: core24
 adopt-info: metapart
-version: '2.0.5'
+version: '2.0.6'
 summary: Read the Bible and other Christian texts. # 79 char long summary
 description: |
   Study the Bible, and read Christianity related works. This projects goal is to promote spiritual health, and to allow each person to study the bible and come to their own conclusion about their faith.
