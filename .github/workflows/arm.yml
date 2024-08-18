@@ -2,7 +2,7 @@ name: Raspberry Pi compile
 on:
   workflow_dispatch:
 env:
-    VERSION: 2.0.5
+    VERSION: 2.0.6
 jobs:
   build:
     strategy:
@@ -17,7 +17,7 @@ jobs:
         - arch: armv7l
           cpu: cortex-a53
           deb: armhf
-          other: armhfp
+          other: arm
           base_image: https://dietpi.com/downloads/images/DietPi_RPi-ARMv7-Bookworm.img.xz
     runs-on: ubuntu-latest
     steps:
@@ -53,10 +53,10 @@ jobs:
       - name: Upload deb bundle
         uses: actions/upload-artifact@v3
         with:
-          name: Debian ${{ matrix.deb }}Bundle
+          name: Debian Bundle
           path: ${{ github.workspace }}/src-tauri/target/release/bundle/deb/Rosary_${{ env.VERSION }}_${{ matrix.deb }}.deb
-      - name: Upload rpm ${{}}bundle
+      - name: Upload rpm bundle
         uses: actions/upload-artifact@v3
         with:
-          name: RPM ${{ matrix.other }}Bundle
+          name: RPM Bundle
           path: ${{ github.workspace }}/src-tauri/target/release/bundle/rpm/rosary_${{ env.VERSION }}-1_${{ matrix.other }}.rpm
