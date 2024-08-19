@@ -1,6 +1,6 @@
 {
   "productName": "Rosary",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "identifier": "io.github.roseblume.rosary",
   "build": {
     "beforeDevCommand": "npm run dev",
