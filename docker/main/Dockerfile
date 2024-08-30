@@ -1,6 +1,6 @@
 ARG ARCH=
 ARG TRIPLE=
-FROM ${ARCH}debian:bookworm
+FROM ${ARCH}/debian:bookworm
 
 WORKDIR /usr/app/raspirus
 COPY . .
