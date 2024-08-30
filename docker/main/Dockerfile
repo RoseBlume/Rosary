@@ -1,4 +1,4 @@
-FROM rust:1.79.0-bookworm as ARM64
+FROM debian:bookworm as ARM64
 
 WORKDIR /usr/app/raspirus
 COPY . .
