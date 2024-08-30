@@ -6,8 +6,8 @@ WORKDIR /usr/app/raspirus
 COPY . .
 
 ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update && apt-get install -y build-essential \
+RUN apt-get update
+RUN apt-get install -y build-essential \
     cmake \
     libsqlite3-0 \
     libsqlite3-dev \
