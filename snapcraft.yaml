@@ -61,7 +61,7 @@ parts:
       - on amd64 to amd64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.6/Rosary_2.0.6_amd64.deb
       - on arm64 to arm64: https://github.com/RoseBlume/Rosary/releases/download/v2.0.6/Rosary_2.0.6_arm64.deb
       - on armhf to armhf: https://github.com/RoseBlume/Rosary/releases/download/v2.0.6/Rosary_2.0.6_armhf.deb
-    #source-type: deb
+    source-type: deb
     override-pull: |
       set -eu
       craftctl default
