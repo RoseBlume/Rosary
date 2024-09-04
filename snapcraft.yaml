@@ -65,8 +65,6 @@ parts:
     override-pull: |
       set -eu
       craftctl default
-      dpkg -x *.deb here
-      sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" here/usr/share/applications/rosary.desktop
-      cp -r here/* .
+      sed -i -e "s|Icon=rosary|Icon=/usr/share/icons/hicolor/32x32/apps/rosary.png|g" usr/share/applications/rosary.desktop
     organize:
       usr/bin/rosary: bin/rosary
