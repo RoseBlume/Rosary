@@ -12,6 +12,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@tauri-apps/plugin-updater": "^2.0.0",
     "solid-js": "^1.9.1"
   },
   "devDependencies": {

@@ -5,3 +5,5 @@ Icon=rosary
 Name=Rosary
 Terminal=false
 Type=Application
+StartupNotify=true
+X-Purism-FormFactor=Workstation;Mobile;
